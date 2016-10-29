@@ -1,9 +1,10 @@
 ---
 title: "Confidence Interval Notebook"
 output:
+  html_document: default
   html_notebook:
-    theme: yeti
     highlight: textmate
+    theme: yeti
 ---
 
 ```{r setup, include=FALSE}
