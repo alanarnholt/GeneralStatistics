@@ -1,0 +1,20 @@
+name: "my-website"
+output_dir: "docs"
+navbar:
+  title: "Miscellaneous Statistics"
+  left:
+    - text: "Resources"
+      href: https://alanarnholt.github.io/resources.html
+    - text: "For Students"
+      href: https://alanarnholt.github.io/for-students.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/alanarnholt/GeneralStatistics         
+output:
+  html_document:
+    theme: yeti
+    highlight: textmate
+    include:
+      after_body: footer.html
+    css: styles.css  
+      

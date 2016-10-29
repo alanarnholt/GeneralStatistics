@@ -1,0 +1,10 @@
+---
+title: "Welcome"
+---
+
+
+* This site contains some general statistical ideas relevant across courses I teach.
+
+* Bullet two
+
+* * *

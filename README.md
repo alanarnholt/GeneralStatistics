@@ -1,2 +1,3 @@
-# GeneralStatistics
-Misc statistics
+# General Statistics Repository
+
+* [Web link](https://alaanarnholt.github.io/GeneralStatistics)
