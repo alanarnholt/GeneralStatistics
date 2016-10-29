@@ -1,0 +1,101 @@
+---
+title: "Sample Proportion of Successes"
+author: "Alan T. Arnholt"
+date: "October 22, 2016"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise
+
+1. Experiment changing the values for $n$ and $p$.
+2. For what values of $n$ and $p$ is the histogram approximately normal?
+3. Determine the relationship between $n$, $p$ and $\sigma_{\hat{p}}$.
+
+## Simulated sampling distribution for $\hat{p}$
+
+```{r, echo = FALSE}
+ui <- fluidPage(
+  withMathJax(),
+  fluidRow(
+    column(2, numericInput(inputId = "m", label = "Samples:", value = 10000, min = 1000, max = 50000)),
+    column(2, numericInput(inputId = "n", label = "\\(n \\):", value = 100, min = 1, max = 1000000)),
+    column(2, numericInput(inputId = "p", label = "\\(p \\):", value = 0.5, min = 0, max = 1)),
+    column(8, offset = 2, plotOutput("NG", height = "300px", width = "500px"))
+  ))
+
+
+server <- function(input, output){
+  library(ggplot2)
+  output$NG <- renderPlot({
+    DF <- data.frame(phat = rbinom(input$m, input$n, input$p)/input$n)
+    MEANphat <- round(mean(DF$phat),4)
+    SDphat <- round(sd(DF$phat),4)
+    ggplot2::ggplot(data = DF) + 
+      geom_histogram(aes(x = phat, y =..density..), fill = "purple", 
+                     alpha = 0.2, color = "black", binwidth = 1/input$n) + 
+      theme_bw() + 
+      labs(x = expression(hat(p))) + 
+      stat_function(fun = dnorm, args = list(input$p, sqrt(input$p*(1 - input$p)/input$n)), n = 500, color = "red") +
+      theme_bw(base_size = 18) + 
+      labs(x = substitute(paste(hat(mu)[hat(p)] == MEANphat, " and ", hat(sigma)[hat(p)] == SDphat), list(MEANphat = MEANphat, SDphat = SDphat)))
+  })
+}
+shinyApp(ui = ui, server = server)
+```
+
+
+
+
+
+
+
+
+
+
+## Simulated sampling distribution for $\hat{p}_1 - \hat{p}_2$
+
+
+```{r, echo = FALSE}
+ui <- fluidPage(
+  withMathJax(), 
+  fluidRow(
+    column(2, numericInput(inputId = "m", label = "Samples:", value = 10000, min = 1000, max = 50000)),
+    column(2, numericInput(inputId = "n1", label = "\\(n_1 \\):", value = 100, min = 1, max = 1000000)),
+    column(2, numericInput(inputId = "n2", label = "\\(n_2 \\):", value = 100, min = 1, max = 1000000)),
+    column(2, numericInput(inputId = "p1", label = "\\(p_1 \\):", value = 0.8, min = 0, max = 1)),
+    column(2, numericInput(inputId = "p2", label = "\\(p_2 \\):", value = 0.3, min = 0, max = 1)),
+    column(8, offset = 2, plotOutput("NGD", height = "300px", width = "500px"))
+  ))
+
+
+server <- function(input, output){
+  library(ggplot2)
+  output$NGD <- renderPlot({
+    phat1 = rbinom(input$m, input$n1, input$p1)/input$n1
+    phat2 = rbinom(input$m, input$n2, input$p2)/input$n2
+    phatd = phat1 - phat2
+    DF <- data.frame(phat1 = phat1, phat2 = phat2, phatd = phatd)
+    MEANphat <- round(mean(DF$phatd),4)
+    SDphat <- round(sd(DF$phatd),4)
+    ggplot2::ggplot(data = DF) + 
+      geom_histogram(aes(x = phatd, y =..density..), fill = "purple", 
+                     alpha = 0.2, color = "black", binwidth = (2/(input$n1 + input$n2))) + 
+      theme_bw() + 
+      labs(x = expression(hat(p))) + 
+      stat_function(fun = dnorm, args = list(input$p1 - input$p2, sqrt(input$p1*(1 - input$p1)/input$n1 + input$p2*(1 - input$p2)/input$n2)), n = 500, color = "red") +
+      theme_bw(base_size = 18) + 
+      labs(x = substitute(paste(hat(mu)[hat(p)[1]-hat(p)[2]] == MEANphat, " and ", hat(sigma)[hat(p)[1]-hat(p)[2]] == SDphat), list(MEANphat = MEANphat, SDphat = SDphat)))
+  })
+}
+shinyApp(ui = ui, server = server)
+```
+
+
+
+
+
