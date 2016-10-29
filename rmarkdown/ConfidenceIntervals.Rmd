@@ -1,0 +1,17 @@
+---
+title: "Confidence Intervals"
+output:
+  html_document: 
+    highlight: textmate
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+
+```{r, label = "sim"}
+PASWR2::cisim(samples = 100, n = 1000, parameter = .48, type = "Pi")
+```
+

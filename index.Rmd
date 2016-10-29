@@ -3,10 +3,10 @@ title: "Welcome"
 ---
 
 
-* This site contains some general statistical ideas relevant across courses I teach.
+* This site will (in the future) contain some general statistical ideas relevant across courses I teach.
 
 * Bullet two
 
-* [Testing Link](./rmarkdown/Test.html)
+* [Testing Link](./rmarkdown/ConfidenceIntervals.html)
 
 * * *
