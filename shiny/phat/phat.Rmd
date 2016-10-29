@@ -2,12 +2,15 @@
 title: "Sample Proportion of Successes"
 author: "Alan T. Arnholt"
 date: "October 22, 2016"
-output: html_document
+output:
+  html_document:
+    theme: yeti
+    highlight: textmate
 runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
 ## Exercise

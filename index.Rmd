@@ -7,6 +7,6 @@ title: "Welcome"
 
 * Bullet two
 
-* [Testing Link](./rmarkdownFILES/Test.nb.html)
+* [Testing Link](./rmarkdown/Test.nb.html)
 
 * * *
