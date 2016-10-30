@@ -302,7 +302,7 @@ exh
 ((numberSamples[-7] - exh)^2/exh)
 stat <- sum((numberSamples[-7] - exh)^2/exh)
 stat
-epvalue <- pchisq(stat, 6-1-1, lower=FALSE)
+epvalue <- pchisq(stat, 6-1-1, lower = FALSE)
 epvalue
 ```
 Since the $p$-value is `r epvalue`, we can not reject the null hypothesis that the distribution follows a Poisson distribution.  That is, there is no evidence to suggest the distribution is something other than the Poisson distribution.
@@ -316,13 +316,13 @@ psf <- c(ps, p3m)
 psf
 exh <- psf*50
 exh
-((numberSamples[-c(7,6,5)] + c(0,0,0,2) - exh)^2/exh)
-stat <- sum((numberSamples[-c(7,6,5)] + c(0,0,0,2) - exh)^2/exh)
+((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2) - exh)^2/exh)
+stat <- sum((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2) - exh)^2/exh)
 stat
-epvalue2 <- pchisq(stat, 4-1-1, lower=FALSE)
+epvalue2 <- pchisq(stat, 4 - 1 - 1, lower = FALSE)
 epvalue2
 # Could use the following but the degrees of freedom will be incorrect for this test!
-chisq.test(c(10, 24, 10, 6), p=psf)
+chisq.test(c(10, 24, 10, 6), p = psf)
 ```
 Note the substantial drop in $p$-value (`r epvalue2`) although the final conclusion is still the same.
 
@@ -336,10 +336,10 @@ psf <- c(ps, p3m)
 psf
 exh <- psf*50
 exh
-((numberSamples[-c(7,6,5)] + c(0,0,0,2) - exh)^2/exh)
-stat <- sum((numberSamples[-c(7,6,5)] + c(0,0,0,2)  - exh)^2/exh)
+((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2) - exh)^2/exh)
+stat <- sum((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2)  - exh)^2/exh)
 stat
-epvalue3 <- pchisq(stat, 4-1-1, lower=FALSE)
+epvalue3 <- pchisq(stat, 4 - 1 - 1, lower = FALSE)
 epvalue3
 ```
 

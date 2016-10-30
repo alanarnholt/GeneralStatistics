@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Contingency Tables</h1>
 <h4 class="author"><em>Alan T. Arnholt</em></h4>
-<h4 class="date"><em>Last compiled: Sunday, October 30, 2016 - 16:00:25.</em></h4>
+<h4 class="date"><em>Last compiled: Sunday, October 30, 2016 - 16:09:33.</em></h4>
 
 </div>
 
@@ -570,7 +570,7 @@ exh</code></pre>
 <pre class="r"><code>stat &lt;- sum((numberSamples[-7] - exh)^2/exh)
 stat</code></pre>
 <pre><code>[1] 4.237906</code></pre>
-<pre class="r"><code>epvalue &lt;- pchisq(stat, 6-1-1, lower=FALSE)
+<pre class="r"><code>epvalue &lt;- pchisq(stat, 6-1-1, lower = FALSE)
 epvalue</code></pre>
 <pre><code>[1] 0.3747651</code></pre>
 <p>Since the <span class="math inline">\(p\)</span>-value is 0.3747651, we can not reject the null hypothesis that the distribution follows a Poisson distribution. That is, there is no evidence to suggest the distribution is something other than the Poisson distribution.</p>
@@ -583,17 +583,17 @@ psf</code></pre>
 <pre class="r"><code>exh &lt;- psf*50
 exh</code></pre>
 <pre><code>[1] 13.626590 17.714567 11.514468  7.144376</code></pre>
-<pre class="r"><code>((numberSamples[-c(7,6,5)] + c(0,0,0,2) - exh)^2/exh)</code></pre>
+<pre class="r"><code>((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2) - exh)^2/exh)</code></pre>
 <pre><code>        0         1         2         3 
 0.9651830 2.2301801 0.1991941 0.1833044 </code></pre>
-<pre class="r"><code>stat &lt;- sum((numberSamples[-c(7,6,5)] + c(0,0,0,2) - exh)^2/exh)
+<pre class="r"><code>stat &lt;- sum((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2) - exh)^2/exh)
 stat</code></pre>
 <pre><code>[1] 3.577862</code></pre>
-<pre class="r"><code>epvalue2 &lt;- pchisq(stat, 4-1-1, lower=FALSE)
+<pre class="r"><code>epvalue2 &lt;- pchisq(stat, 4 - 1 - 1, lower = FALSE)
 epvalue2</code></pre>
 <pre><code>[1] 0.1671388</code></pre>
 <pre class="r"><code># Could use the following but the degrees of freedom will be incorrect for this test!
-chisq.test(c(10, 24, 10, 6), p=psf)</code></pre>
+chisq.test(c(10, 24, 10, 6), p = psf)</code></pre>
 <pre><code>
     Chi-squared test for given probabilities
 
@@ -610,13 +610,13 @@ psf</code></pre>
 <pre class="r"><code>exh &lt;- psf*50
 exh</code></pre>
 <pre><code>[1] 12.709329 18.357920 12.238613  6.694138</code></pre>
-<pre class="r"><code>((numberSamples[-c(7,6,5)] + c(0,0,0,2) - exh)^2/exh)</code></pre>
+<pre class="r"><code>((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2) - exh)^2/exh)</code></pre>
 <pre><code>         0          1          2          3 
 0.57756506 1.73402370 0.40947362 0.07197749 </code></pre>
-<pre class="r"><code>stat &lt;- sum((numberSamples[-c(7,6,5)] + c(0,0,0,2)  - exh)^2/exh)
+<pre class="r"><code>stat &lt;- sum((numberSamples[-c(7, 6, 5)] + c(0, 0, 0, 2)  - exh)^2/exh)
 stat</code></pre>
 <pre><code>[1] 2.79304</code></pre>
-<pre class="r"><code>epvalue3 &lt;- pchisq(stat, 4-1-1, lower=FALSE)
+<pre class="r"><code>epvalue3 &lt;- pchisq(stat, 4 - 1 - 1, lower = FALSE)
 epvalue3</code></pre>
 <pre><code>[1] 0.2474566</code></pre>
 <p>This example illustrates a common result with chi-square goodness-of-fit tests, i.e., that each to two (or more) different null hypotheses may be accepted for the same data set. Obviously, the true distribution cannot be both binomial and Poisson at the same time which is why the conclusion is that there is not sufficient evidence to suggest the alternative. This does not make the null hypothesis true!</p>
