@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA, cache = TRUE, fig.align = "cent
 ### General Social Survey {-}
 
 
-To obtain information from the General Social Survey, go to [sda.berkley.edu](sda.berkley.edu). Click the ARCHIVE button.  In what follows, we will use information obtained from the [General Social Survey (GSS) Cumulative Datafile 1972-2010](http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10). The following data file is obtained by clicking Download > Customized Subset.  Click in the radio button to the left of CSV file (Comma Separated Values with header record).  Enter `age(18-65)` in the Selection Filter(s) box.  Type `DEATHPEN SEX` in the Enter names of individual variables (original or created) to include box.  Scroll to the bottom of the page, and click the Continue button.  Review the page that appears to make sure you have selected the desired variables; then, click the `Create the Files` button.  You should have two hot links: the `Data file` and the `Codebook`.  By clicking on the `Data file` link, the information should open in your browser.  To read the data into `R`, copy the url and store it as follows.  Note the url `site` is temporary.  Consequently, we download the data to a folder on the hard drive.  The initial code is commented out as the url will no longer work after a day or so.  That is, you will need to get a new url if you want to duplicate the entire process.  
+To obtain information from the General Social Survey, go to [sda.berkley.edu](sda.berkley.edu). Click the ARCHIVE button.  In what follows, we will use information obtained from the [General Social Survey (GSS) Cumulative Datafile 1972-2010](http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10). The following data file is obtained by clicking Download > Customized Subset.  Click in the radio button to the left of CSV file (Comma Separated Values with header record).  Enter `age(18-65)` in the Selection Filter(s) box.  Type `DEATHPEN SEX` in the Enter names of individual variables (original or created) to include box.  Scroll to the bottom of the page, and click the Continue button.  Review the page that appears to make sure you have selected the desired variables; then, click the `Create the Files` button.  You should have two hot links: the `Data file` and the `Codebook`.  By clicking on the `Data file` link, the information should open in your browser.  To read the data into `R`, copy the URL and store it as follows.  Note the URL `site` is temporary.  Consequently, we download the data to a folder on the hard drive.  The initial code is commented out as the URL will no longer work after a day or so.  That is, you will need to get a new URL if you want to duplicate the entire process.  
 
 ```{r DEATHPEN, comment = NA}
 # site <- "http://sda.berkeley.edu/TMPDIR/AAELN0Q9.csv"
@@ -58,7 +58,7 @@ The hypotheses to be tested are written as follows:
 
 $H_0:$ Death penalty opinion is independent of gender (there is no association between death penalty opinion and gender).
 
-$H_A:$ Death penalty opionion is dependent on gender (there is an association between death penalty opinion and gender).
+$H_A:$ Death penalty opinion is dependent on gender (there is an association between death penalty opinion and gender).
 
 ## `R` interlude {-}
 
@@ -106,7 +106,7 @@ addmargins(xtabs(~sample(SEX) + DEATHPEN, data = DPSC))
 addmargins(xtabs(~sample(SEX) + DEATHPEN, data = DPSC))
 ```
 
-To perform the permutation test, randomly permute one of the catgorical variables.  Each time the categorical variable is permuted, compute the statistic $\sum_{cells}\frac{(OBS - EXP)^2}{EXP}$ on the resulting contingency table and store the result.  Repeat this process a large number of times.  The $p$-value will be the fraction of times the simulated statistics equal or exceed the value of the observed statistic. 
+To perform the permutation test, randomly permute one of the categorical variables.  Each time the categorical variable is permuted, compute the statistic $\sum_{cells}\frac{(OBS - EXP)^2}{EXP}$ on the resulting contingency table and store the result.  Repeat this process a large number of times.  The $p$-value will be the fraction of times the simulated statistics equal or exceed the value of the observed statistic. 
 
 ```{r perEXP}
 N <- 10^4 - 1  # Change this for slower computers
@@ -190,7 +190,7 @@ str(HATflatfile)
 
 ## Questions {-}
 
-From the [http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10](http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10) page, click Download > Customized Subset.  Click in the radio button to the left of CSV file (Comma Separated Values with header record).  Type `DEATHPEN DEGREE` in the Enter names of individual variables (original or created) to include box.  Click in the radio button All for CASE IDENTIFICATION AND YEAR.  Scroll to the bottom of the page, and click the Continue button.  Review the page that appears to make sure you have selected the desired variables; then, click the `Create the Files` button.  You should have two hot links: the `Data file` and the `Codebook`.  By clicking on the `Data file` link, the information should open in your browser.  To read the data into `R`, copy the url and store it as follows.
+From the [http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10](http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10) page, click Download > Customized Subset.  Click in the radio button to the left of CSV file (Comma Separated Values with header record).  Type `DEATHPEN DEGREE` in the Enter names of individual variables (original or created) to include box.  Click in the radio button All for CASE IDENTIFICATION AND YEAR.  Scroll to the bottom of the page, and click the Continue button.  Review the page that appears to make sure you have selected the desired variables; then, click the `Create the Files` button.  You should have two hot links: the `Data file` and the `Codebook`.  By clicking on the `Data file` link, the information should open in your browser.  To read the data into `R`, copy the URL and store it as follows.
 
 ```{r deathpenYEAR}
 # site <- "http://sda.berkeley.edu/TMPDIR/AAO0mzEh.csv"
@@ -283,7 +283,7 @@ numberSamples
 
 Since no parameters are specified, they must be estimated from the data in order to carry out the test in both (a) and (b).
 
-See [Wikipedia](https://en.wikipedia.org/wiki/List_of_probability_distributions) for a summary of various probability distributions.  The [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) pdf is $P(X =x|\lambda) = \frac{\lambda e^{-\lambda}}{x!}$ with $E[X] =\lambda$. And estimate of the mean number of defectives in the 50 samples is `r sum(numberSamples[-7]*c(0,1,2,3,4,5))/50`.
+See [Wikipedia](https://en.wikipedia.org/wiki/List_of_probability_distributions) for a summary of various probability distributions.  The [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) pdf is $P(X =x|\lambda) = \frac{\lambda e^{-\lambda}}{x!}$ with $E[X] =\lambda$. An estimate of the mean number of defectives in the 50 samples is `r sum(numberSamples[-7]*c(0,1,2,3,4,5))/50`.
 
 ```{r muest}
 muest <- sum(0:5*numberSamples[-7]/sum(numberSamples[-7]))
