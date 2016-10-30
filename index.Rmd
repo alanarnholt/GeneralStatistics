@@ -2,10 +2,9 @@
 title: "Welcome"
 ---
 
+This site will contain (in the future) some general statistical ideas relevant across courses I teach.
 
-* This site will (in the future) contain some general statistical ideas relevant across courses I teach.
-
-* Bullet two
+* [Contingency Tables](./rmarkdown/ContingencyTables.html)
 
 * [Testing Link](./rmarkdown/ConfidenceIntervals.html)
 
