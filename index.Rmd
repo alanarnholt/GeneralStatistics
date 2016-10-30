@@ -4,6 +4,9 @@ title: "Welcome"
 
 This site will contain (in the future) some general statistical ideas relevant across courses I teach.
 
+
+* [Shading Area Under Curve](./rmarkdown/NormalGGio.html)
+
 * [Contingency Tables](./rmarkdown/ContingencyTables.html)
 
 * [Testing Link](./rmarkdown/ConfidenceIntervals.html)

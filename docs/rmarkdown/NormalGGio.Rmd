@@ -1,0 +1,190 @@
+---
+title: "Normal Area"
+date: 'Last compiled: `r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
+author: 'Alan T. Arnholt'
+output: 
+    bookdown::html_document2
+bibliography: ShinyStuffNormal.bib  
+---
+
+```{r label = "setup", include = FALSE, message = FALSE}
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center")
+```
+
+
+# Shading a Subregion Under a Function Curve {#shading}
+
+Note: The material in Section \@ref(shading) is modified from @chang_r_2013.
+
+## Problem {-}
+You want to shade part of the area under a function curve.
+
+## Solution {-}
+Define a new wrapper function around your curve function, and replace out-of-range values with `NA`, as shown in Figure \@ref(fig:FG):
+
+```{r, label = "FG", fig.cap="Function curve with a shaded region"}
+# Return dnorm(x) for -1 < x < 2, and NA for all other x
+dnorm_limit <- function(x) {
+  y <- dnorm(x)
+  y[x < -1 | x > 2] <- NA
+  return(y)
+}
+# ggplot() with dummy data
+p <- ggplot(data.frame(x=c(-3.5, 3.5)), aes(x = x))
+p + stat_function(fun = dnorm_limit, geom = "area", fill = "purple", alpha = 0.4, n = 500) +
+  stat_function(fun = dnorm) + 
+  theme_bw() + 
+  labs(x = "", y = "")
+```
+
+Remember that what gets passed to this function is a vector, not individual values. If this function operated on single elements at a time, it might make sense to use an if/else statement to decide what to return, conditional on the value of `x`. But that won’t work here, since `x` is a vector with many values.
+
+
+## Discussion {-}
+
+R has first-class functions, and we can write a function that returns a closure—that is, we can program a function to program another function. This function will allow you to pass in a function, a minimum value, and a maximum value. Values outside the range will again be returned with `NA`:
+
+```{r, label = "limitRange"}
+limitRange <- function(fun, min, max) {
+  function(x) {
+    y <- fun(x)
+    y[x < min | x > max] <- NA
+    return(y)
+  }
+}
+```
+
+Now we can call this function to create another function—one that is effectively the same as the `dnorm_limit()` function used earlier:
+
+```{r, label = "second"}
+# This returns a function
+dlimit <- limitRange(dnorm, -1, 2)
+# Now we'll try out the new function -- it only returns values for inputs
+# between -1 and 2
+dlimit(-2:4)
+```
+
+We can use `limitRange()` to create a function that is passed to `stat_function()`:
+
+```{r}
+p + stat_function(fun = dnorm) +
+  stat_function(fun = limitRange(dnorm, -1, 2),
+                geom = "area", fill = "purple", alpha = 0.4, n = 500) + 
+  theme_bw() + 
+  labs(x = "", y = "")
+```
+
+
+
+# One Function Now
+
+```{r}
+areabetweenN <- function(mu = 0, sigma = 1, min = -1, max = 1){
+  abN <- round(pnorm(max, mu, sigma) - pnorm(min, mu, sigma),4) 
+  p <- ggplot(data.frame(x=c(mu - 3.5*sigma, mu + 3.5*sigma)), aes(x = x)) 
+  limitRange <- function(min = min, max = max) {
+    function(x) {
+      y <- dnorm(x, mu, sigma)
+      y[x < min | x > max] <- NA
+      return(y)
+    }
+  }
+  p + stat_function(fun = dnorm, args = list(mu, sigma)) +
+    stat_function(fun = limitRange(min = min, max = max),
+                  geom = "area", fill = "purple", alpha = 0.4, n = 500) + 
+    theme_bw() + 
+    labs(x = "", y = "", title = paste("The area between", min, "and", max, "is", abN)) 
+}
+```
+
+Given $X\sim N(100, 15)$, draw the area between 85 and 115.
+
+```{r}
+areabetweenN(100, 15, 85, 115)
+```
+
+```{r}
+areabetweenN(100, 10, 80, 120)
+```
+
+## Showing the Standard Deviations
+
+```{r}
+areabetweenN <- function(mu = 0, sigma = 1, min = -1, max = 1, ALPHA = 0.4, FILL = "PURPLE"){
+  abN <- round(pnorm(max, mu, sigma) - pnorm(min, mu, sigma),4) 
+  p <- ggplot(data.frame(x=c(mu - 3.5*sigma, mu + 3.5*sigma)), aes(x = x)) 
+  limitRange <- function(min = min, max = max) {
+    function(x) {
+      y <- dnorm(x, mu, sigma)
+      y[x < min | x > max] <- NA
+      return(y)
+    }
+  }
+  SDB <- -3:3*sigma + mu
+  p + stat_function(fun = dnorm, args = list(mu, sigma)) +
+    stat_function(fun = limitRange(min = min, max = max),
+                  geom = "area", fill = FILL, alpha = ALPHA, n = 500) + 
+    theme_bw() + 
+    labs(x = paste("X ~ N(", mu,",",sigma,")"), y = "", title = paste("The area between", min, "and", max, "is", abN)) +
+    scale_x_continuous(breaks=SDB)
+}
+```
+
+```{r}
+areabetweenN(100, 12, 70, 115, FILL = "green", ALPHA = 0.5)
+```
+
+
+## Embedding a Shiny App
+
+```{r shiny, echo = TRUE, message = FALSE, height = 5, eval = FALSE}
+ui <- fluidPage(
+  # Application title
+  titlePanel("Area Between Two Values of A Normal Distribution"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput(inputId = "MU", label = "Mean:", value = 0, min = -Inf, max = Inf),
+      numericInput(inputId = "SIGMA", label = "Standard Deviation:", value = 1, min = 0.0000001, max = Inf),
+      numericInput(inputId = "MIN", label = "Lower:", value = -2, min = -Inf, max = Inf),
+      numericInput(inputId = "MAX", label = "Upper:", value = 2, min = -Inf, max = Inf),
+      textInput(inputId = "COLOR", label = "Color:", value = "hotpink"),
+      numericInput(inputId = "ALPHA", label = "Intensity:", value = 0.4, min = 0.05, max = 1)
+    ),
+    mainPanel(
+      plotOutput("NG", height = "500px", width = "500px")
+    )
+  ))
+
+
+server <- function(input, output){
+  library(ggplot2)
+  output$NG <- renderPlot({
+    abN <- round(pnorm(input$MAX, input$MU, input$SIGMA) - pnorm(input$MIN, input$MU, input$SIGMA),4) 
+    p <- ggplot(data.frame(x=c(input$MU - 3.5*input$SIGMA, input$MU + 3.5*input$SIGMA)), aes(x = x)) 
+    limitRange <- function(min = input$MIN, max = input$MAX) {
+      function(x) {
+        y <- dnorm(x, input$MU, input$SIGMA)
+        y[x < input$MIN | x > input$MAX] <- NA
+        return(y)
+      }
+    }
+    SDB <- -3:3*input$SIGMA + input$MU
+    p + stat_function(fun = dnorm, args = list(input$MU, input$SIGMA)) +
+      stat_function(fun = limitRange(min = input$MIN, max = input$MAX),
+                    geom = "area", fill = input$COLOR, alpha = input$ALPHA, n = 500) + 
+      theme_bw(base_size = 18) + 
+      labs(x = paste("X ~ N(", input$MU,",",input$SIGMA,")"), y = "", title = paste("The area between", input$MIN, "and", input$MAX, "is", abN)) +
+      scale_x_continuous(breaks=SDB)
+  })
+}
+shinyApp(ui = ui, server = server, options = list(height = 580))
+```
+
+```{r, echo = FALSE}
+knitr::include_app("https://alanarnholt.shinyapps.io/Normal_Area/", height = "600px")
+```
+
+To run the app directly from the server, click on [https://alanarnholt.shinyapps.io/Normal_Area/](https://alanarnholt.shinyapps.io/Normal_Area/).
+
+## References
