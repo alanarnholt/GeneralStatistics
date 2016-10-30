@@ -118,14 +118,14 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Contingency Tables</h1>
 <h4 class="author"><em>Alan T. Arnholt</em></h4>
-<h4 class="date"><em>Last compiled: Sunday, October 30, 2016 - 15:46:45.</em></h4>
+<h4 class="date"><em>Last compiled: Sunday, October 30, 2016 - 16:00:25.</em></h4>
 
 </div>
 
 
 <div id="general-social-survey" class="section level3 unnumbered">
 <h3>General Social Survey</h3>
-<p>To obtain information from the General Social Survey, go to <a href="sda.berkley.edu" class="uri">sda.berkley.edu</a>. Click the ARCHIVE button. In what follows, we will use information obtained from the <a href="http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10">General Social Survey (GSS) Cumulative Datafile 1972-2010</a>. The following data file is obtained by clicking Download &gt; Customized Subset. Click in the radio button to the left of CSV file (Comma Separated Values with header record). Enter <code>age(18-65)</code> in the Selection Filter(s) box. Type <code>DEATHPEN SEX</code> in the Enter names of individual variables (original or created) to include box. Scroll to the bottom of the page, and click the Continue button. Review the page that appears to make sure you have selected the desired variables; then, click the <code>Create the Files</code> button. You should have two hot links: the <code>Data file</code> and the <code>Codebook</code>. By clicking on the <code>Data file</code> link, the information should open in your browser. To read the data into <code>R</code>, copy the url and store it as follows. Note the url <code>site</code> is temporary. Consequently, we download the data to a folder on the hard drive. The initial code is commented out as the url will no longer work after a day or so. That is, you will need to get a new url if you want to duplicate the entire process.</p>
+<p>To obtain information from the General Social Survey, go to <a href="sda.berkley.edu" class="uri">sda.berkley.edu</a>. Click the ARCHIVE button. In what follows, we will use information obtained from the <a href="http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10">General Social Survey (GSS) Cumulative Datafile 1972-2010</a>. The following data file is obtained by clicking Download &gt; Customized Subset. Click in the radio button to the left of CSV file (Comma Separated Values with header record). Enter <code>age(18-65)</code> in the Selection Filter(s) box. Type <code>DEATHPEN SEX</code> in the Enter names of individual variables (original or created) to include box. Scroll to the bottom of the page, and click the Continue button. Review the page that appears to make sure you have selected the desired variables; then, click the <code>Create the Files</code> button. You should have two hot links: the <code>Data file</code> and the <code>Codebook</code>. By clicking on the <code>Data file</code> link, the information should open in your browser. To read the data into <code>R</code>, copy the URL and store it as follows. Note the URL <code>site</code> is temporary. Consequently, we download the data to a folder on the hard drive. The initial code is commented out as the URL will no longer work after a day or so. That is, you will need to get a new URL if you want to duplicate the entire process.</p>
 <pre class="r"><code># site &lt;- &quot;http://sda.berkeley.edu/TMPDIR/AAELN0Q9.csv&quot;
 # download.file(url = site, destfile = &quot;../data/DPS.csv&quot;)
 DPS &lt;- read.csv(file=&quot;../data/DPS.csv&quot;)
@@ -190,7 +190,7 @@ SEX      Strongly Disagree
 <h2>Null and Alternative Hypotheses</h2>
 <p>The hypotheses to be tested are written as follows:</p>
 <p><span class="math inline">\(H_0:\)</span> Death penalty opinion is independent of gender (there is no association between death penalty opinion and gender).</p>
-<p><span class="math inline">\(H_A:\)</span> Death penalty opionion is dependent on gender (there is an association between death penalty opinion and gender).</p>
+<p><span class="math inline">\(H_A:\)</span> Death penalty opinion is dependent on gender (there is an association between death penalty opinion and gender).</p>
 </div>
 <div id="r-interlude" class="section level2 unnumbered">
 <h2><code>R</code> interlude</h2>
@@ -292,7 +292,7 @@ sample(SEX) Strongly Disagree  Sum
      Male                  32  460
      Female                40  605
      Sum                   72 1065</code></pre>
-<p>To perform the permutation test, randomly permute one of the catgorical variables. Each time the categorical variable is permuted, compute the statistic <span class="math inline">\(\sum_{cells}\frac{(OBS - EXP)^2}{EXP}\)</span> on the resulting contingency table and store the result. Repeat this process a large number of times. The <span class="math inline">\(p\)</span>-value will be the fraction of times the simulated statistics equal or exceed the value of the observed statistic.</p>
+<p>To perform the permutation test, randomly permute one of the categorical variables. Each time the categorical variable is permuted, compute the statistic <span class="math inline">\(\sum_{cells}\frac{(OBS - EXP)^2}{EXP}\)</span> on the resulting contingency table and store the result. Repeat this process a large number of times. The <span class="math inline">\(p\)</span>-value will be the fraction of times the simulated statistics equal or exceed the value of the observed statistic.</p>
 <pre class="r"><code>N &lt;- 10^4 - 1  # Change this for slower computers
 result &lt;- numeric(N)
 set.seed(3)
@@ -400,7 +400,7 @@ head(HATflatfile)</code></pre>
 </div>
 <div id="questions" class="section level2 unnumbered">
 <h2>Questions</h2>
-<p>From the <a href="http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10" class="uri">http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10</a> page, click Download &gt; Customized Subset. Click in the radio button to the left of CSV file (Comma Separated Values with header record). Type <code>DEATHPEN DEGREE</code> in the Enter names of individual variables (original or created) to include box. Click in the radio button All for CASE IDENTIFICATION AND YEAR. Scroll to the bottom of the page, and click the Continue button. Review the page that appears to make sure you have selected the desired variables; then, click the <code>Create the Files</code> button. You should have two hot links: the <code>Data file</code> and the <code>Codebook</code>. By clicking on the <code>Data file</code> link, the information should open in your browser. To read the data into <code>R</code>, copy the url and store it as follows.</p>
+<p>From the <a href="http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10" class="uri">http://sda.berkeley.edu/cgi-bin/hsda?harcsda+gss10</a> page, click Download &gt; Customized Subset. Click in the radio button to the left of CSV file (Comma Separated Values with header record). Type <code>DEATHPEN DEGREE</code> in the Enter names of individual variables (original or created) to include box. Click in the radio button All for CASE IDENTIFICATION AND YEAR. Scroll to the bottom of the page, and click the Continue button. Review the page that appears to make sure you have selected the desired variables; then, click the <code>Create the Files</code> button. You should have two hot links: the <code>Data file</code> and the <code>Codebook</code>. By clicking on the <code>Data file</code> link, the information should open in your browser. To read the data into <code>R</code>, copy the URL and store it as follows.</p>
 <pre class="r"><code># site &lt;- &quot;http://sda.berkeley.edu/TMPDIR/AAO0mzEh.csv&quot;
 # download.file(url = site, destfile = &quot;../data/dpy.csv&quot;)
 dpy &lt;- read.csv(file = &quot;../data/dpy.csv&quot;)
@@ -549,7 +549,7 @@ numberSamples</code></pre>
 <pre><code>        0         1         2         3         4         5 6 or more 
        10        24        10         4         1         1         0 </code></pre>
 <p>Since no parameters are specified, they must be estimated from the data in order to carry out the test in both (a) and (b).</p>
-<p>See <a href="https://en.wikipedia.org/wiki/List_of_probability_distributions">Wikipedia</a> for a summary of various probability distributions. The <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson</a> pdf is <span class="math inline">\(P(X =x|\lambda) = \frac{\lambda e^{-\lambda}}{x!}\)</span> with <span class="math inline">\(E[X] =\lambda\)</span>. And estimate of the mean number of defectives in the 50 samples is 1.3.</p>
+<p>See <a href="https://en.wikipedia.org/wiki/List_of_probability_distributions">Wikipedia</a> for a summary of various probability distributions. The <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson</a> pdf is <span class="math inline">\(P(X =x|\lambda) = \frac{\lambda e^{-\lambda}}{x!}\)</span> with <span class="math inline">\(E[X] =\lambda\)</span>. An estimate of the mean number of defectives in the 50 samples is 1.3.</p>
 <pre class="r"><code>muest &lt;- sum(0:5*numberSamples[-7]/sum(numberSamples[-7]))
 muest</code></pre>
 <pre><code>[1] 1.3</code></pre>
