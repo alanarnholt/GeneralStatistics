@@ -2,7 +2,8 @@
 title: "Formatting Tables"
 author: "Alan Arnholt"
 output: 
-    bookdown::html_document2
+    bookdown::html_document2:
+      theme: yeti
 date: 'Last compiled: `r format(Sys.time(), "%b %d, %Y")`'
 ---
 
@@ -16,7 +17,6 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center")
 
 ```{r label = "cars"}
 mod <- lm(dist ~ speed, data = cars)
-summary(mod)
 # Just the coefficients
 coef(summary(mod))
 # Or
@@ -30,11 +30,30 @@ There are several packages one might use to format the output from a linear mode
 * `htmlTable` and the function `htmlTable()`
 
 ```{r}
-knitr::kable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes")
+knitr::kable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes", booktabs = TRUE, digits = 4)
 ```
 
 
-```{r, label = "reg", results='asis'}
-XT <- xtable::xtable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes", label = "(\\#tab:reg)" )
+However, I can not figure out how to refer to the created Tables in a bookdown document with any package other than `knitr`.  If you can help, please do.
+
+
+
+```{r, label = "motab"}
+knitr::kable(mtcars[1:5, ],  booktabs = TRUE, caption = "Something here")
+```
+
+Table \@ref(tab:motab)!
+
+```{r, label = "reg", results = 'asis'}
+XT <- xtable::xtable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes", auto = TRUE)
 print(XT, type = "html")
+```
+
+```{r, label = "summTAB"}
+options(table_counter = 2)
+htmlTable::htmlTable(round(summary(mod)$coef, 4), css.cell = "padding-left: 1em; padding-right: 1em;", caption ="`dist` regressed on `speed`", align = "rrrr")
+```
+
+```{r, label = "DT", fig.cap = "Something new here please"}
+DT::datatable(iris)
 ```
