@@ -1,0 +1,40 @@
+---
+title: "Formatting Tables"
+author: "Alan Arnholt"
+output: 
+    bookdown::html_document2
+date: 'Last compiled: `r format(Sys.time(), "%b %d, %Y")`'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center")
+```
+
+## Tables and Output {-}
+
+
+
+```{r label = "cars"}
+mod <- lm(dist ~ speed, data = cars)
+summary(mod)
+# Just the coefficients
+coef(summary(mod))
+# Or
+summary(mod)$coef
+```
+
+There are several packages one might use to format the output from a linear model.
+
+* `knitr` and the function `kable()`
+* `xtable` and the function `xtable()`
+* `htmlTable` and the function `htmlTable()`
+
+```{r}
+knitr::kable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes")
+```
+
+
+```{r, label = "reg", results='asis'}
+XT <- xtable::xtable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes", label = "(\\#tab:reg)" )
+print(XT, type = "html")
+```
