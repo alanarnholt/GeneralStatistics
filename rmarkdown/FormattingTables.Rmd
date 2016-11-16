@@ -57,3 +57,7 @@ htmlTable::htmlTable(round(summary(mod)$coef, 4), css.cell = "padding-left: 1em;
 ```{r, label = "DT", fig.cap = "Something new here please"}
 DT::datatable(iris)
 ```
+
+```{r, warning = FALSE}
+pander::pander(summary(mod)$coef, caption = "You add it here")
+```
