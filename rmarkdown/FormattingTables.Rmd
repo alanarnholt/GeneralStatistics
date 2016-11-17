@@ -61,3 +61,25 @@ DT::datatable(iris)
 ```{r, warning = FALSE}
 pander::pander(summary(mod)$coef, caption = "You add it here")
 ```
+
+```{r}
+knitr::kable(head(iris), format = "html", table.attr = "id=\"mytable\"")
+```
+
+Table: (\#tab:foo) Your table caption.
+
+| Sepal.Length| Sepal.Width| Petal.Length|
+|------------:|-----------:|------------:|
+|          5.1|         3.5|          1.4|
+|          4.9|         3.0|          1.4|
+|          4.7|         3.2|          1.3|
+|          4.6|         3.1|          1.5|
+
+Table \@ref(tab:foo)
+
+```{r, label = "TRIAL"}
+# options(table_counter = 2)
+htmlTable::htmlTable(round(summary(mod)$coef, 4), css.cell = "padding-left: 1em; padding-right: 1em;", caption ="`dist` regressed on `speed`", align = "rrrr")
+```
+
+Look Table \@ref(tab:TRIAL)
