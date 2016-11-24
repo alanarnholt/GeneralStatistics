@@ -33,6 +33,10 @@ There are several packages one might use to format the output from a linear mode
 knitr::kable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes", booktabs = TRUE, digits = 4)
 ```
 
+```{r}
+knitr::kable(coef(summary(mod)), caption = "Write your descriptive caption between the quotes 2", booktabs = TRUE, digits = 4, col.names = c("$\\alpha$", "$\\beta$", "$\\delta$", "$\\eta$"))
+```
+
 
 However, I can not figure out how to refer to the created Tables in a bookdown document with any package other than `knitr`.  If you can help, please do.
 
