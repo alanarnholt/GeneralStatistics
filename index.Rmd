@@ -9,6 +9,6 @@ This site will contain (in the future) some general statistical ideas relevant a
 
 * [Contingency Tables](./rmarkdown/ContingencyTables.html)
 
-* [Testing Link](./rmarkdown/ConfidenceIntervals.html)
+* [Tables](./rmarkdown/FormattingTables.html)
 
 * * *
