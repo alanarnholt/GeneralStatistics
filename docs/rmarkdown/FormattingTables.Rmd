@@ -100,7 +100,7 @@ htmlTable::htmlTable(mx,
       css.cell = "padding-left: 1em; padding-right: 1em;",
       ctable=c("single", "single"),
       header = c("j", "n", "ESA", "ENA", "ESA", "ENA"),
-      cgroup =c("", "", "n = 1000, k = 400", "n = 1000, k = 300"),
+      cgroup =c("", "", "(n = 1000, k = 400, &alpha; = 0.3)", "(n = 1000, k = 300, &beta; = 0.8)"),
       n.cgroup = c(1, 1, 2, 2),
       col.rgroup = c("none", "#F7F7F7"),
       caption = "Table for Indy")
