@@ -98,11 +98,11 @@ options(table_counter = 5)
 htmlTable::htmlTable(mx,
       align = "lrllll",
       css.cell = "padding-left: 1em; padding-right: 1em;",
-      ctable=c("solid", "double"),
+      ctable=c("double", "double"),
       header = c("j", "n", "ESA", "ENA", "ESA", "ENA"),
-      cgroup =c("", "", "n = 1000 k = 400", "n = 1000 k = 300"),
+      cgroup =c("", "", "n = 1000, k = 400", "n = 1000, k = 300"),
       n.cgroup = c(1, 1, 2, 2),
-      col.rgroup = c("none", "#F9FAF0"),
+      col.rgroup = c("none", "#F7F7F7"),
       caption = "Table for Indy")
 ```
 
