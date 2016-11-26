@@ -98,7 +98,7 @@ options(table_counter = 5)
 htmlTable::htmlTable(mx,
       align = "lrllll",
       css.cell = "padding-left: 1em; padding-right: 1em;",
-      ctable=c("double", "double"),
+      ctable=c("single", "single"),
       header = c("j", "n", "ESA", "ENA", "ESA", "ENA"),
       cgroup =c("", "", "n = 1000, k = 400", "n = 1000, k = 300"),
       n.cgroup = c(1, 1, 2, 2),
