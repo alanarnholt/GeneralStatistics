@@ -1,0 +1,65 @@
+---
+title: "Test It First!"
+author: |
+  | [\textcolor{blue}{Alan T. Arnholt}](https://alanarnholt.github.io)
+institute: |
+  | [\textcolor{blue}{Department of Mathematical Sciences}](http://mathsci.appstate.edu)
+  | [\textcolor{blue}{Appalachian State University}](http://appstate.edu)
+date: 'Last compiled: `r format(Sys.time(), "%b %d, %Y")`'
+output:
+  beamer_presentation:
+    theme: "Malmoe"
+    colortheme: "seahorse"
+    fonttheme: "professionalfonts"
+---
+
+```{r, label = "setup", include = FALSE}
+knitr::opts_chunk$set(fig.align = "center", fig.width = 4, fig.height = 3, comment = NA)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see [\textcolor{blue}{http://rmarkdown.rstudio.com}](http://rmarkdown.rstudio.com).
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+
+- Bullet 1
+\pause
+- Bullet 2
+\pause
+- Bullet 3
+\pause
+- Bullet 4
+\pause
+* Something else
+
+
+[\textcolor{blue}{My web page}](https://alanarnholt.github.io)
+
+## Slide with R Output
+
+```{r cars}
+summary(cars)
+```
+
+## Slide with Plot (dev = "tikz")
+
+```{r, label = "aplot", echo = FALSE, dev = "tikz"}
+library(ggplot2)
+ggplot(pressure, aes(x = temperature, y = pressure)) + 
+  geom_point(color = "blue") + 
+  theme_bw()
+```
+
+## Mathematics 
+
+\begin{equation}
+\bar{x} = \sum_{i=1}^{n}\frac{x_i}{n}
+\end{equation}
+
+\begin{equation}
+s^2 = \sum_{i=1}^{n}\frac{(x_i - \bar{x})^2}{n-1}
+\end{equation}
