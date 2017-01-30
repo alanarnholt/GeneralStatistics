@@ -63,3 +63,10 @@ ggplot(pressure, aes(x = temperature, y = pressure)) +
 \begin{equation}
 s^2 = \sum_{i=1}^{n}\frac{(x_i - \bar{x})^2}{n-1}
 \end{equation}
+
+## Experiment
+
+```{r}
+knitr::kable(ggplot2::diamonds[1:5, 1:9])
+```
+
