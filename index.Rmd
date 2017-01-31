@@ -11,4 +11,6 @@ This site will contain (in the future) some general statistical ideas relevant a
 
 * [Tables](./rmarkdown/FormattingTables.html)
 
+* [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
+
 * * *

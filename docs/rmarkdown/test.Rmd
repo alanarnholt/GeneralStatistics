@@ -1,0 +1,17 @@
+---
+title: "Test"
+author: "Alan T. Arnholt"
+date: "January 30, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+knitr::kable(head(iris))
+```
+
+`r knitr::include_graphics("../images/iris.png")`
+
