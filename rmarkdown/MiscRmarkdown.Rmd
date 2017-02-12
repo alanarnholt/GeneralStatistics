@@ -112,9 +112,7 @@ ggplot(data = DF, aes(x = x)) +
 Table \@ref(tab:FT) was created using the `R` code chunk and code below.  Note that to refer to Table \@ref(tab:FT), the name of the code chunk label is used.  In this case, the code chunk label is `FT` and to refer to Table \@ref(tab:FT) one uses the syntax `\@ref(tab:FT)`.
 
     ```{r, label = "FT", echo = FALSE}`r ''`
-    knitr::kable(head(iris), booktabs = TRUE,  
-    caption = 'The first six rows of `iris`'
-    )
+    knitr::kable(head(iris), booktabs = TRUE,  caption = 'The first six rows of `iris`')
     ```
     
 ```{r, label = "FT", echo = FALSE}
@@ -140,7 +138,7 @@ lapply(PackagesUsed, library, character.only = TRUE)
     lapply(PackagesUsed, library, character.only = TRUE)
     ```
 
-The above `R` code creates a file named `packages.bib` to cite the `ggplot2` package used to create Figure \@ref(fig:HISTO).  Figure \@ref(fig:HISTO) was created with `ggplot2` by @R-ggplot2. To cite a package in the `*.bib` file, use the syntax `@name_of bib_entry`.  This document specifies the output as `bookdown::html_document2`.  The function `bookdown::html_document2` is from `bookdown` written by @R-bookdown.
+The above `R` code creates a file named `packages.bib` to cite the `ggplot2` package used to create Figure \@ref(fig:HISTO).  Figure \@ref(fig:HISTO) was created with `ggplot2` by @R-ggplot2. To cite a package in the `*.bib` file, use the syntax `@name_of_bib_citation`.  This document specifies the output as `bookdown::html_document2`.  The function `bookdown::html_document2` is from `bookdown` written by @R-bookdown.
 
 # Use Inline `R`!
 
