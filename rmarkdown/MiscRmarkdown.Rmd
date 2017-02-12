@@ -1,0 +1,118 @@
+---
+title: "Miscelaneous Tips"
+date: 'Last compiled: `r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
+author: 'Alan T. Arnholt'
+output: 
+    bookdown::html_document2
+---
+
+```{r label = "setup", include = FALSE, message = FALSE}
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center")
+```
+
+# Using $\LaTeX$ 
+
+* Start and end inline mathematics with one `$`
+* Start and end displayed mathematics with two `$$`
+* For more complex environments, [click here.](https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics)
+* [Symbol table](http://mirror.jmu.edu/pub/CTAN/info/examples/Math_into_LaTeX-4/SymbolTables.pdf)
+* To bold mathematics, use `\mathbf{}`.  For example, to bold $\Sigma$ use `\mathbf{\Sigma}` $\rightarrow \mathbf{\Sigma}$
+* To create a superscript with text, use `^{\text{Your text}}`.  For example, to write the $i^{\text{th}}$ example use `$i^{\text{th}}$`. 
+
+
+# Labeling Equations with `bookdown`
+
+> Equation labels must start with the prefix `eq:` in `bookdown`. All labels in `bookdown` must only contain alphanumeric characters, `:`, `-`, and/or `/`. Equation references work best for LaTeX/PDF output, and they are not well supported in Word output or e-books. For HTML output, `bookdown` can only number the equations with labels. Please make sure equations without labels are not numbered by either using the `equation*` environment or adding `\nonumber` or `\notag` to your equations. The same rules apply to other math environments, such as `eqnarray`, `gather`, `align`, and so on (e.g., you can use the `align*` environment).
+
+To create Equation \@ref(eq:label1), use the code shown in the gray box below.
+
+
+\begin{equation} 
+ f(x)=(x+a)(x+b)
+ (\#eq:label1)
+\end{equation}
+
+
+```{r, label = "ex1", eval = FALSE}
+\begin{equation} 
+ f(x)=(x+a)(x+b)
+ (\#eq:label1)
+\end{equation}
+```
+
+To refer to Equation \@ref(eq:label1), use `\@ref(eq:label1)`.
+
+To create the aligned Equation \@ref(eq:aligned), use the code shown in the gray box below.
+
+\begin{align}
+ f(x) &= x^4 + 7x^3 + 2x^2 \nonumber \\
+      &\qquad {} + 10x + 12
+(\#eq:aligned)      
+\end{align}
+
+```{r, label = "ex2", eval = FALSE}
+\begin{align}
+ f(x) &= x^4 + 7x^3 + 2x^2 \nonumber \\
+      &\qquad {} + 10x + 12
+(\#eq:aligned)      
+\end{align}
+```
+
+To write the piecewise function in Equation \@ref(eq:piece), use the code shown in the gray box below.
+
+\begin{equation}
+ u(x) = 
+  \begin{cases} 
+   \exp{x} & \text{if } x \geq 0 \\
+   1       & \text{if } x < 0
+  \end{cases}
+  (\#eq:piece)
+\end{equation}
+
+```{r, label = "ex3", eval = FALSE}
+\begin{equation}
+ u(x) = 
+  \begin{cases} 
+   \exp{x} & \text{if } x \geq 0 \\
+   1       & \text{if } x < 0
+  \end{cases}
+  (\#eq:piece)
+\end{equation}
+```
+
+# Labeling Graphs with `bookdown` 
+
+Figure \@ref(fig:HISTO) was created using the `R` code chunk and code below.  Note that to refer to Figure \@ref(fig:HISTO), the name of the code chunk label is used.  In this case, the code chunk label is `HISTO` and to refer to Figure \@ref(fig:HISTO) one uses the syntax `\@ref(fig:HISTO)`.
+
+
+    ```{r, label = "HISTO", fig.cap = "Write your descriptive caption here", echo = FALSE}`r ''`
+    set.seed(13)
+    stuff <- rnorm(1000, 100, 15)
+    hist(stuff, col = "pink", breaks = "Scott")
+    ```
+
+
+
+```{r, label = "HISTO", fig.cap = "Write your descriptive caption here", echo = FALSE}
+set.seed(13)
+stuff <- rnorm(1000, 100, 15)
+hist(stuff, col = "pink", breaks = "Scott")
+```
+
+# Labeling Tables with `bookdown` 
+
+Table \@ref(tab:FT) was created using the `R` code chunk and code below.  Note that to refer to Table \@ref(tab:FT), the name of the code chunk label is used.  In this case, the code chunk label is `FT` and to refer to Table \@ref(tab:FT) one uses the syntax `\@ref(tab:FT)`.
+
+    ```{r, label = "FT", echo = FALSE}`r ''`
+    knitr::kable(head(iris), booktabs = TRUE,  
+    caption = 'The first six rows of `iris`'
+    )
+    ```
+    
+```{r, label = "FT", echo = FALSE}
+knitr::kable(head(iris), booktabs = TRUE,  caption = 'The first six rows of `iris`')
+```  
+
+
+
