@@ -9,7 +9,7 @@ output:
 
 ```{r label = "setup", include = FALSE, message = FALSE}
 library(ggplot2)
-knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center")
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning = FALSE, message = FALSE)
 ```
 
 # Using $\LaTeX$ 
@@ -24,25 +24,25 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center")
 
 # Labeling Equations with `bookdown`
 
-> Equation labels must start with the prefix `eq:` in `bookdown`. All labels in `bookdown` must only contain alphanumeric characters, `:`, `-`, and/or `/`. Equation references work best for LaTeX/PDF output, and they are not well supported in Word output or e-books. For HTML output, `bookdown` can only number the equations with labels. Please make sure equations without labels are not numbered by either using the `equation*` environment or adding `\nonumber` or `\notag` to your equations. The same rules apply to other math environments, such as `eqnarray`, `gather`, `align`, and so on (e.g., you can use the `align*` environment).
+Equation labels must start with the prefix `eq:` in `bookdown`. All labels in `bookdown` must only contain alphanumeric characters, `:`, `-`, and/or `/`. Equation references work best for LaTeX/PDF output, and they are not well supported in Word output or e-books. For HTML output, `bookdown` can only number the equations with labels. Please make sure equations without labels are not numbered by either using the `equation*` environment or adding `\nonumber` or `\notag` to your equations. The same rules apply to other math environments, such as `eqnarray`, `gather`, `align`, and so on (e.g., you can use the `align*` environment)[@R-bookdown].
 
-To create Equation \@ref(eq:label1), use the code shown in the gray box below.
+To create Equation \@ref(eq:labelA), use the code shown in the gray box below.
 
 
 \begin{equation} 
  f(x)=(x+a)(x+b)
- (\#eq:label1)
+ (\#eq:labelA)
 \end{equation}
 
 
 ```{r, label = "ex1", eval = FALSE}
 \begin{equation} 
  f(x)=(x+a)(x+b)
- (\#eq:label1)
+ (\#eq:labelA)
 \end{equation}
 ```
 
-To refer to Equation \@ref(eq:label1), use `\@ref(eq:label1)`.
+To refer to Equation \@ref(eq:labelA), use `\@ref(eq:labelA)`.
 
 To create the aligned Equation \@ref(eq:aligned), use the code shown in the gray box below.
 
@@ -65,8 +65,8 @@ To write the piece-wise function in Equation \@ref(eq:piece), use the code shown
 \begin{equation}
  u(x) = 
   \begin{cases} 
-   \exp{x} & \text{if } x \geq 0 \\
-   1       & \text{if } x < 0
+   \exp{(x)} & \text{if } x \geq 0 \\
+   1         & \text{if } x < 0
   \end{cases}
   (\#eq:piece)
 \end{equation}
@@ -75,8 +75,8 @@ To write the piece-wise function in Equation \@ref(eq:piece), use the code shown
 \begin{equation}
  u(x) = 
   \begin{cases} 
-   \exp{x} & \text{if } x \geq 0 \\
-   1       & \text{if } x < 0
+   \exp{(x)} & \text{if } x \geq 0 \\
+   1         & \text{if } x < 0
   \end{cases}
   (\#eq:piece)
 \end{equation}
@@ -156,5 +156,23 @@ To report the mean of the variable `x` in `NDF` using two decimal places, use th
 `r round(NDF$Mean, 2)`
 ```
 which returns the value `r round(NDF$Mean, 2)`.
+
+# Use the `%>%` (pipe) Operator
+
+```{r}
+library(MASS)
+quine %>%
+  group_by(Sex) %>%
+  filter(Days > 2, Days < 10) %>%
+  summarize(mean(Days), median(Days), sd(Days), IQR(Days), n())
+```
+
+```{r}
+quine %>%
+  filter(Days > 2, Days < 10) %>%
+  ggplot(mapping = aes(x = Sex, y = Days)) +
+  geom_boxplot() +
+  theme_bw()
+```
 
 ## References
