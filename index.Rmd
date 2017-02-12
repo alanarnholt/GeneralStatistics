@@ -13,4 +13,6 @@ This site will contain (in the future) some general statistical ideas relevant a
 
 * [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
 
+* [Miscelaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
+
 * * *
