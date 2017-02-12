@@ -2,6 +2,7 @@
 title: "Miscelaneous Tips"
 date: 'Last compiled: `r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
 author: 'Alan T. Arnholt'
+bibliography: packages.bib
 output: 
     bookdown::html_document2
 ---
@@ -59,7 +60,7 @@ To create the aligned Equation \@ref(eq:aligned), use the code shown in the gray
 \end{align}
 ```
 
-To write the piecewise function in Equation \@ref(eq:piece), use the code shown in the gray box below.
+To write the piece-wise function in Equation \@ref(eq:piece), use the code shown in the gray box below.
 
 \begin{equation}
  u(x) = 
@@ -87,17 +88,23 @@ Figure \@ref(fig:HISTO) was created using the `R` code chunk and code below.  No
 
 
     ```{r, label = "HISTO", fig.cap = "Write your descriptive caption here", echo = FALSE}`r ''`
-    set.seed(13)
-    stuff <- rnorm(1000, 100, 15)
-    hist(stuff, col = "pink", breaks = "Scott")
+    stuff <- rnorm(10000, 100, 15)
+    DF <- data.frame(x = stuff)
+    library(ggplot2)
+    ggplot(data = DF, aes(x = x)) + 
+      geom_histogram(fill = "pink", color = "red", binwidth = 5) + 
+      theme_bw()
     ```
 
 
 
 ```{r, label = "HISTO", fig.cap = "Write your descriptive caption here", echo = FALSE}
-set.seed(13)
-stuff <- rnorm(1000, 100, 15)
-hist(stuff, col = "pink", breaks = "Scott")
+stuff <- rnorm(10000, 100, 15)
+DF <- data.frame(x = stuff)
+library(ggplot2)
+ggplot(data = DF, aes(x = x)) + 
+      geom_histogram(fill = "pink", color = "red", binwidth = 5) + 
+      theme_bw()
 ```
 
 # Labeling Tables with `bookdown` 
@@ -115,4 +122,41 @@ knitr::kable(head(iris), booktabs = TRUE,  caption = 'The first six rows of `iri
 ```  
 
 
+# Automagically Creating`R` Package References
 
+```{r, echo = FALSE, results = "hide"}
+PackagesUsed <- c("ggplot2", "bookdown")
+# Write bib information
+knitr::write_bib(PackagesUsed, file = "./packages.bib")
+# Load packages
+lapply(PackagesUsed, library, character.only = TRUE)
+```
+
+    ```{r, echo = FALSE, results = "hide"}`r ''`
+    PackagesUsed <- c("ggplot2", "bookdown")
+    # Write bib information
+    knitr::write_bib(PackagesUsed, file = "./packages.bib")
+    # Load packages
+    lapply(PackagesUsed, library, character.only = TRUE)
+    ```
+
+The above `R` code creates a file named `packages.bib` to cite the `ggplot2` package used to create Figure \@ref(fig:HISTO).  Figure \@ref(fig:HISTO) was created with `ggplot2` by @R-ggplot2. To cite a package in the `*.bib` file, use the syntax `@name_of bib_entry`.  This document specifies the output as `bookdown::html_document2`.  The function `bookdown::html_document2` is from `bookdown` written by @R-bookdown.
+
+# Use Inline `R`!
+
+Although one can compute statistics and hard code the values in a report, it is much better to use inline `R` code to report all answers.  The mean, standard deviation, and IQR of the ranodmly generated values in `DF` are computed and stored in the tibble `NDF`.  Each time this document is compiled, different values will be stored in `DF` and hence the values in `NDF` will likely be different.  
+
+```{r, warning = FALSE, message = FALSE}
+library(dplyr)
+NDF <- DF %>%
+  summarize(Mean = mean(x), SD = sd(x), iqr = IQR(x))
+NDF  
+```
+
+To report the mean of the variable `x` in `NDF` using two decimal places, use the inline `R` code 
+```{r, eval = FALSE}
+`r round(NDF$Mean, 2)`
+```
+which returns the value `r round(NDF$Mean, 2)`.
+
+## References
