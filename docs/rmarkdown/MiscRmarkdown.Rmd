@@ -1,5 +1,5 @@
 ---
-title: "Miscelaneous Tips"
+title: "Miscellaneous Tips"
 date: 'Last compiled: `r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
 author: 'Alan T. Arnholt'
 bibliography: packages.bib

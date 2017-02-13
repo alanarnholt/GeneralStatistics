@@ -11,6 +11,6 @@ title: "Welcome"
 
 * [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
 
-* [Miscelaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
+* [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
 
 * * *
