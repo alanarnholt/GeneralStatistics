@@ -30,15 +30,15 @@ To create Equation \@ref(eq:labelA), use the code shown in the gray box below.
 
 
 \begin{equation} 
- f(x)=(x+a)(x+b)
- (\#eq:labelA)
+f(x)=(x+a)(x+b)
+(\#eq:labelA)
 \end{equation}
 
 
 ```{r, label = "ex1", eval = FALSE}
 \begin{equation} 
- f(x)=(x+a)(x+b)
- (\#eq:labelA)
+f(x)=(x+a)(x+b)
+(\#eq:labelA)
 \end{equation}
 ```
 
@@ -47,15 +47,15 @@ To refer to Equation \@ref(eq:labelA), use `\@ref(eq:labelA)`.
 To create the aligned Equation \@ref(eq:aligned), use the code shown in the gray box below.
 
 \begin{align}
- f(x) &= x^4 + 7x^3 + 2x^2 \nonumber \\
-      &\qquad {} + 10x + 12
+f(x) &= x^4 + 7x^3 + 2x^2 \nonumber \\
+     &\qquad {} + 10x + 12
 (\#eq:aligned)      
 \end{align}
 
 ```{r, label = "ex2", eval = FALSE}
 \begin{align}
- f(x) &= x^4 + 7x^3 + 2x^2 \nonumber \\
-      &\qquad {} + 10x + 12
+f(x) &= x^4 + 7x^3 + 2x^2 \nonumber \\
+     &\qquad {} + 10x + 12
 (\#eq:aligned)      
 \end{align}
 ```
@@ -63,25 +63,42 @@ To create the aligned Equation \@ref(eq:aligned), use the code shown in the gray
 To write the piece-wise function in Equation \@ref(eq:piece), use the code shown in the gray box below.
 
 \begin{equation}
- u(x) = 
-  \begin{cases} 
-   \exp{(x)} & \text{if } x \geq 0 \\
-   1         & \text{if } x < 0
-  \end{cases}
-  (\#eq:piece)
+u(x) = 
+\begin{cases} 
+\exp{(x)} & \text{if } x \geq 0 \\
+1         & \text{if } x < 0
+\end{cases}
+(\#eq:piece)
 \end{equation}
 
 ```{r, label = "ex3", eval = FALSE}
 \begin{equation}
- u(x) = 
-  \begin{cases} 
-   \exp{(x)} & \text{if } x \geq 0 \\
-   1         & \text{if } x < 0
-  \end{cases}
-  (\#eq:piece)
+u(x) = 
+\begin{cases} 
+\exp{(x)} & \text{if } x \geq 0 \\
+1         & \text{if } x < 0
+\end{cases}
+(\#eq:piece)
 \end{equation}
 ```
 
+The `\overset{}` and `\underset{}` commands typeset symbols above and below expressions. To create Equation \@ref(eq:overunder), use the code shown in the gray box below.
+
+\begin{equation}
+\lim_{x\to 0}{\frac{e^x-1}{2x}}
+\overset{\left[\frac{0}{0}\right]}{\underset{\mathrm{H}}{=}}
+\lim_{x\to 0}{\frac{e^x}{2}}={\frac{1}{2}}
+(\#eq:overunder)
+\end{equation}
+
+```{r, label = "ex4", eval = FALSE}
+\begin{equation}
+\lim_{x\to 0}{\frac{e^x-1}{2x}}
+\overset{\left[\frac{0}{0}\right]}{\underset{\mathrm{H}}{=}}
+\lim_{x\to 0}{\frac{e^x}{2}}={\frac{1}{2}}
+(\#eq:overunder)
+\end{equation}
+```
 # Labeling Graphs with `bookdown` 
 
 Figure \@ref(fig:HISTO) was created using the `R` code chunk and code below.  Note that to refer to Figure \@ref(fig:HISTO), the name of the code chunk label is used.  In this case, the code chunk label is `HISTO` and to refer to Figure \@ref(fig:HISTO) one uses the syntax `\@ref(fig:HISTO)`.
@@ -92,7 +109,7 @@ Figure \@ref(fig:HISTO) was created using the `R` code chunk and code below.  No
     DF <- data.frame(x = stuff)
     library(ggplot2)
     ggplot(data = DF, aes(x = x)) + 
-      geom_histogram(fill = "pink", color = "red", binwidth = 5) + 
+      geom_histogram(fill = "pink", color = "black", binwidth = 5) + 
       theme_bw()
     ```
 
@@ -103,7 +120,7 @@ stuff <- rnorm(10000, 100, 15)
 DF <- data.frame(x = stuff)
 library(ggplot2)
 ggplot(data = DF, aes(x = x)) + 
-      geom_histogram(fill = "pink", color = "red", binwidth = 5) + 
+      geom_histogram(fill = "pink", color = "black", binwidth = 5) + 
       theme_bw()
 ```
 
@@ -162,7 +179,7 @@ which returns the value `r round(NDF$Mean, 2)`.
 ```{r}
 library(MASS)
 quine %>%
-  group_by(Sex) %>%
+  group_by(Sex, Lrn) %>%
   filter(Days > 2, Days < 10) %>%
   summarize(mean(Days), median(Days), sd(Days), IQR(Days), n())
 ```
@@ -172,7 +189,8 @@ quine %>%
   filter(Days > 2, Days < 10) %>%
   ggplot(mapping = aes(x = Sex, y = Days)) +
   geom_boxplot() +
-  theme_bw()
+  theme_bw() + 
+  facet_grid(Lrn ~ .)
 ```
 
 ## References
