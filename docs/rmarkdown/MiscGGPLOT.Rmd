@@ -22,7 +22,7 @@ ggplot(data = BODYFAT, aes(x = age, y = fat, shape = sex, color = sex)) +
   scale_color_manual(values = c("purple", "darkgreen")) +
   labs(x = "Age", y = "Percent Body Fat") +
   theme_bw() + 
-  ggtitle(label = "Black and White Theme", subtitle = "Source: Mazess, R. B., Peppler, W. W., and Gibbons, M. (1984) Total Body \nComposition by Dual-Photon (153 Gd) Absorptiometry. American Journal \nof Clinical Nutrition, 40, 4: 834-839.")
+  ggtitle(label = "Black and White Theme", subtitle = "Source: Mazess, R. B., Peppler, W. W., and Gibbons, M. (1984) Total Body Composition by \nDual-Photon (153 Gd) Absorptiometry. American Journal of Clinical Nutrition, 40, 4: 834-839.")
 ```
 
 # No Grid Lines
@@ -42,7 +42,7 @@ ggplot(data = BODYFAT, aes(x = age, y = fat, shape = sex, color = sex)) +
     panel.border = element_rect(fill = NA, color = "grey20")
   ) +
   labs(x = "Age", y = "Percent Body Fat") +
-  ggtitle(label = "No Grid Lines", subtitle = "Source: Mazess, R. B., Peppler, W. W., and Gibbons, M. (1984) Total Body \nComposition by Dual-Photon (153 Gd) Absorptiometry. American Journal \nof Clinical Nutrition, 40, 4: 834-839.")
+  ggtitle(label = "No Grid Lines", subtitle = "Source: Mazess, R. B., Peppler, W. W., and Gibbons, M. (1984) Total Body Composition by \nDual-Photon (153 Gd) Absorptiometry. American Journal of Clinical Nutrition, 40, 4: 834-839.")
 ```
 
 # An Ugly Theme
@@ -61,7 +61,7 @@ ggplot(data = BODYFAT, aes(x = age, y = fat, shape = sex, color = sex)) +
     panel.background = element_rect(fill = "lightcyan")
   ) +
   labs(x = "Age", y = "Percent Body Fat") +
-  ggtitle(label = "Customized (Ugly) Theme", subtitle = "Source: Mazess, R. B., Peppler, W. W., and Gibbons, M. (1984) Total Body \nComposition by Dual-Photon (153 Gd) Absorptiometry. American Journal \nof Clinical Nutrition, 40, 4: 834-839.")
+  ggtitle(label = "Customized (Ugly) Theme", subtitle = "Source: Mazess, R. B., Peppler, W. W., and Gibbons, M. (1984) Total Body Composition by \nDual-Photon (153 Gd) Absorptiometry. American Journal of Clinical Nutrition, 40, 4: 834-839.")
 ```
 
 For more information on themes, read the ggplot2 theme [vignette](http://docs.ggplot2.org/dev/vignettes/themes.html).
