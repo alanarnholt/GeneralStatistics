@@ -45,3 +45,6 @@ ggplot(data = BODYFAT, aes(x = age, y = fat, shape = sex, color = sex)) +
   ) +
   labs(x = "Age", y = "Percent Body Fat") +
   ggtitle(label = "No Grid Lines", subtitle = "Source: Mazess, R. B., Peppler, W. W., and Gibbons, M. (1984) Total Body \nComposition by Dual-Photon (153 Gd) Absorptiometry. American Journal \nof Clinical Nutrition, 40, 4: 834-839.")
+
+
+#####
