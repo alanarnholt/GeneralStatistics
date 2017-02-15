@@ -13,4 +13,6 @@ title: "Welcome"
 
 * [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
 
+* [Miscellaneous `ggplot` Tips](./rmarkdown/MiscGGPLOT.html)
+
 * * *
