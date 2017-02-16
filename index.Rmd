@@ -2,13 +2,17 @@
 title: "Welcome"
 ---
 
-This site will contain (in the future) some general statistical ideas relevant across courses I teach.
-
 
 * [Shading Area Under Curve](./rmarkdown/NormalGGio.html)
 
 * [Contingency Tables](./rmarkdown/ContingencyTables.html)
 
-* [Testing Link](./rmarkdown/ConfidenceIntervals.html)
+* [Tables](./rmarkdown/FormattingTables.html)
+
+* [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
+
+* [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
+
+* [Miscellaneous `ggplot` Tips](./rmarkdown/MiscGGPLOT.html)
 
 * * *
