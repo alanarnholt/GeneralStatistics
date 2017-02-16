@@ -1,5 +1,5 @@
 ---
-title: "Creating and Publishing a Web Page on GitHub"
+title: "Creating and Publishing a Web Page on [GitHub](https://github.com/)"
 date: 'Last compiled: `r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
 author: 'Alan T. Arnholt'
 output: ioslides_presentation
@@ -55,7 +55,7 @@ git config --global user.email 'arnholtat@appstate.edu'
       
 
 
-## Create a GitHub Account
+## Create a [GitHub](https://github.com/) Account
 
 * Username advice
 
