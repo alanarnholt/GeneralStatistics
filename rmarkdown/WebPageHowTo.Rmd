@@ -1,0 +1,44 @@
+---
+title: "Creating and Publishing a Web Page on GitHub"
+date: 'Last compiled: `r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
+author: 'Alan T. Arnholt'
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Prerequisites
+
+This talk assumes you have the following installed on your machine:
+
+* `R` (https://cran.r-project.org/) 
+* `RStudio` (https://www.rstudio.com/)
+* `Git` (https://git-scm.com/)
+
+or that you have access to the ASU [RStudio server](https://mathr.math.appstate.edu/auth-sign-in) that has all of the above and more already installed.
+
+**Note:** If you are a MAC user, we recommend using the version of `Git` that is pre-installed with Xcode (https://developer.apple.com/xcode/).
+
+
+## MAC tips
+
+To see the version of `Git` installed on your machine, open a shell and type:
+
+```{engine = "bash"}
+git version
+```
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
