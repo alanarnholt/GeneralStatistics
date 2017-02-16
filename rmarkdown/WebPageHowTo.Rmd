@@ -7,7 +7,7 @@ output: ioslides_presentation
 
 ```{r setup, include=FALSE}
 library(knitr)
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, comment = NA)
 ```
 
 ## Prerequisites
@@ -20,26 +20,45 @@ This talk assumes you have the following installed on your machine:
 
 or that you have access to the ASU [RStudio server](https://mathr.math.appstate.edu/auth-sign-in) that has all of the above and more already installed.
 
-**Note:** If you are a MAC user, we recommend using the version of `Git` that is pre-installed with Xcode (https://developer.apple.com/xcode/).
+**Note:** If you are a MAC user, I recommend using the version of `Git` that is pre-installed with Xcode (https://developer.apple.com/xcode/).  See the Mac OS section of [Happy Git and GitHub for the userR](http://happygitwithr.com/install-git.html#mac-os) for details.
 
 
-## MAC tips
+## Tips/Checks
 
-To see the version of `Git` is installed on your machine, open a shell and type:
+To see the version of `Git` installed on your machine, open a shell and type: 
 
-```{r, engine = "bash"}
-git version
+```{r, label = "version", engine = "bash", echo = TRUE}
+git --version
 ```
 
-## Slide with R Output
+To find out where `Git` is installed on your machine, open a shell and type:
 
-```{r cars, echo = TRUE}
-summary(cars)
+```{r, label = "which", engine = "bash", echo = TRUE}
+which git
 ```
 
-## Slide with Plot
+## Make Sure `Git` Knows Who You Are
 
-```{r pressure}
-plot(pressure)
+Type the following at the shell prompt:
+
+```{r label = "who", engine = "bash", echo = TRUE}
+git config --global --list
 ```
 
+If you have not configured at a minimum your `user.name` and `user.email`, substitute your name and email for mine in the code below.
+
+```{r, label = "youme", engine = "bash", echo = TRUE, eval = FALSE}
+git config --global user.name 'Alan Arnholt'
+git config --global user.email 'arnholtat@appstate.edu'
+```
+
+      
+
+
+## Create a GitHub Account
+
+* Username advice
+
+* Sign up (https://github.com/)
+
+* Request a student discount (https://education.github.com/)
