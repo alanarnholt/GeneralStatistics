@@ -123,11 +123,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Formatting Tables</h1>
 <h4 class="author"><em>Alan Arnholt</em></h4>
-<<<<<<< HEAD
-<h4 class="date"><em>Last compiled: Nov 22, 2016</em></h4>
-=======
-<h4 class="date"><em>Last compiled: Nov 26, 2016</em></h4>
->>>>>>> a1665de5df8fe1b2c37fda0819006ddb0b523c78
+<h4 class="date"><em>Last compiled: Feb 16, 2017</em></h4>
 
 </div>
 
@@ -306,13 +302,8 @@ speed         3.932409  0.4155128  9.463990 1.489836e-12</code></pre>
 <p>Table <a href="#tab:motab">3</a>!</p>
 <pre class="r"><code>XT &lt;- xtable::xtable(coef(summary(mod)), caption = &quot;Write your descriptive caption between the quotes&quot;, auto = TRUE)
 print(XT, type = &quot;html&quot;)</code></pre>
-<<<<<<< HEAD
 <!-- html table generated in R 3.2.2 by xtable 1.8-2 package -->
-<!-- Tue Nov 22 14:45:35 2016 -->
-=======
-<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Sat Nov 26 13:08:56 2016 -->
->>>>>>> a1665de5df8fe1b2c37fda0819006ddb0b523c78
+<!-- Thu Feb 16 09:29:15 2017 -->
 <table border="1">
 <caption align="bottom">
 Write your descriptive caption between the quotes
@@ -370,80 +361,43 @@ speed
 </table>
 <pre class="r"><code>options(table_counter = 3)
 htmlTable::htmlTable(round(summary(mod)$coef, 4), css.cell = &quot;padding-left: 1em; padding-right: 1em;&quot;, caption =&quot;`dist` regressed on `speed`&quot;, align = &quot;rrrr&quot;)</code></pre>
-<table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;" id="table_4">
+<table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;'  id='table_4'>
 <thead>
+<tr><td colspan='5' style='text-align: left;'>
+Table 4:  `dist` regressed on `speed`</td></tr>
 <tr>
-<td colspan="5" style="text-align: left;">
-Table 4: <code>dist</code> regressed on <code>speed</code>
-</td>
-</tr>
-<tr>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey;">
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-Estimate
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-Std. Error
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-t value
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-Pr(&gt;|t|)
-</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'> </th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Estimate</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Std. Error</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>t value</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Pr(>|t|)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">
-(Intercept)
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
--17.5791
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-6.7584
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
--2.6011
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-0.0123
-</td>
+<td style='text-align: left;'>(Intercept)</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>-17.5791</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>6.7584</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>-2.6011</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>0.0123</td>
 </tr>
 <tr>
-<td style="border-bottom: 2px solid grey; text-align: left;">
-speed
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-3.9324
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-0.4155
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-9.464
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-0
-</td>
+<td style='border-bottom: 2px solid grey; text-align: left;'>speed</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>3.9324</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>0.4155</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>9.464</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>0</td>
 </tr>
 </tbody>
 </table>
 <pre class="r"><code>DT::datatable(iris)</code></pre>
-<<<<<<< HEAD
-<div id="htmlwidget-099b444a955ad14fbb02" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-099b444a955ad14fbb02">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Sepal.Length\u003c/th>\n      <th>Sepal.Width\u003c/th>\n      <th>Petal.Length\u003c/th>\n      <th>Petal.Width\u003c/th>\n      <th>Species\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
-=======
 <div class="figure" style="text-align: center"><span id="fig:DT"></span>
-<div id="htmlwidget-0b8ef249c759da897b44" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0b8ef249c759da897b44">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Sepal.Length\u003c/th>\n      <th>Sepal.Width\u003c/th>\n      <th>Petal.Length\u003c/th>\n      <th>Petal.Width\u003c/th>\n      <th>Species\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c7c7d9bcd64ae5395238" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c7c7d9bcd64ae5395238">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Sepal.Length\u003c/th>\n      <th>Sepal.Width\u003c/th>\n      <th>Petal.Length\u003c/th>\n      <th>Petal.Width\u003c/th>\n      <th>Species\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Something new here please
 </p>
 </div>
->>>>>>> a1665de5df8fe1b2c37fda0819006ddb0b523c78
 <pre class="r"><code>pander::pander(summary(mod)$coef, caption = &quot;You add it here&quot;)</code></pre>
 <table style="width:86%;">
 <caption>You add it here</caption>
@@ -641,64 +595,32 @@ setosa
 <p>Table <a href="#tab:foo">4</a></p>
 <pre class="r"><code># options(table_counter = 3)
 htmlTable::htmlTable(round(summary(mod)$coef, 4), css.cell = &quot;padding-left: 1em; padding-right: 1em;&quot;, caption =&quot;`dist` regressed on `speed`&quot;, align = &quot;rrrr&quot;)</code></pre>
-<table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;" id="table_5">
+<table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;'  id='table_5'>
 <thead>
+<tr><td colspan='5' style='text-align: left;'>
+Table 5:  `dist` regressed on `speed`</td></tr>
 <tr>
-<td colspan="5" style="text-align: left;">
-Table 5: <code>dist</code> regressed on <code>speed</code>
-</td>
-</tr>
-<tr>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey;">
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-Estimate
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-Std. Error
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-t value
-</th>
-<th style="border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-Pr(&gt;|t|)
-</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'> </th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Estimate</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Std. Error</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>t value</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Pr(>|t|)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">
-(Intercept)
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
--17.5791
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-6.7584
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
--2.6011
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-0.0123
-</td>
+<td style='text-align: left;'>(Intercept)</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>-17.5791</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>6.7584</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>-2.6011</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>0.0123</td>
 </tr>
 <tr>
-<td style="border-bottom: 2px solid grey; text-align: left;">
-speed
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-3.9324
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-0.4155
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-9.464
-</td>
-<td style="padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;">
-0
-</td>
+<td style='border-bottom: 2px solid grey; text-align: left;'>speed</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>3.9324</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>0.4155</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>9.464</td>
+<td style='padding-left: 1em; padding-right: 1em; border-bottom: 2px solid grey; text-align: right;'>0</td>
 </tr>
 </tbody>
 </table>
@@ -719,296 +641,116 @@ htmlTable::htmlTable(mx,
       n.cgroup = c(1, 1, 2, 2),
       col.rgroup = c(&quot;none&quot;, &quot;#F7F7F7&quot;),
       caption = &quot;Table for Indy&quot;)</code></pre>
-<table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;" id="table_6">
+<table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;'  id='table_6'>
 <thead>
+<tr><td colspan='9' style='text-align: left;'>
+Table 6:  Table for Indy</td></tr>
 <tr>
-<td colspan="9" style="text-align: left;">
-Table 6: Table for Indy
-</td>
+<th colspan='1' style='font-weight: 900; border-top: 2px solid grey; text-align: center;'></th><th style='border-top: 2px solid grey;; border-bottom: hidden;'>&nbsp;</th>
+<th colspan='1' style='font-weight: 900; border-top: 2px solid grey; text-align: center;'></th><th style='border-top: 2px solid grey;; border-bottom: hidden;'>&nbsp;</th>
+<th colspan='2' style='font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>(n = 1000, k = 400, &alpha; = 0.3)</th><th style='border-top: 2px solid grey;; border-bottom: hidden;'>&nbsp;</th>
+<th colspan='2' style='font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>(n = 1000, k = 300, &beta; = 0.8)</th>
 </tr>
 <tr>
-<th colspan="1" style="font-weight: 900; border-top: 2px solid grey; text-align: center;">
-</th>
-<th style="border-top: 2px solid grey;; border-bottom: hidden;">
- 
-</th>
-<th colspan="1" style="font-weight: 900; border-top: 2px solid grey; text-align: center;">
-</th>
-<th style="border-top: 2px solid grey;; border-bottom: hidden;">
- 
-</th>
-<th colspan="2" style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-(n = 1000, k = 400, α = 0.3)
-</th>
-<th style="border-top: 2px solid grey;; border-bottom: hidden;">
- 
-</th>
-<th colspan="2" style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;">
-(n = 1000, k = 300, β = 0.8)
-</th>
-</tr>
-<tr>
-<th style="border-bottom: 1px solid grey; text-align: center;">
-j
-</th>
-<th style="border-bottom: 1px solid grey;" colspan="1">
- 
-</th>
-<th style="border-bottom: 1px solid grey; text-align: center;">
-n
-</th>
-<th style="border-bottom: 1px solid grey;" colspan="1">
- 
-</th>
-<th style="border-bottom: 1px solid grey; text-align: center;">
-ESA
-</th>
-<th style="border-bottom: 1px solid grey; text-align: center;">
-ENA
-</th>
-<th style="border-bottom: 1px solid grey;" colspan="1">
- 
-</th>
-<th style="border-bottom: 1px solid grey; text-align: center;">
-ESA
-</th>
-<th style="border-bottom: 1px solid grey; text-align: center;">
-ENA ∈ ℜ
-</th>
+<th style='border-bottom: 1px solid grey; text-align: center;'>j</th>
+<th style='border-bottom: 1px solid grey;' colspan='1'>&nbsp;</th>
+<th style='border-bottom: 1px solid grey; text-align: center;'>n</th>
+<th style='border-bottom: 1px solid grey;' colspan='1'>&nbsp;</th>
+<th style='border-bottom: 1px solid grey; text-align: center;'>ESA</th>
+<th style='border-bottom: 1px solid grey; text-align: center;'>ENA</th>
+<th style='border-bottom: 1px solid grey;' colspan='1'>&nbsp;</th>
+<th style='border-bottom: 1px solid grey; text-align: center;'>ESA</th>
+<th style='border-bottom: 1px solid grey; text-align: center;'>ENA &isin; &real;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-1
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-50
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-1.9060679
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.4600658
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-1.8060471
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.0022575
-</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>1</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>50</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>3.0851341</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
 </tr>
-<tr style="background-color: #f7f7f7;">
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-2
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: right;">
-100
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.5698878
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-1.9939944
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-1.1469396
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.0402995
-</td>
+<tr style='background-color: #f7f7f7;'>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>2</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: right;'>100</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>0.2547741</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>1.4743526</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>0.6461059</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>1.3636034</td>
 </tr>
 <tr>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-3
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-150
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.6179545
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-1.7690109
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.290463
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.1440137
-</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>3</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>150</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
 </tr>
-<tr style="background-color: #f7f7f7;">
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-4
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: right;">
-200
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.1460285
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.0788445
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.0854472
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.6665173
-</td>
+<tr style='background-color: #f7f7f7;'>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>4</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: right;'>200</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>0.6804109</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>0.2241255</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>0.6802636</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>21.4875626</td>
 </tr>
 <tr>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-5
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-250
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-1.8644254
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.5345849
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-2.4359412
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.1336457
-</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>5</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>250</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>4.2917283</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
 </tr>
-<tr style="background-color: #f7f7f7;">
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-6
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: right;">
-300
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.0929753
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-1.4542033
-</td>
-<td style="background-color: #f7f7f7;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.103184
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;">
-0.5462326
-</td>
+<tr style='background-color: #f7f7f7;'>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>6</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: right;'>300</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>4.2917283</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>0.5814978</td>
+<td style='background-color: #f7f7f7;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>1.4743526</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; text-align: left;'>1.4743526</td>
 </tr>
 <tr>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-7
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: right;">
-350
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-1.3336831
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.6765333
-</td>
-<td style colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.5882578
-</td>
-<td style="padding-left: 1em; padding-right: 1em; text-align: left;">
-0.1648624
-</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>7</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: right;'>350</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
+<td style='padding-left: 1em; padding-right: 1em; text-align: left;'>22.1807098</td>
 </tr>
-<tr style="background-color: #f7f7f7;">
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;">
-8
-</td>
-<td style="background-color: #f7f7f7; border-bottom: 2px solid grey;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: right;">
-400
-</td>
-<td style="background-color: #f7f7f7; border-bottom: 2px solid grey;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;">
-1.3436883
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;">
-1.5355687
-</td>
-<td style="background-color: #f7f7f7; border-bottom: 2px solid grey;" colspan="1">
- 
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;">
-1.5896463
-</td>
-<td style="padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;">
-0.1618419
-</td>
+<tr style='background-color: #f7f7f7;'>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;'>8</td>
+<td style='background-color: #f7f7f7; border-bottom: 2px solid grey;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: right;'>400</td>
+<td style='background-color: #f7f7f7; border-bottom: 2px solid grey;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;'>0.6772694</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;'>6.2383597</td>
+<td style='background-color: #f7f7f7; border-bottom: 2px solid grey;' colspan='1'>&nbsp;</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;'>1.1222608</td>
+<td style='padding-left: 1em; padding-right: 1em; background-color: #f7f7f7; border-bottom: 2px solid grey; text-align: left;'>1.041811</td>
 </tr>
 </tbody>
 </table>
