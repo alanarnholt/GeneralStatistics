@@ -6,6 +6,7 @@ output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
+library(knitr)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -24,9 +25,9 @@ or that you have access to the ASU [RStudio server](https://mathr.math.appstate.
 
 ## MAC tips
 
-To see the version of `Git` installed on your machine, open a shell and type:
+To see the version of `Git` is installed on your machine, open a shell and type:
 
-```{engine = "bash"}
+```{r, engine = "bash"}
 git version
 ```
 
