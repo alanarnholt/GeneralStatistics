@@ -62,3 +62,33 @@ git config --global user.email 'arnholtat@appstate.edu'
 * Sign up (https://github.com/)
 
 * Request a student discount (https://education.github.com/)
+
+
+
+## Fork [BasicWebPageA](https://github.com/alanarnholt/BasicWebPageA)
+
+
+* Point your browser to https://github.com/alanarnholt/BasicWebPageA
+
+* Fork [BasicWebPageA](https://github.com/alanarnholt/BasicWebPageA) 
+
+* Clone your fork of [BasicWebPageA](https://github.com/alanarnholt/BasicWebPageA) to your local machine
+
+* [R Markdown Websites Documentation](http://rmarkdown.rstudio.com/rmarkdown_websites.html)
+
+## Understanding the Set Up
+
+The website created from the code in the repo [BasicWebPageA](https://github.com/alanarnholt/BasicWebPageA) and viewable at https://alanarnholt.github.io/BasicWebPageA/ consists of `*.yml` and `*.Rmd` files.  The minimum requirement for any website is that it have an `index.Rmd` file as well as a `_site.yml` file.  Consider the first nine lines of the `_site.yml` file.
+
+```{r, eval = FALSE, echo = TRUE}
+name: "Basic Web Page"
+output_dir: "docs"
+navbar:
+  title: "Your Name"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "bookdown"
+      href: bookdown.html
+```
+
