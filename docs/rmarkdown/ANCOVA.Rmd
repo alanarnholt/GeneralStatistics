@@ -1,0 +1,124 @@
+---
+title: "ANCOVA"
+author: "Alan T. Arnholt"
+date: 'Last Updated on: `r format(Sys.time(), "%b %d, %Y at %X")`'
+output: 
+  bookdown::html_document2: 
+    highlight: textmate
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, message = FALSE, fig.align = "center")
+```
+
+
+Data in the following example are selected from a larger experiment on the use of drugs in the treatment of leprosy (Snedecor and Cochran 1967, p. 422).
+
+```{r}
+DF <- data.frame(Drug = rep(c("A", "D", "F"), each = 10), PreTreatment = c(11,8,5,14,19,6,10,6,11,3,6,6,7,8,18,8,19,8,5,15,16,13,11,9,21,16,12,12,7,12), PostTreatment = c(6,0,2,8,11,4,13,1,8,0,0,2,3,1,18,4,14,9,1,9,13,10,18,5,23,12,5,16,1,20))
+DT::datatable(DF)
+```
+
+View the data
+
+```{r}
+library(ggplot2)
+ggplot(data = DF, aes(x = Drug, y = PostTreatment)) + 
+  geom_boxplot() + 
+  theme_bw()
+
+ggplot(data = DF, aes(x = PreTreatment, y = PostTreatment, color = Drug)) + 
+  geom_point() + 
+  theme_bw() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+Means
+
+```{r}
+library(dplyr)
+DF %>%
+  group_by(Drug) %>%
+  summarize(MEAN = mean(PostTreatment))
+mod2 <- lm(PostTreatment ~ Drug, data = DF)
+anova(mod2)
+```
+
+Model
+
+```{r}
+mod <- lm(PostTreatment ~ PreTreatment, data = DF)
+summary(mod)
+fullmodel <- lm(PostTreatment ~ PreTreatment*Drug, data = DF)
+summary(fullmodel)
+reducedmodel <- lm(PostTreatment ~ PreTreatment + Drug, data = DF)
+summary(reducedmodel)
+anova(reducedmodel)
+anova(reducedmodel, fullmodel)
+anova(mod, reducedmodel)
+```
+
+Least Squares Means
+
+```{r}
+library(lsmeans)
+lsmeans(reducedmodel, "Drug")
+```
+
+## New Example {-}
+
+Experiments were carried out on six commercial goat farms to determine whether the standard worm drenching program was adequate. Forty goats were used in each experiment. Twenty of these, chosen completely at random, were drenched according to the standard program, while the remaining twenty were drenched more frequently. The goats were individually tagged, and weighed at the start and end of the year-long study. For the first farm in the study the resulting liveweight gains are given along with the initial liveweights. In each experiment the main interest was in the comparison of the liveweight gains between the two treatments. This comparison could be made using an ANOVA. However, a commonly observed biological phenomenon allows us to increase the precision of the analysis. This is the phenomenon of "regression to the norm", which in our instance means that the lighter animals gain more weight than the heavier animals. Since this can be assumed to occur within both treatment groups, it is appropriate to use ANCOVA to fit two parallel lines to the data, as shown in Figure \@ref(fig:correct). The corresponding ANCOVA comparison of adjusted mean liveweight gains will in general be more sensitive than the ANOVA comparison of unadjusted mean liveweight gains. 
+
+```{r}
+site <- "http://www.statlab.uni-heidelberg.de/data/ancova/goats.data"
+DF2 <- read.table(site, skip = 1, col.names = c("Treatment", "WeightGain", "InitialWeight"))
+DF2 %>%
+  group_by(Treatment) %>%
+  summarize(AVG = mean(WeightGain), SD = sd(WeightGain))
+```
+
+```{r}
+ggplot(data = DF2, aes(x = Treatment, y = WeightGain)) + 
+  geom_boxplot() + 
+  theme_bw()
+mod <- lm(WeightGain ~ Treatment, data = DF2)
+summary(mod)
+anova(mod)
+```
+
+New Graph
+
+```{r}
+ggplot(data = DF2, aes(x = InitialWeight, y = WeightGain, color = Treatment)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  theme_bw()
+```
+
+```{r}
+mod2 <- lm(WeightGain ~ Treatment + InitialWeight, data = DF2)
+mod3 <- lm(WeightGain ~ Treatment * InitialWeight, data = DF2)
+anova(mod2, mod3)
+summary(mod2)
+```
+
+## Draw the lines properly now! {-}
+
+```{r, label = "correct", fig.cap = "Correct One"}
+ggplot(data = DF2, aes(x = InitialWeight, y = WeightGain, color = Treatment)) +
+  geom_point() + 
+  theme_bw() + 
+  geom_abline(intercept = coef(mod2)[1] + coef(mod2)[2], slope = coef(mod2)[3], color = "cyan") + 
+  geom_abline(intercept = coef(mod2)[1], slope = coef(mod2)[3], color = "red") + 
+  scale_color_manual(values = c("red", "cyan"))
+```
+
+## LS Means {-}
+
+```{r}
+DF2 %>%
+  group_by(Treatment) %>%
+  summarize(AVG = mean(WeightGain), SD = sd(WeightGain))
+lsmeans(mod2, "Treatment")
+```
