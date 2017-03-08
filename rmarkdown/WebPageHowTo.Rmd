@@ -64,6 +64,19 @@ git config --global user.email 'arnholtat@appstate.edu'
 * Request a student discount (https://education.github.com/)
 
 
+## Basic Web Page
+
+* Consider building a web page from [these files](http://rmarkdown.rstudio.com/demos/12-website.zip)
+
+* Upload the `12-website.zip` file to RStudio (note where the `12-website` directory is created)
+
+* Click on `12-website` directory `>` click on the `website.Rproj` file, which creates an R project named `12-website`.
+
+  + Each web site you create requires a file neame `_site.yml`, which provides the global YAML header for the site, and a `*.Rmd` file named `index.Rmd`, which provides the content for the home page of your website.
+  
+## Basic Web Page (Continued)  
+
+
 
 ## Fork [BasicWebPageA](https://github.com/alanarnholt/BasicWebPageA)
 
