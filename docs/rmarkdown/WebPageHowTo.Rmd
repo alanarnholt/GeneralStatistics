@@ -18,7 +18,7 @@ This talk assumes you have the following installed on your machine:
 * `RStudio` (https://www.rstudio.com/)
 * `Git` (https://git-scm.com/)
 
-or that you have access to the ASU [RStudio server](https://mathr.math.appstate.edu/auth-sign-in) that has all of the above and more already installed.
+or that you have access to the ASU [RStudio server](https://mathr.math.appstate.edu/auth-sign-in) that has all of the above and more already installed. See [Happy Git and GitHub for the userR](http://happygitwithr.com/install-git.html) for details on setting up the above on your own machine. 
 
 **Note:** If you are a MAC user, I recommend using the version of `Git` that is pre-installed with Xcode (https://developer.apple.com/xcode/).  See the Mac OS section of [Happy Git and GitHub for the userR](http://happygitwithr.com/install-git.html#mac-os) for details.
 
@@ -62,6 +62,31 @@ git config --global user.email 'arnholtat@appstate.edu'
 * Sign up (https://github.com/)
 
 * Request a student discount (https://education.github.com/)
+
+
+## Basic Web Page
+
+* Consider building a web page from [these files](http://rmarkdown.rstudio.com/demos/12-website.zip)
+
+* Upload the `12-website.zip` file to RStudio (note where the `12-website` directory is created)
+
+* Click on `12-website` directory `>` click on the `website.Rproj` file, which creates an R project named `12-website`.
+
+  + Each web site you create requires a file neame `_site.yml`, which provides the global YAML header for the site, and a `*.Rmd` file named `index.Rmd`, which provides the content for the home page of your website.
+  
+## Basic Web Page (Continued)  
+
+```{r, echo = FALSE}
+knitr::include_graphics("./images/rstudio12web.png", dpi = 136)
+```
+
+## Basic Web Page (Continued)  
+
+* Click on the Build Website button
+
+```{r, echo = FALSE}
+knitr::include_graphics("./images/mywebsiteresult.png", dpi = 150)
+```
 
 
 
@@ -111,5 +136,5 @@ knitr::include_graphics("./images/Docs.png")
 ## Building the Web Pages
 
 ```{r, echo = FALSE}
-knitr::include_graphics("./images/RStudioWeb.png")
+knitr::include_graphics("./images/RStudioWeb.png", dpi = 150)
 ```

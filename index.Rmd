@@ -15,4 +15,6 @@ title: "Welcome"
 
 * [Miscellaneous `ggplot` Tips](./rmarkdown/MiscGGPLOT.html)
 
+* [Creating and Publishing a Web Site on GitHub](./rmarkdown/WebPageHowTo.html)
+
 * * *

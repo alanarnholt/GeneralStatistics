@@ -18,7 +18,7 @@ This talk assumes you have the following installed on your machine:
 * `RStudio` (https://www.rstudio.com/)
 * `Git` (https://git-scm.com/)
 
-or that you have access to the ASU [RStudio server](https://mathr.math.appstate.edu/auth-sign-in) that has all of the above and more already installed.
+or that you have access to the ASU [RStudio server](https://mathr.math.appstate.edu/auth-sign-in) that has all of the above and more already installed. See [Happy Git and GitHub for the userR](http://happygitwithr.com/install-git.html) for details on setting up the above on your own machine. 
 
 **Note:** If you are a MAC user, I recommend using the version of `Git` that is pre-installed with Xcode (https://developer.apple.com/xcode/).  See the Mac OS section of [Happy Git and GitHub for the userR](http://happygitwithr.com/install-git.html#mac-os) for details.
 
@@ -76,6 +76,18 @@ git config --global user.email 'arnholtat@appstate.edu'
   
 ## Basic Web Page (Continued)  
 
+```{r, echo = FALSE}
+knitr::include_graphics("./images/rstudio12web.png", dpi = 136)
+```
+
+## Basic Web Page (Continued)  
+
+* Click on the Build Website button
+
+```{r, echo = FALSE}
+knitr::include_graphics("./images/mywebsiteresult.png", dpi = 150)
+```
+
 
 
 ## Fork [BasicWebPageA](https://github.com/alanarnholt/BasicWebPageA)
@@ -124,5 +136,5 @@ knitr::include_graphics("./images/Docs.png")
 ## Building the Web Pages
 
 ```{r, echo = FALSE}
-knitr::include_graphics("./images/RStudioWeb.png")
+knitr::include_graphics("./images/RStudioWeb.png", dpi = 150)
 ```
