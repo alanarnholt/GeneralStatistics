@@ -1,0 +1,33 @@
+---
+title: "AIC and `stepAIC`"
+author: "Alan T. Arnholt"
+date: 'Last Updated on: `r format(Sys.time(), "%b %d, %Y at %X")`'
+output: 
+  bookdown::html_document2: 
+    highlight: textmate
+    theme: yeti
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, message = FALSE, fig.align = "center")
+```
+
+
+Consider the data set `Boston` from the `R` package `MASS`.
+
+```{r}
+library(MASS)
+dim(Boston)
+
+
+null <- lm(medv ~ 1, data = Boston)
+full <- lm(medv ~ ., data = Boston)
+
+FWDmod <- stepAIC(null, scope = list(lower = null, upper = full), direction = "forward")
+summary(FWDmod)
+BKmod <- stepAIC(full, scope = list(lower = null, upper = full), direction = "backward")
+summary(BKmod)
+BTHmod <- stepAIC(full, scope = list(lower = null, upper = full), direction = "both")
+summary(BTHmod)
+```

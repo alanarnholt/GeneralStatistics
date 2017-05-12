@@ -1,0 +1,42 @@
+---
+title: "AIC and `stepAIC`"
+author: "Alan T. Arnholt"
+date: 'Last Updated on: `r format(Sys.time(), "%b %d, %Y at %X")`'
+output: 
+  bookdown::html_document2: 
+    highlight: textmate
+    theme: yeti
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, message = FALSE, fig.align = "center")
+```
+
+
+Consider the data set `ames` from the `R` package `statsr`.
+
+```{r}
+library(statsr)
+dim(ames)
+# Clean up
+library(dplyr)
+Clean <- ames %>%
+  select(Order, PID, area, price, MS.SubClass, MS.Zoning, Lot.Frontage, Lot.Area, Street, Lot.Shape, Land.Contour, Utilities, Lot.Config, Land.Slope, Neighborhood, Condition.1, Condition.2, Bldg.Type, House.Style, Overall.Qual, Overall.Cond, Year.Built, Year.Remod.Add, Roof.Style, Roof.Matl, Exterior.1st, Exterior.2nd, Mas.Vnr.Type, Exter.Qual, Foundation, BsmtFin.SF.1, BsmtFin.SF.2, Bsmt.Unf.SF, Total.Bsmt.SF, Heating, Heating.QC, Central.Air, Electrical, X1st.Flr.SF, X2nd.Flr.SF, Low.Qual.Fin.SF, Bsmt.Full.Bath, Bsmt.Half.Bath, Full.Bath, Half.Bath, Bedroom.AbvGr, Kitchen.AbvGr, Kitchen.Qual, TotRms.AbvGrd, Functional, Fireplaces, Garage.Type, Garage.Yr.Blt, Garage.Finish, Garage.Cars, Garage.Area, Garage.Qual, Garage.Cond, Paved.Drive, Wood.Deck.SF, Wood.Deck.SF, Open.Porch.SF, Enclosed.Porch, X3Ssn.Porch, Screen.Porch, Pool.Area, Misc.Val, Mo.Sold, Yr.Sold, Sale.Type, Sale.Condition)
+Clean <- na.omit(Clean)
+summary(Clean)
+
+null <- lm(price ~ 1, data = Clean)
+full <- lm(price ~ ., data = Clean)
+
+library(MASS)
+FWDmod <- stepAIC(null, scope = list(lower = null, upper = full), direction = "forward")
+summary(FWDmod)
+```
+
+```{r}
+BKmod <- stepAIC(full, scope = list(lower = null, upper = full), direction = "backward")
+summary(BKmod)
+```
+
+
