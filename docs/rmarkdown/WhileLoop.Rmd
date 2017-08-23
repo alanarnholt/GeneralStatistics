@@ -202,9 +202,15 @@ for(var in seq){
 
 
 <div class="columns-2">
+<div class="green">
 * Are you awake?
+</div>
+<div class="red">
 * Harder to read and write
+</div>
+<div class="blue">
 * More versatile
+</div>
 ```{r, eval = FALSE}
 cities <- c("Boone", 
             "Charlotte", 
@@ -214,10 +220,13 @@ for(i in 1:length(cities)){
   print(cities[i])
 }
 ```
-
+<div class="blue">
 * Concise
 * Easy to read
+</div>
+<div class="red">
 * No access to looping index
+</div>
 ```{r, eval = FALSE}
 cities <- c("Boone", 
             "Charlotte", 
