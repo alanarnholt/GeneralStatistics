@@ -1,0 +1,230 @@
+---
+title: "while loop"
+author: "Based on DataCamp"
+date: '`r format(Sys.time(), "%b %d, %Y")`'
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, prompt = TRUE)
+```
+
+## while loop (1) {.smaller}
+
+<div class="columns-2">
+```{r}
+ctr <- 1
+while(ctr <= 5){
+ print(paste("ctr is set to", ctr))
+ ctr <- ctr + 1  # Increment ctr
+}
+```
+
+
+```{r, eval = FALSE}
+# TEMPLATE for while loop
+while(condition){
+  expression
+}
+```
+</div>
+
+## infinite while loop
+
+```{r, eval = FALSE}
+ctr <- 1
+while(ctr <= 5){
+ print(paste("ctr is set to", ctr))
+ ctr <- ctr  # ctr not incremented
+}
+```
+
+```{r, echo = FALSE}
+ctr <- 1
+while(ctr <= 5){
+ if(ctr %% 5 == 0){
+   break
+ }
+ print(paste("ctr is set to", 1))
+ ctr <- ctr +1
+}
+```
+...
+
+## break statement
+
+```{r}
+ctr <- 1
+while(ctr <= 25){
+ if(ctr %% 5 == 0){
+   break
+ }
+ print(paste("ctr is set to", ctr))
+ ctr <- ctr +1
+}
+```
+
+Note: loop stops when `ctr` is 5!
+
+
+## for loop (1) {.smaller}
+
+<div class="columns-2">
+```{r}
+cities <- c("Boone", "Charlotte", 
+            "Durham", "Raleigh")
+for(city in cities){
+  print(city)
+}
+```
+
+
+```{r, eval = FALSE}
+# for loop TEMPLATE
+for(var in seq){
+  expression
+}
+```
+</div>
+
+## for loop over list {.smaller}
+
+<div class="columns-2">
+```{r}
+cities <- list("Boone", "Charlotte", 
+            "Durham", "Raleigh")
+for(city in cities){
+  print(city)
+}
+```
+
+
+```{r, eval = FALSE}
+# for loop TEMPLATE
+for(var in seq){
+  expression
+}
+```
+</div>
+
+## break statement {.smaller}
+
+<div class="columns-2">
+```{r}
+cities <- list("Boone", "Charlotte", 
+            "Durham", "Raleigh")
+for(city in cities){
+  if(nchar(city) == 6){
+    break
+  }
+  print(city)
+}
+```
+
+
+```{r, eval = FALSE}
+# for loop TEMPLATE
+for(var in seq){
+  expression
+}
+```
+</div>
+
+## next statement {.smaller}
+
+<div class="columns-2">
+```{r}
+cities <- list("Boone", "Charlotte", 
+            "Durham", "Raleigh")
+for(city in cities){
+  if(nchar(city) == 6){
+    next  # Durham not printed
+  }
+  print(city)
+}
+```
+
+
+```{r, eval = FALSE}
+# for loop TEMPLATE
+for(var in seq){
+  expression
+}
+```
+</div>
+
+## for loop (v2) {.smaller}
+
+<div class="columns-2">
+```{r}
+cities <- c("Boone", "Charlotte", 
+            "Durham", "Raleigh")
+for(i in 1:length(cities)){
+  print(cities[i])
+}
+```
+
+
+```{r, eval = FALSE}
+# for loop TEMPLATE
+for(var in seq){
+  expression
+}
+```
+</div>
+
+
+
+## for loop (v2) more {.smaller}
+
+<div class="columns-2">
+```{r}
+cities <- c("Boone", "Charlotte", 
+            "Durham", "Raleigh")
+for(i in 1:length(cities)){
+  print(paste(cities[i], 
+        "is position", i , 
+        "in cities."))
+}
+```
+
+
+```{r, eval = FALSE}
+# for loop TEMPLATE
+for(var in seq){
+  expression
+}
+```
+</div>
+
+## for loop: comparison
+
+
+
+<div class="columns-2">
+* Are you awake?
+* Harder to read and write
+* More versatile
+```{r, eval = FALSE}
+cities <- c("Boone", 
+            "Charlotte", 
+            "Durham", 
+            "Raleigh")
+for(i in 1:length(cities)){
+  print(cities[i])
+}
+```
+
+* Concise
+* Easy to read
+* No access to looping index
+```{r, eval = FALSE}
+cities <- c("Boone", 
+            "Charlotte", 
+            "Durham", 
+            "Raleigh")
+for(city in cities){
+  print(city)
+}
+```
+</div>

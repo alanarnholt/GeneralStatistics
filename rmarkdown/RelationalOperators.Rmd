@@ -1,0 +1,319 @@
+---
+title: "Relational Operators"
+author: "Based on DataCamp"
+date: '`r format(Sys.time(), "%b %d, %Y")`'
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, prompt = TRUE)
+```
+
+## Relational Operators (1)
+
+```{r}
+TRUE == TRUE
+TRUE == FALSE
+TRUE != TRUE
+TRUE != FALSE
+```
+
+## Relational Operators (2)
+
+```{r}
+"hello" == "hola"
+5 == 2
+"hello" != "hola"
+5 != 2
+```
+
+## Relational Operators (3)
+
+```{r}
+2 < 5
+2 > 5
+"adios" > "goodbye"  # alphabetical order!
+FALSE < TRUE         # FALSE coerces to 0 and TRUE coerces to 1
+```
+
+## Relational Operators (4)
+
+```{r}
+5 >= 2
+5 >= 5
+5 <= 5
+```
+
+## Relational Operators & Vectors 
+
+```{r}
+boone_temp <- c(81, 72, 73, 75, 69)
+boone_temp
+boone_temp > 72
+boone_temp >= 72
+```
+
+## Logical Operators
+
+* AND operator `&`
+* OR operator `|`
+* NOT operator `!`
+
+## AND operator (`&`)
+
+```{r}
+TRUE & TRUE       # Only TRUE if both are TRUE
+FALSE & TRUE      # FALSE if both not TRUE
+TRUE & FALSE
+FALSE & FALSE
+```
+
+## AND operator (`&`)
+
+```{r}
+x <- 15
+x > 5 & x < 20    # BOTH conditions are TRUE
+x > 5 & x < 14    # ONLY one condition is TRUE 
+```
+
+## OR operator (1)
+
+```{r}
+TRUE | TRUE   # TRUE if at least one is TRUE
+TRUE | FALSE  # ONLY FALSE if both are FALSE
+FALSE | TRUE
+FALSE | FALSE
+```
+
+## OR operator (2)
+
+```{r}
+y <- 11
+y < 15 | y > 15  # At least one TRUE -> TRUE
+y < 10 | y > 12  # FALSE if both FALSE
+```
+
+## NOT operator (!)
+
+```{r}
+!TRUE
+!FALSE
+x
+!(x <= 3)
+```
+
+## NOT operator (!)
+
+```{r}
+is.numeric(10)
+!is.numeric(10)
+is.numeric("hola")
+!is.numeric("hola")
+```
+
+## Logical Operators & Vectors
+
+```{r}
+c(TRUE, TRUE, FALSE) & c(TRUE, FALSE, FALSE)
+c(TRUE, TRUE, FALSE) | c(TRUE, FALSE, FALSE)
+!c(TRUE, TRUE, FALSE)
+```
+
+## TEASER - Explain what is happening
+
+```{r}
+c(TRUE, TRUE, FALSE, TRUE, FALSE) & c(TRUE, FALSE, FALSE)
+```
+
+## Vector and (Scalar) Operators
+
+```{r}
+c(TRUE, TRUE, FALSE) & c(FALSE, FALSE, FALSE)
+c(TRUE, TRUE, FALSE) && c(FALSE, FALSE, FALSE)
+c(TRUE, TRUE, FALSE) | c(FALSE, FALSE, FALSE)
+c(TRUE, TRUE, FALSE) || c(FALSE, FALSE, FALSE)
+```
+
+## `if` statement (1)
+
+```{r, eval = FALSE}
+if(condition){
+  expression
+}
+```
+
+```{r}
+x <- 5
+if(x >= 0){
+  print("x is a positive number")
+}
+```
+
+## `if` statement (2)
+
+```{r, eval = FALSE}
+if(condition){
+  expression
+}
+```
+
+```{r}
+x <- 5
+if(x < 0){                        # condition is FALSE
+  print("x is a negative number") # Print not executed 
+}                                 # No output!
+```
+
+## `else` statement (1)
+
+```{r, eval = FALSE}
+if(condition){
+  expression1
+} else {
+  expression2
+}
+```
+
+## `else` statement (2)
+
+```{r, eval = FALSE}
+if(condition){
+  expression1
+} else {
+  expression2
+}
+```
+
+```{r}
+x <- -5
+if(x < 0){   #Condition is TRUE
+  print("x is a negative number")
+} else {
+  print("x is either a positive number or zero")  
+}
+```
+
+## `else` statement (3)
+
+```{r, eval = FALSE}
+if(condition){
+  expression1
+} else {
+  expression2
+}
+```
+
+```{r}
+x <- 5
+if(x < 0){   #Condition is TRUE
+  print("x is a negative number")
+} else {
+  print("x is either a positive number or zero")  
+}
+```
+
+## `else if` statement {.smaller}
+
+<div class="columns-2">
+```{r}
+x <- -3
+if(x < 0) {
+  print("x is a negative number")
+} else if(x == 0) {
+  print("x is zero")
+} else {
+  print("x is a positive number")
+}
+```
+
+```{r, eval = FALSE}
+# else if TEMPLATE
+if(condition1) {
+  expression1
+} else if(condition2) {
+  expression2
+} else {
+  expression3
+}
+```
+</div>
+
+## `else if` statement (2) {.smaller}
+
+<div class="columns-2">
+```{r}
+x <- 0
+if(x < 0) {
+  print("x is a negative number")
+} else if(x == 0) {
+  print("x is zero")
+} else {
+  print("x is a positive number")
+}
+```
+
+```{r, eval = FALSE}
+# else if TEMPLATE
+if(condition1) {
+  expression1
+} else if(condition2) {
+  expression2
+} else {
+  expression3
+}
+```
+</div>
+
+## `else` statement {.smaller}
+
+<div class="columns-2">
+```{r}
+x <- 5
+if(x < 0) {         #Cond is FALSE
+  print("x is a negative number")
+} else if(x == 0) { #Cond is FALSE
+  print("x is zero")
+} else {
+  print("x is a positive number")
+}
+```
+
+```{r, eval = FALSE}
+# TEMPLATE
+if(condition1) {
+  expression1
+} else if(condition2) {
+  expression2
+} else {
+  expression3
+}
+```
+</div>
+
+
+
+## `if`, `else if`, `else` {.smaller}
+
+<div class="columns-2">
+```{r}
+x <- 9
+if(x %% 2 == 0) {        
+  print("divisible by 2")
+} else if(x %% 3 == 0) { 
+  print("divisible by 3")
+} else {
+  print("not divisible by 2 nor by 3...")
+}
+```
+
+```{r, eval = FALSE}
+# TEMPLATE
+if(condition1) {
+  expression1
+} else if(condition2) {
+  expression2
+} else {
+  expression3
+}
+```
+</div>
