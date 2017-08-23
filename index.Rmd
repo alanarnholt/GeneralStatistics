@@ -1,25 +1,28 @@
 ---
-title: "Welcome"
+title: "Helpful Stuff"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
 ---
-
+### Basic R
 * [Introduction to R](./rmarkdown/IntroToR.html)
-
 * [Relational Operators](./rmarkdown/RelationalOperators.html)
-
 * [While Loop](./rmarkdown/WhileLoop.html)
 
+### Graphics
 * [Shading Area Under Curve](./rmarkdown/NormalGGio.html)
-
-* [Contingency Tables](./rmarkdown/ContingencyTables.html)
-
-* [Tables](./rmarkdown/FormattingTables.html)
-
-* [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
-
-* [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
-
 * [Miscellaneous `ggplot` Tips](./rmarkdown/MiscGGPLOT.html)
 
+### Tables
+* [Contingency Tables](./rmarkdown/ContingencyTables.html)
+* [Tables](./rmarkdown/FormattingTables.html)
+
+
+### Misc
+* [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
+* [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
 * [Creating and Publishing a Web Site on GitHub](./rmarkdown/WebPageHowTo.html)
 
 
