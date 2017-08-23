@@ -4,6 +4,10 @@ title: "Welcome"
 
 * [Introduction to R](./rmarkdown/IntroToR.html)
 
+* [Relational Operators](./rmarkdown/RelationalOperators.html)
+
+* [While Loop](./rmarkdown/WhileLoop.html)
+
 * [Shading Area Under Curve](./rmarkdown/NormalGGio.html)
 
 * [Contingency Tables](./rmarkdown/ContingencyTables.html)
