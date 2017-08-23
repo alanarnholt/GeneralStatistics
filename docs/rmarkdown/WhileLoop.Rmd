@@ -222,6 +222,8 @@ for(i in 1:length(cities)){
 ```
 <div class="blue">
 * Concise
+</div>
+<div class="blue">
 * Easy to read
 </div>
 <div class="red">
