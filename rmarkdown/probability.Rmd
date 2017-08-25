@@ -1,0 +1,133 @@
+---
+title: "Probability"
+author: "Alan T. Arnholt"
+date: '`r format(Sys.time(), "%b %d, %Y")`'
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, prompt = TRUE)
+```
+
+## Basic Probability
+
+* The set of all possible outcomes of a random experiment is called a _sample space_, $\Omega$.
+
+* An event $E$ is a subset of $\Omega$.
+
+* A _discrete random variable_ $X$ is a function from $\Omega$ into the real numbers $\bf{R}$ with a range that is finite or countably infinite.  That is, $X: \Omega \rightarrow {x_1, x_2, \ldots, x_m}$, or $X:\Omega \rightarrow {x_1, x_2, \dots}$.
+
+* A function $X$ from $\Omega$ into the real numbers $\bf{R}$ is a _continuous random variable_ if there exists a nonnegative function $f$ such that for every subset $C$ of $\bf{R}$, $P(X \in C) = \int_C\;f(x)\,dx$.  In particular, for $a \leq b$, $P(a < X \leq b) = \int_a^b\; f(x)\,dx.$
+
+
+## Example
+
+* Consider rolling two dice.  Let $X$ denote the sum of the two numbers that appear.  In this case, $X$ is a _discrete random variable_.  That is, $X:\Omega \rightarrow {2, 3, 4, \ldots, 11, 12}$.
+
+```{r}
+S <- expand.grid(roll1 = 1:6, roll2 = 1:6)
+S$Sum <- apply(S, 1, sum)
+head(S)
+```
+
+## Probability Density Function
+
+The function $f$ is called the probability density function of $X$ and satisfies the following conditions:
+
+* $f(x) > 0 , \quad x\in \Omega$
+* $\int_{\Omega}\;f(x)\,dx = 1$
+* If $(a, b) \subseteq \Omega$, then the probability of the event $\{a < X < b\}$ is
+$$P(a < X < b) = \int_a^b\;f(x)\,dx$$
+
+## Mean and Variance of _X_
+
+* $$\mu_X = E(X) = \int_{-\infty}^{\infty}\;x\,f(x)\,dx $$
+
+* $$\sigma^2 = \text{Var}(X) = E[(X - \mu_X)^2] = \int_{-\infty}^{\infty}(x - \mu_X)^2\;f(x)\,dx$$
+
+## Example Mean and Variance
+
+Let $X$ be a continuous random variable with _pdf_ $f(x) = 2x, 0 < x < 1$.  Find the mean and variance of $X$.
+
+$$\mu_x = E(X) = \int_{0}^{1} x \cdot 2x\, dx = \frac{2}{3}x^3 \mid_0^1 = \frac{2}{3}$$
+
+$$\sigma^2 = \text{Var}(X) = E(X^2) - \mu_X^2$$
+$$\sigma^2 = \int_0^1 x^2(2x)\,dx - \left(\frac{2}{3}\right)^2 = \left[\left(\frac{1}{2}y^4 \right)\right]_0^1 - \frac{4}{9}= \frac{1}{18}$$
+
+## Example (continued 1)
+
+```{r}
+f <- function(x){2*x}
+integrate(f, 0, 1)
+ex <- function(x){x*f(x)}
+EX <- integrate(ex, 0, 1)
+EX
+EX <- MASS::fractions(EX$value)
+EX
+```
+
+## Example (continued 2)
+
+```{r}
+g <- function(x){(x - 2/3)^2*f(x)}
+VX <- integrate(g, 0, 1)
+VX
+VX <- MASS::fractions(VX$value)
+VX
+```
+
+## Example (continued 3)
+
+What is the area under $f$?
+
+```{r, fig.height = 4, fig.width = 6, fig.align = "center"}
+curve(f, 0, 1)
+```
+
+## Odds and Ends
+
+* The standard deviation of $X$ is $\sigma_{X} = \sqrt{\text{Var}[X]}$
+
+* If $X$ is a random variable and $a$ and $b$ are constants, then
+
+$$E[a \pm bX] = a \pm bE[X]$$
+$$\text{Var}[a \pm bX] = b^2\text{Var}[X] $$
+
+## Sample of random variables
+
+* Let $X_1, X_2, \ldots, X_n$ be _independent and identically distributed_ random variables with mean $\mu$ and variance $\sigma^2$.  Then
+
+$$\bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i$$
+is called the (_sample_) mean.
+
+$$E[\bar{X}] = \mu_{\bar{X}} = \mu_{X} = \mu$$
+
+
+
+* If $X_1, X_2, \ldots, X_n$ are _independent and identically distributed_ random variables with mean $\mu$ and variance $\sigma^2$, then
+
+$$\text{Var}[\bar{X}] = \frac{\sigma^2_X}{n} = \frac{\sigma^2}{n}$$
+
+## Z- score
+
+$$Z = \frac{\text{statistic} - \mu_{\text{statistic}}}{\sigma_{\text{statistic}}}$$
+
+* Suppose $X \sim N(\mu = 10, \sigma = 2)$ and one takes a random sample of size 4 and computes the sample mean to be 14.  What is the $Z-$score?
+
+$$Z = \frac{\bar{X} - \mu_{\bar{X}}}{\sigma_{\bar{X}}} = \frac{14 - 10}{\frac{2}{\sqrt{4}}} = 4$$
+
+## T- score
+
+$$T = \frac{\text{statistic} - \mu_{\text{statistic}}}{\hat{\sigma}_{\text{statistic}}}$$
+
+* Suppose $X \sim N(\mu = 10, \sigma = ?)$. The results from a random sample of size 4 are: 12, 14, 2, and 20.  What is the $T-$score?
+
+```{r}
+rs <- c(12, 14, 2, 20)
+xbar <- mean(rs)
+SD <- sd(rs)
+Tscore <- (xbar - 10)/(SD/sqrt(4))
+c(xbar, SD, Tscore)
+```
+
+$$T = \frac{\bar{X} - \mu_{\bar{X}}}{\hat{\sigma}_{\bar{X}}} = \frac{12 - 10}{\frac{7.483315}{\sqrt{}4}} = `r round(Tscore, 4)`$$
