@@ -11,6 +11,9 @@ output:
 * [Relational Operators](./rmarkdown/RelationalOperators.html)
 * [While Loop](./rmarkdown/WhileLoop.html)
 
+### Probability
+* [Random Variables](./rmarkdown/probability.html)
+
 ### Graphics
 * [Shading Area Under Curve](./rmarkdown/NormalGGio.html)
 * [Miscellaneous `ggplot` Tips](./rmarkdown/MiscGGPLOT.html)
