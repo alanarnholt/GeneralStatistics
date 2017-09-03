@@ -1,5 +1,6 @@
 # Monte Hall Generalization
 # Code modified from Corey Chivers
+# https://bayesianbiologist.com/2012/02/03/monty-hall-by-simulation/
 # Alan T. Arnholt
 
 
