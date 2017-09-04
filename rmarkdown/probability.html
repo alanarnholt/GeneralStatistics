@@ -93,7 +93,7 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">Sep 02, 2017</p>
+            <p style="margin-top: 6px; margin-left: -2px;">Sep 04, 2017</p>
           </hgroup>
   </slide>
 
@@ -171,7 +171,7 @@
 
 </article></slide><slide class=''><hgroup><h2>Choose a Door</h2></hgroup><article  id="choose-a-door">
 
-<p>The television show <em>Let&#39;s Make a Deal</em> hosted by Monty Hall, gave contestants the opportunity to choose one of three doors. Contestants hoped to choose the one that concealed the grand prize. Behind the other two doors were much less valuable prizes. After the contestant chose one of the doos, say Door 1, Monty opened one of the other two doors, say Door3, containing a much less valuable prize. The contestant was then asked whether he or she wished to stay with the original choice (Door 1) or switch to the other closed door (Door2). What should the contestant do? Is it better to stay with original choice of switch to the other closed door?</p>
+<p>The television show <em>Let&#39;s Make a Deal</em> hosted by Monty Hall, gave contestants the opportunity to choose one of three doors. Contestants hoped to choose the one that concealed the grand prize. Behind the other two doors were much less valuable prizes. After the contestant chose one of the doors, say Door 1, Monty opened one of the other two doors, say Door3, containing a much less valuable prize. The contestant was then asked whether he or she wished to stay with the original choice (Door 1) or switch to the other closed door (Door2). What should the contestant do? Is it better to stay with original choice of switch to the other closed door?</p>
 
 <ul>
 <li><p>What is the probability of winning by switching doors when given the opportunity?</p></li>
@@ -185,16 +185,71 @@
 &gt; actual &lt;- sample(1:3, size = n, replace = TRUE)
 &gt; aguess &lt;- sample(1:3, size = n, replace = TRUE)
 &gt; equals &lt;- (actual == aguess)
-&gt; PnoSwitch &lt;- sum(equals)/n
-&gt; PnoSwitch</pre>
+&gt; not.eq &lt;- (actual != aguess)
+&gt; PnoSwitch &lt;- mean(equals)
+&gt; PwiSwitch &lt;- mean(not.eq)
+&gt; probs &lt;- c(PnoSwitch, PwiSwitch)
+&gt; names(probs) &lt;- c(&quot;P(Win no Switch)&quot;, &quot;P(Win Switch)&quot;)
+&gt; probs</pre>
 
-<pre >[1] 0.331</pre>
+<pre >P(Win no Switch)    P(Win Switch) 
+           0.331            0.669 </pre>
+
+</article></slide><slide class=''><hgroup><h2>Monte Hall (continued)</h2></hgroup><article  id="monte-hall-continued">
+
+<p>To solve with Bayes&#39; Rule start by assuming the contestant initially guesses Door 1 and that Monty opens Door 3. The the event \(D_i=\) Door \(i\) conceals the prize and \(O_j\) = Monty opens Door \(j\) after the contestant selects Door 1. When a contestant initially selects a door, \(P(D_1)=P(D_2)=P(D_3)=1/3\). Once Monty show the grand prize is not behind Door 3, the probability of winning the grand prize is now one of \(P(D_1|0_3)\) or \(P(D_2|O_3)\). Note that \(P(D_1|O_3)\) corresponds to the strategy of sticking with the initial guess and \(P(D_2|O_3)\) corresponds to the strategy of switching doors.</p>
+
+</article></slide><slide class=''><hgroup><h2>Monte Hall (continued)</h2></hgroup><article  id="monte-hall-continued-1">
+
+<p>Based on how the show is designed, the following are know:</p>
+
+<ul>
+<li>\(P(O_3|D_1)=1/2\) since Monty can open one of either Door 3 or Door 2 without revealing the grand prize.</li>
+<li>\(P(O_3|D_2)=1\) since the only door Monty can open without revealing the grand prize is Door 3.</li>
+<li>\(P(O_3|D_3)=0\) since Monty will not open Door 3 if it contains the grand prize.</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Monte Hall (continued)</h2></hgroup><article  id="monte-hall-continued-2">
+
+<p>\[P(D_1|O_3) = \frac{P(O_3|D_1)P(D_1)}{P(O_3|D_1)P(D_1) + P(O_3|D_2)P(D_2) + P(O_3|D_3)P(D_3)}\] \[P(D_1|O_3) = \frac{1/2\cdot 1/3}{1/2 \cdot 1/3 + 1 \cdot 1/3 + 0 \cdot 1/3}=\frac{1}{3}\]</p>
+
+<p>\[P(D_2|O_3) = \frac{P(O_3|D_2)P(D_2)}{P(O_3|D_1)P(D_1) + P(O_3|D_2)P(D_2) + P(O_3|D_3)P(D_3)}\]</p>
+
+<p>\[P(D_2|O_3) = \frac{1\cdot 1/3}{1/2 \cdot 1/3 + 1 \cdot 1/3 + 0 \cdot 1/3}=\frac{2}{3}\]</p>
 
 </article></slide><slide class=''><hgroup><h2>Random Variables</h2></hgroup><article  id="random-variables">
 
 <ul>
 <li><p>A <em>discrete random variable</em> \(X\) is a function from \(\Omega\) into the real numbers \(\bf{R}\) with a range that is finite or countably infinite. That is, \(X: \Omega \rightarrow {x_1, x_2, \ldots, x_m}\), or \(X:\Omega \rightarrow {x_1, x_2, \dots}\).</p></li>
 <li><p>A function \(X\) from \(\Omega\) into the real numbers \(\bf{R}\) is a <em>continuous random variable</em> if there exists a nonnegative function \(f\) such that for every subset \(C\) of \(\bf{R}\), \(P(X \in C) = \int_C\;f(x)\,dx\). In particular, for \(a \leq b\), \(P(a &lt; X \leq b) = \int_a^b\; f(x)\,dx.\)</p></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Probability Mass Function (Discrete)</h2></hgroup><article  id="probability-mass-function-discrete">
+
+<p>The function that assigns probability to the values of the random variable is called the probability density function (<strong>pdf</strong>). Many authors will refer to the <strong>pdf</strong> as the probability mass function <strong>pmf</strong> when working with discrete random variables. We will denote the <strong>pdf</strong> as \(p(x)=P(X=x)\) for each \(x\). All <strong>pdf</strong>s must satisfy the following two conditions:</p>
+
+<ol>
+<li><p>\(p(x)\geq0\) for all \(x\).</p></li>
+<li><p>\(\sum_{\forall x}p(x) = 1\).</p></li>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2>Probability Density Function (Continuous)</h2></hgroup><article  id="probability-density-function-continuous">
+
+<p>The function \(f\) is called the probability density function of \(X\) and satisfies the following conditions:</p>
+
+<ul>
+<li>\(f(x) &gt; 0 , \quad x\in \Omega\)</li>
+<li>\(\int_{\Omega}\;f(x)\,dx = 1\)</li>
+<li>If \((a, b) \subseteq \Omega\), then the probability of the event \(\{a &lt; X &lt; b\}\) is \[P(a &lt; X &lt; b) = \int_a^b\;f(x)\,dx\]</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Mean and Variance of <em>X</em></h2></hgroup><article  id="mean-and-variance-of-x">
+
+<ul>
+<li><p>\[\mu_X = E(X) = \sum_{x}x\cdot p(x)\]</p></li>
+<li><p>\[\mu_X = E(X) = \int_{-\infty}^{\infty}\;x\,f(x)\,dx\]</p></li>
+<li><p>\[\sigma^2 = \text{Var}(X) = E[(X - \mu_X)^2] = \sum_{x}(x- \mu_X)^2 \cdot p(x)\]</p></li>
+<li><p>\[\sigma^2 = \text{Var}(X) = E[(X - \mu_X)^2] = \int_{-\infty}^{\infty}(x - \mu_X)^2\;f(x)\,dx\]</p></li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Example</h2></hgroup><article  id="example-1">
@@ -215,22 +270,40 @@
 5     5     1   6
 6     6     1   7</pre>
 
-</article></slide><slide class=''><hgroup><h2>Probability Density Function</h2></hgroup><article  id="probability-density-function">
+</article></slide><slide class=''><hgroup><h2>Example (continued)</h2></hgroup><article  id="example-continued">
 
-<p>The function \(f\) is called the probability density function of \(X\) and satisfies the following conditions:</p>
+<p>Find the expected value and variance of \(X\)</p>
 
-<ul>
-<li>\(f(x) &gt; 0 , \quad x\in \Omega\)</li>
-<li>\(\int_{\Omega}\;f(x)\,dx = 1\)</li>
-<li>If \((a, b) \subseteq \Omega\), then the probability of the event \(\{a &lt; X &lt; b\}\) is \[P(a &lt; X &lt; b) = \int_a^b\;f(x)\,dx\]</li>
-</ul>
+<pre class = 'prettyprint lang-r'>&gt; table(S$Sum)</pre>
 
-</article></slide><slide class=''><hgroup><h2>Mean and Variance of <em>X</em></h2></hgroup><article  id="mean-and-variance-of-x">
+<pre >
+ 2  3  4  5  6  7  8  9 10 11 12 
+ 1  2  3  4  5  6  5  4  3  2  1 </pre>
 
-<ul>
-<li><p>\[\mu_X = E(X) = \int_{-\infty}^{\infty}\;x\,f(x)\,dx \]</p></li>
-<li><p>\[\sigma^2 = \text{Var}(X) = E[(X - \mu_X)^2] = \int_{-\infty}^{\infty}(x - \mu_X)^2\;f(x)\,dx\]</p></li>
-</ul>
+<pre class = 'prettyprint lang-r'>&gt; T1 &lt;- MASS::fractions(table(S$Sum)/sum(!is.na(S$Sum)))
+&gt; T1</pre>
+
+<pre >
+   2    3    4    5    6    7    8    9   10   11   12 
+1/36 1/18 1/12  1/9 5/36  1/6 5/36  1/9 1/12 1/18 1/36 </pre>
+
+</article></slide><slide class=''><hgroup><h2>Example (continued)</h2></hgroup><article  id="example-continued-1">
+
+<pre class = 'prettyprint lang-r'>&gt; x &lt;- as.numeric(names(T1))
+&gt; x</pre>
+
+<pre > [1]  2  3  4  5  6  7  8  9 10 11 12</pre>
+
+<pre class = 'prettyprint lang-r'>&gt; px &lt;- T1
+&gt; EX &lt;- sum(x*px)
+&gt; EX</pre>
+
+<pre >[1] 7</pre>
+
+<pre class = 'prettyprint lang-r'>&gt; VX &lt;- sum((x - EX)^2*px)
+&gt; VX</pre>
+
+<pre >[1] 35/6</pre>
 
 </article></slide><slide class=''><hgroup><h2>Example Mean and Variance</h2></hgroup><article  id="example-mean-and-variance">
 
@@ -240,7 +313,7 @@
 
 <p>\[\sigma^2 = \text{Var}(X) = E(X^2) - \mu_X^2\] \[\sigma^2 = \int_0^1 x^2(2x)\,dx - \left(\frac{2}{3}\right)^2 = \left[\left(\frac{1}{2}y^4 \right)\right]_0^1 - \frac{4}{9}= \frac{1}{18}\]</p>
 
-</article></slide><slide class=''><hgroup><h2>Example (continued 1)</h2></hgroup><article  id="example-continued-1">
+</article></slide><slide class=''><hgroup><h2>Example (continued 1)</h2></hgroup><article  id="example-continued-1-1">
 
 <pre class = 'prettyprint lang-r'>&gt; f &lt;- function(x){2*x}
 &gt; integrate(f, 0, 1)</pre>
