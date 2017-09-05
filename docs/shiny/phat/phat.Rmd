@@ -60,7 +60,7 @@ shinyApp(ui = ui, server = server)
 
 
 
-## Simulated sampling distribution for $\hat{p}_1 - \hat{p}_2$
+## Simulated sampling distribution for: $\hat{p}_1 - \hat{p}_2$
 
 
 ```{r, echo = FALSE}

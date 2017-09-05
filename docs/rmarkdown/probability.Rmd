@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA, prompt = TRUE)
 2. $P(\Omega)=1$
 3. For any sequence of mutually exclusive events $E_1, E_2, \ldots$ (that is, $E_i \cap E_j = \emptyset$) for all ($i \neq j$),
 
-$$P\left(\bigcup_{i=1}^{\infty} \right) = \sum_{i=1}^{\infty}P(E_i)$$
+$$P\left(\bigcup_{i=1}^{\infty}E_i \right) = \sum_{i=1}^{\infty}P(E_i)$$
 
 ## Birthday Problem
 
@@ -68,7 +68,7 @@ abline(v = 23, lty = 2, col = "blue")
 
 ## Conditional Probability
 
-* If $E$ and $F$ are any two events in a sample space $\Omega$ and $P(E) \neq \emptyset$, the **conditional probability** of $F$ given $E$ is defined as
+* If $E$ and $F$ are any two events in a sample space $\Omega$ and $P(E) \neq 0$, the **conditional probability** of $F$ given $E$ is defined as
 
 $$P(F|E) = \frac{P(F\cap E)}{P(E)}$$
 
