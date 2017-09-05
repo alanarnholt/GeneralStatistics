@@ -68,7 +68,7 @@ abline(v = 23, lty = 2, col = "blue")
 
 ## Conditional Probability
 
-* If $E$ and $F$ are any two events in a sample space $\Omega$ and $P(E) \neq \emptyset$, the **conditional probability** of $F$ given $E$ is defined as
+* If $E$ and $F$ are any two events in a sample space $\Omega$ and $P(E) \neq 0$, the **conditional probability** of $F$ given $E$ is defined as
 
 $$P(F|E) = \frac{P(F\cap E)}{P(E)}$$
 
