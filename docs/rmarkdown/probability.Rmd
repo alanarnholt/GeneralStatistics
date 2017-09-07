@@ -264,6 +264,8 @@ curve(f, 0, 1)
 
 $$E[a \pm bX] = a \pm bE[X]$$
 $$\text{Var}[a \pm bX] = b^2\text{Var}[X] $$
+$$\text{Var}[aX \pm bY] = a^2 \text{Var}[X] + b^2\text{Var}[Y]$$
+
 
 ## Sample of random variables
 
