@@ -14,30 +14,57 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      textOutput("something"),
-      tableOutput("percentwin")
+      textOutput("values")
     )
   )
 )
 
 server <- function(input, output) {
  
+  # Create monty function
+  monty <- function(strat = "stay", n = 3, N = 10000, print_games = FALSE){
+    doors <- 1:n # initialize doors
+    win <- 0     # track of number of wins
+    for(i in 1:N){
+      prize <- sample(1:n, 1) # select door with Grand prize
+      guess <- sample(1:n, 1) # players initial guess
+      ## Reveal one of the doors with goat
+      if(n == 3 & (prize != guess)){
+        reveal <- doors[-c(prize, guess)]
+      } else {  
+        reveal <- sample(doors[-c(prize, guess)], 1)
+      } 
+      ## Strategy:  Switch
+      if(strat == "switch" & n == 3){
+        select <- doors[-c(reveal, guess)]
+      } else {
+        select <- sample(doors[-c(reveal, guess)], 1)
+      }
+      ## Stategy:  Random
+      if(strat == "random")
+        select <- sample(doors[-reveal], 1)
+      ## Strategy: Stay
+      if(strat == "stay")
+        select <- guess
+      ## Count wins
+      if(prize == select){
+        win <- win + 1
+        outcome <- "Winner!"
+      } else {
+        outcome <- "Loser!"
+      }
+      if(print_games == TRUE)
+        cat(paste("Guess: ",guess,
+                  "\nRevealed: ",reveal,
+                  "\nSelection: ",select,
+                  "\nGrand prize: ",prize,
+                  "\n",outcome,"\n\n",sep=""))
+    }
+    cat(paste("Using the ",strat," strategy, your win percentage was ",round(win/N*100, 2),"%.\n",sep="")) #Print the win percentage of your strategy
+  }
   
-   
-  winnings <- reactive({
-    data.frame(
-      Your = c("Percent Winnings"),
-      Value = "33%"
-    )
-  })
-  
-  output$something <- renderText({
-    paste("After playing", input$N, "games with", input$n, "doors using a", input$strat, "strategy,")
-  })
-  
-  output$percentwin <- renderTable({
-    winnings()
-  })
+  data <- reactive(monty(input$strat, input$n, input$N, input$print_games))  
+  output$values <- renderPrint(data())  
   
 }
 
