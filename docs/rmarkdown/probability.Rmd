@@ -155,7 +155,7 @@ Note: $\frac{n-1}{n(n-2)} > \frac{1}{n} \rightarrow$ switching is always better!
 ## Monty Hall Simulation Shiny-App
 
 ```{r, label = "shinyApp", echo = FALSE}
-knitr::include_app("https://mathr.math.appstate.edu/shiny/Monty/", height = "300px")
+knitr::include_app("https://mathr.math.appstate.edu/shiny/Monty/", height = "400px")
 ```
 
 ## Random Variables
