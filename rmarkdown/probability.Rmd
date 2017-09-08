@@ -152,6 +152,12 @@ For $n=3$ doors, the probability of winning with the "switch" strategy is:
 $$\frac{n-1}{n}\cdot \frac{1}{n-2} =\frac{3-1}{3}\cdot\frac{1}{3-2} = \frac{2}{3}$$
 Note: $\frac{n-1}{n(n-2)} > \frac{1}{n} \rightarrow$ switching is always better!
 
+## Monty Hall Simulation Shiny-App
+
+```{r, label = "shinyApp", echo = FALSE}
+knitr::include_app("https://mathr.math.appstate.edu/shiny/Monty/", height = "300px")
+```
+
 ## Random Variables
 
 * A _discrete random variable_ $X$ is a function from $\Omega$ into the real numbers $\bf{R}$ with a range that is finite or countably infinite.  That is, $X: \Omega \rightarrow {x_1, x_2, \ldots, x_m}$, or $X:\Omega \rightarrow {x_1, x_2, \dots}$.
