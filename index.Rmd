@@ -12,7 +12,8 @@ output:
 * [While Loop](./rmarkdown/WhileLoop.html)
 
 ### Probability
-* [Random Variables](./rmarkdown/probability.html)
+* [Gerneral Probability](./rmarkdown/probability.html)
+* [Monty Hall Problem](./rmarkdown/Monty.html)
 
 ### Graphics
 * [Shading Area Under Curve](./rmarkdown/NormalGGio.html)
