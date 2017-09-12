@@ -1,0 +1,85 @@
+---
+title: "Monty Hall Generalization"
+author: "Alan T. Arnholt"
+date: '`r format(Sys.time(), "%b %d, %Y")`'
+output: 
+  ioslides_presentation:
+    widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, prompt = TRUE, fig.align = "center")
+```
+
+## Let's Make a Deal
+
+The television show _Let's Make a Deal_ hosted by Monty Hall, gave contestants the opportunity to choose one of three doors.  Contestants hoped to choose the one that concealed the grand prize.  Behind the other two doors were much less valuable prizes.  After the contestant chose one of the doors, say Door 1, Monty opened one of the other two doors, say  Door3, containing a much less valuable prize.  The contestant was then asked whether he or she wished to stay with the original choice (Door 1) or switch to the other closed door (Door2).  What should the contestant do?  Is it better to stay with original choice of switch to the other closed door?
+
+> - What is the probability of winning by switching doors when given the opportunity?
+
+> - What is the probability of winning by staying with the initial selection?
+
+## Game Rules
+
+* The host must always open a door that was not picked by the contestant.
+
+* The host must always open a door to reveal a goat and never the car.
+
+* The host must always offer the chance to switch between the originally chosen door and the remaining closed door.
+
+## Use Simulation
+
+* Play 1,000 games with 3, 4, and 5 Doors using a strategy of "stay", "switch", and "random".  What is the best strategy regardless of the number of doors?
+
+## Have Fun
+
+```{r, label = "shinyApp", echo = FALSE}
+knitr::include_app("https://mathr.math.appstate.edu/shiny/Monty/", height = "400px")
+```
+
+## Monte Hall Problem with _n_ Doors
+
+Consider the case with $n$ Doors and just one grand prize.  The probability of winning the grand prize on the first choice is $\frac{1}{n}$.  This is the same probability of winning if you were to use the "stay" strategy.  You will win the grand prize if both of the following events occur:
+
+1. You choose a door that does not have the grand prize (goat) $\left(P(G) = \frac{n-1}{n}\right)$
+
+2. You choose the door with the grand prize by switching doors $\left(P(C|G) = \frac{1}{n-2}\right)$
+
+
+## Monte Hall Problem with _n_ Doors (continued)
+
+In other words, the probability of winning using the "switch" strategy is
+
+$$P(G \cap C) = P(G) \cdot P(C|G) = \frac{n-1}{n} \cdot \frac{1}{n-2}$$
+For $n=3$ doors, the probability of winning with the "switch" strategy is:
+
+$$\frac{n-1}{n}\cdot \frac{1}{n-2} =\frac{3-1}{3}\cdot\frac{1}{3-2} = \frac{2}{3}$$
+Note: $\frac{n-1}{n(n-2)} > \frac{1}{n} \rightarrow$ switching is always better!
+
+
+## Monte Hall and Bayes' Rule
+
+To solve with Bayes' Rule start by assuming the contestant initially guesses Door 1 and that Monty opens Door 3.  The the event $D_i=$ Door $i$ conceals the prize and $O_j$ = Monty opens Door $j$ after the contestant selects Door 1.  When a contestant initially selects a door, $P(D_1)=P(D_2)=P(D_3)=1/3$.  Once Monty show the grand prize is not behind Door 3, the probability of winning the grand prize is now one of $P(D_1|0_3)$ or $P(D_2|O_3)$.  Note that $P(D_1|O_3)$ corresponds to the strategy of sticking with the initial guess and $P(D_2|O_3)$ corresponds to the strategy of switching doors. 
+
+## Monte Hall (continued)
+
+Based on how the show is designed, the following are know:
+
+* $P(O_3|D_1)=1/2$ since Monty can open one of either Door 3 or Door 2 without revealing the grand prize.
+* $P(O_3|D_2)=1$ since the only door Monty can open without revealing the grand prize is Door 3.
+* $P(O_3|D_3)=0$ since Monty will not open Door 3 if it contains the grand prize.
+
+## Monte Hall (continued)
+
+$$P(D_1|O_3) = \frac{P(O_3|D_1)P(D_1)}{P(O_3|D_1)P(D_1) + P(O_3|D_2)P(D_2) + P(O_3|D_3)P(D_3)}$$
+$$P(D_1|O_3) = \frac{1/2\cdot 1/3}{1/2 \cdot 1/3 + 1 \cdot 1/3 + 0 \cdot 1/3}=\frac{1}{3}$$
+
+$$P(D_2|O_3) = \frac{P(O_3|D_2)P(D_2)}{P(O_3|D_1)P(D_1) + P(O_3|D_2)P(D_2) + P(O_3|D_3)P(D_3)}$$
+
+$$P(D_2|O_3) = \frac{1\cdot 1/3}{1/2 \cdot 1/3 + 1 \cdot 1/3 + 0 \cdot 1/3}=\frac{2}{3}$$
+
+## xkcd
+
+```{r, echo = FALSE}
+knitr::include_url("https://imgs.xkcd.com/comics/positive_and_negative_reviews.png", height = "400px")
+```

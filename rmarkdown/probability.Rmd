@@ -2,11 +2,13 @@
 title: "Probability"
 author: "Alan T. Arnholt"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
-output: ioslides_presentation
+output: 
+  ioslides_presentation:
+    widescreen: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, comment = NA, prompt = TRUE)
+knitr::opts_chunk$set(echo = TRUE, comment = NA, prompt = TRUE, fig.align = "center")
 ```
 
 ## Basic Probability
@@ -92,9 +94,9 @@ $$P(F_j|E) = \frac{P(E \cap F_j)}{P(E)} = \frac{P(E|F_i)P(F_i)}{\sum_{i=1}^{n}P(
 
 The television show _Let's Make a Deal_ hosted by Monty Hall, gave contestants the opportunity to choose one of three doors.  Contestants hoped to choose the one that concealed the grand prize.  Behind the other two doors were much less valuable prizes.  After the contestant chose one of the doors, say Door 1, Monty opened one of the other two doors, say  Door3, containing a much less valuable prize.  The contestant was then asked whether he or she wished to stay with the original choice (Door 1) or switch to the other closed door (Door2).  What should the contestant do?  Is it better to stay with original choice of switch to the other closed door?
 
-* What is the probability of winning by switching doors when given the opportunity?
+> - What is the probability of winning by switching doors when given the opportunity?
 
-* What is the probability of winning by staying with the initial selection?
+> - What is the probability of winning by staying with the initial selection?
 
 ## R - Code
 
