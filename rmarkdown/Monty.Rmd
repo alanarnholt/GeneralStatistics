@@ -81,5 +81,5 @@ $$P(D_2|O_3) = \frac{1\cdot 1/3}{1/2 \cdot 1/3 + 1 \cdot 1/3 + 0 \cdot 1/3}=\fra
 ## xkcd
 
 ```{r, echo = FALSE}
-knitr::include_url("https://imgs.xkcd.com/comics/positive_and_negative_reviews.png", height = "400px")
+knitr::include_url("https://imgs.xkcd.com/comics/convincing.png", height = "400px")
 ```
