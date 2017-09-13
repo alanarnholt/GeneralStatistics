@@ -23,11 +23,11 @@ output:
 * [Contingency Tables](./rmarkdown/ContingencyTables.html)
 * [Tables](./rmarkdown/FormattingTables.html)
 
-
 ### Misc
 * [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
 * [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
 * [Creating and Publishing a Web Site on GitHub](./rmarkdown/WebPageHowTo.html)
+* [Demonstrating Changes with Reactive Programming](./rmarkdown/ReactiveProgrammingWeb.html)
 
 
 
