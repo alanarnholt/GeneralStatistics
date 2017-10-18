@@ -392,6 +392,28 @@ T1 <- xtabs(~Twitter + Facebook, data = TDF)
 T1
 chisq.test(T1, correct = FALSE)
 ```
+## Graph Code
+
+```{r, eval = FALSE}
+library(tidyverse)
+TDF %>% 
+  ggplot(aes(x = Twitter, fill = Facebook)) + 
+  geom_bar(position = "fill") + 
+  labs(y = "Fraction")
+```
+
+## Graph 
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+TDF %>% 
+  ggplot(aes(x = Twitter, fill = Facebook)) + 
+  geom_bar(position = "fill") + 
+  labs(y = "Fraction") + 
+  scale_fill_manual(values = c("purple", "peachpuff"))
+```
+
+
 
 
 ## Randomization Test
@@ -425,7 +447,7 @@ ggplot(data = data.frame(x = ts), aes(x = x)) +
 
 ## Randomization Distribution
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning = FALSE}
 library(ggplot2)
 ggplot(data = data.frame(x = ts), aes(x = x)) + 
   geom_density(fill = "peachpuff", adjust = 3) + 
