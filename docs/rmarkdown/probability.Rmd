@@ -313,3 +313,126 @@ c(xbar, SD, Tscore)
 ```
 
 $$T = \frac{\bar{X} - \mu_{\bar{X}}}{\hat{\sigma}_{\bar{X}}} = \frac{12 - 10}{\frac{7.483315}{\sqrt{}4}} = `r round(Tscore, 4)`$$
+
+
+## Independence
+
+Let _X_ and _Y_ be random variables.  Then _X_ and _Y_ are _independent_ **if** for any sets _A_ and _B_,
+
+$$P(X \in A , Y \in B) = P(X \in A)P(Y \in B).$$
+
+Two events _A_ and _B_ are _independent_ **if**
+
+$$P(A \cap B) = P(A)P(B)$$
+
+Two events _A_ and _B_ are _independent_ **if** (and only if)
+
+$$P(B|A) = P(B)$$
+
+
+## Example
+
+Suppose we take a random sample of $n = 100$ online adults and find 71 use Facebook, 18 use Twitter, and 15 use both.
+
+```{r, echo = FALSE}
+on <- c(15, 3, 56, 26)
+ONL <- matrix(data = on, nrow = 2, byrow = TRUE)
+dimnames(ONL) <- list(Twitter = c("Yes", "No"), Facebook = c("Yes", "No"))
+addmargins(ONL)
+```
+
+1. Are using Facebook and using Twitter mutually exclusive?
+1. Are Facebooking and tweeting independent?
+
+## Partial Solution
+
+Let _A_ = respondent uses Facebook and _B_ = respondent uses Twitter.
+
+We know that $P(A) = \frac{71}{100}=0.71$, $P(B) = \frac{18}{100}=0.18$, and $P(A\cap B)= \frac{15}{100}=0.15$.
+
+Since $P(A \cap B)\neq 0$, the events _A_ and _B_ are not mutually exclusive.
+
+Recall that _A_ and _B_ are independent if $P(A \cap B)=P(A)P(B)$.  Since $P(A \cap B) = 0.15 \neq P(A)P(B)=0.71\times 0.18 = `r 0.71*0.18`,$ the events _A_ and _B_ are not independent.
+
+## Are Facebook usage and Twitter usage Independent?
+
+What do we expect in each cell?
+
+```{r, echo = FALSE}
+ONL
+chisq.test(ONL)$expected
+```
+
+## Test Statistic
+
+$$TS = \sum_{\text{all cells}}\frac{O - E}{E}$$
+
+* Create a tidy data set.
+
+```{r}
+on <- c(15, 3, 56, 26)
+ONL <- matrix(data = on, nrow = 2, byrow = TRUE)
+dimnames(ONL) <- list(Twitter = c("Yes", "No"), Facebook = c("Yes", "No"))
+ONLT <- as.table(ONL)
+ONLTDF <- as.data.frame(ONLT)
+TDF <- vcdExtra::expand.dft(ONLTDF)
+dim(TDF)
+```
+
+## Tidy Data
+
+```{r, echo = FALSE}
+DT::datatable(TDF)
+```
+
+## Data
+
+```{r}
+T1 <- xtabs(~Twitter + Facebook, data = TDF)
+T1
+chisq.test(T1, correct = FALSE)
+```
+
+
+## Randomization Test
+
+```{r}
+obs.stat <- chisq.test(T1, correct = FALSE)$stat
+obs.stat
+set.seed(123)
+sims <- 10^4 - 1
+ts <- numeric(sims)
+for(i in 1:sims){
+  ts[i] <- chisq.test(xtabs(~Twitter + sample(Facebook), data = TDF), 
+                      correct = FALSE)$stat
+}
+pvalue <- (sum(ts >= obs.stat) + 1)/(sims + 1)
+pvalue
+```
+
+## Randomiztion Distribution Code
+
+```{r, eval = FALSE}
+library(ggplot2)
+ggplot(data = data.frame(x = ts), aes(x = x)) + 
+  geom_density(fill = "peachpuff", adjust = 3) + 
+  theme_bw() + 
+  stat_function(fun = dchisq, args = list(df = 1), color = "red") + 
+  geom_vline(xintercept = obs.stat, linetype = "dashed", 
+             color = "lightblue") + 
+  xlim(0, 8)
+```
+
+## Randomization Distribution
+
+```{r, echo = FALSE}
+library(ggplot2)
+ggplot(data = data.frame(x = ts), aes(x = x)) + 
+  geom_density(fill = "peachpuff", adjust = 3) + 
+  theme_bw() + 
+  stat_function(fun = dchisq, args = list(df = 1), color = "red") + 
+  geom_vline(xintercept = obs.stat, linetype = "dashed", 
+             color = "lightblue") + 
+  xlim(0, 8)
+```
+
