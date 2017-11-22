@@ -1,0 +1,234 @@
+---
+title: "Using `R` with the `RStudio` Integrated Development Editor - Ideas, Pointers, and Teasers"
+date: 'November 22, 2017'
+author: 'Alan T. Arnholt'
+output: 
+  bookdown::html_document2
+bibliography: ["packages.bib", "rstudio.bib", "IntroToR.bib"]  
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", comment = NA, prompt = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r, echo = FALSE, results = "hide"}
+PackagesUsed <- c("ggplot2", "bookdown", "rmarkdown", "base", "tidyverse", "PASWR2")
+# Write bib information
+knitr::write_bib(PackagesUsed, file = "./packages.bib")
+# Load packages
+lapply(PackagesUsed, library, character.only = TRUE)
+```
+
+
+# Introduction
+
+This article provides ideas, pointers, and teasers for using `R` (@R-base) with the `RStudio` (@R-RStudio) integrated development editor (IDE).  `R` is an interactive programming and graphics environment @noauthor_r_nodate that is the lingua franca for research statisticians; however, `R` is not just for research statisticians!  Data analysts (@vance_r_2009) and an ever growing number of scientists from outside of the statistical sciences (@tippmann_programming_2015) are using `R` as their computational engine of choice.  Because `R` is free, it has become a very attractive tool to use in high school mathematics and statistics courses as well.  The remainder of the article assumes the user has already installed both `R` and `RStudio`.
+
+# Using `R` inside `RStudio`
+
+`R` can be run as a stand alone; however, it is more convenient to run `R` inside an IDE, and one of more popular and user friendly IDEs is the `RStudio` IDE.  When the `RStudio` IDE is launched on a MAC, it appears as shown in Figure \@ref(fig:OIDE).
+
+```{r, echo = FALSE, label = "OIDE", fig.cap = "RStudio with three panes"}
+knitr::include_graphics("./images/OIDE.png", dpi = 96)
+```
+
+The left pane in Figure \@ref(fig:OIDE) is known as the Console pane.  The user may enter commands at the R prompt (`>`) or use an `R script` to maintain a record of all commands sent to `R`. 
+
+## Using `R` as a calculator
+
+Basic arithmetic may be performed at the `R` command prompt much like using a calculator.  The command prompt is shown below; but, the reader only needs to enter commands after the `R` prompt, not type the prompt.  The pound or hash symbol (`#`) is used to comment code in `R`.  
+
+```{r, label = "calculator"}
+2 + 3         # add two numbers
+(5 - 3)/3     # subtraction and division
+5^3           # raise 5 to the third power
+2 * pi        # 2 times Pi  
+```
+
+There are thousands of mathematical and statistical functions available in `R`.  A few `R` functions which all work in a similar fashion by including arguments inside parentheses are shown below.
+
+```{r, label = "Rfunctions"}
+sqrt(49)    # square root of 49
+exp(2)      # e raised to the second power
+sin(pi/2)   # sin of Pi/2
+```
+
+Complete the free DataCamp online [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) to learn more about `R`.
+
+## Writing your own function
+
+In this example, the exponential probability density function defined in \@ref(eq:exp) with $\lambda = 1/10$
+
+\begin{equation}
+f(x) = 
+\begin{cases}
+\lambda e^{-\lambda x} & x \geq 0\\
+0  & x < 0
+\end{cases}
+(\#eq:exp)
+\end{equation}
+
+is used to numerically compute the expected value and the variance of $X$.  The expected value of a continuous random variable $X$ is defined as
+
+$$E(X) = \int_{-\infty}^{\infty}x\cdot f(x)\, dx,$$
+while the variance of a random variable $X$ is defined as
+
+$$\text{Var}(X) = \int_{-\infty}^{\infty}(x - \mu_X)^2 \cdot f(x)\, dx.$$
+
+
+The `integrate()` function is used to first verify the function `f` is a valid probability density function.  To create a function in `R`, provide a name (`f` in the example below) for the function, use the keyword `function(x)`  then define the function inside curly braces (`{}`).  To learn more about writing functions, consider the DataCamp course [Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r).
+
+```{r, label = "func"}
+f <- function(x){1/10*exp(-x/10)}
+integrate(f, 0, Inf)      # Show f integrates to 1
+```
+
+$$\int_{0}^{\infty}\tfrac{1}{10}e^{-\tfrac{x}{10}} \, dx = `r integrate(f, 0, Inf)$value`$$
+
+```{r, label = "EX"}
+xfx <- function(x){x * 1/10*exp(-x/10)}
+EX <- integrate(xfx, 0, Inf)$value    # E(X)
+EX
+```
+
+$$E(X) = \int_{0}^{\infty}x \cdot \tfrac{1}{10}e^{-\tfrac{x}{10}} \, dx = `r integrate(xfx, 0, Inf)$value`$$
+
+```{r, label = "VX"}
+vx <- function(x){(x - EX)^2 * 1/10*exp(-x/10)}
+VX <- integrate(vx, 0, Inf)$value
+VX
+```
+
+$$\text{Var}(X) = \int_{0}^{\infty}(x - 10)^2 \cdot \tfrac{1}{10}e^{-\tfrac{x}{10}} \, dx = `r integrate(vx, 0, Inf)$value`$$
+
+**Note:** `R` has already defined the exponential probability density function (`dexp`). The function `f` was used to show the reader how to define a function. If one is actually working with an Exponential probability density function, it is best to use the functions `R` has already defined.
+
+```{r}
+integrate(dexp, rate= 1/10, lower = 0, upper = Inf)  # show valid pdf
+integrate(dexp, rate = 1/10, 1, 2)    # P(1 < X < 2)
+# Or
+a2 <- pexp(2, 1/10) - pexp(1, 1/10)
+a2
+```
+
+$$\int_1^2\tfrac{1}{10}e^{\tfrac{x}{10}} = `r a2`$$
+
+
+## Data
+
+To enter data as a vector, one may use the `c()` function as shown next.
+
+```{r, label = "vectors"}
+weight <- c(60, 43, 54, 46, 51)  # weight of children in pounds
+mean(weight)                     # mean weight
+sd(weight)                       # standard deviation of weight
+IQR(weight)                      # Interquartile range of weight
+fivenum(weight)                  # Tukey five number summary
+```
+
+To reduce the chance of a typographical error, it is best to use data that has already been recorded.  `R` has a numerous data sets that may be accessed. To see a list of data sets available type `data()` at the `R` prompt.  Rectangular data where the variables are possibly different data types are stored in a structure known as a data frame.  Consider the data frame `ChickWeight`.
+
+```{r}
+head(ChickWeight)      # Show the first 6 rows of ChickWeight
+str(ChickWeight)       # Show structure of ChickWeight
+summary(ChickWeight)   # Compute summary of ChickWeight
+```
+
+To read data from an external file consider using `read.table()` or one of its wrappers.  In the next example, the function `read.csv()` a wrapper for `read.table()` when reading comma separated files is used to read a `*.csv` file from a URL.
+
+```{r}
+BW <- read.csv("http://www1.appstate.edu/~arnholta/Data/Beerwings.csv")
+str(BW)
+```
+
+To learn more about importing data into `R` with other file types, consider taking the DataCamp course [Importing Data in R](https://www.datacamp.com/courses/importing-data-in-r-part-1).
+
+# Exploratory Data Analysis
+
+In this example, consider the data stored in the data frame `ChickWeight` which records the weight, time, chick, and diet from an experiment on early growth of chicks.  What does the distribution of `weight` look like?  Does diet play a role in weight gain?  The package `ggplot2` (@R-ggplot2) is used to create side by side boxplots of weight by diet (See Figure \@ref(fig:boxplot)).  To learn more about using `ggplot2`, consider the DataCamp course [Data Visualization with ggplot2](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1).  Note that the boxplot for Diet 1 is noticeably wider than the other boxplots because there are more chicks in Diet 1 than the other Diets (See Table \@ref(tab:SS)).
+
+```{r, label = "boxplot", fig.cap = "Boxplot of weight gain by diet"}
+library(tidyverse)  # load tidyverse collection of packages
+ggplot(data = ChickWeight, aes(x = Diet, y = weight, fill = Diet)) + 
+  geom_boxplot(notch = TRUE, varwidth = TRUE) + 
+  theme_bw() + 
+  guides(fill = FALSE) + 
+  labs(x = "Diet", y = "Weight (g)") + 
+  coord_flip()
+```
+
+Another representation of the distribution of `weight` by `Diet` is shown in Figure \@ref(fig:dp) with density plots.
+
+```{r, label = "dp", fig.cap = "Density plots of weight gain by diet"}
+ggplot(data = ChickWeight, aes(x = weight, fill = Diet)) + 
+  geom_density() + 
+  facet_grid(Diet ~ .) + 
+  theme_bw() + 
+  labs(y = "", x = "Weight (g)")
+```
+
+Each density plot for the four diets shown in Figure \@ref(fig:dp) is skewed to the right. Next, appropriate measures of center and spread are computed using a tidyverse approach.  To learn more about the tidyverse approach to analyzing data, consider the DataCamp course [Introduction to the Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/).   
+
+```{r}
+CW <- ChickWeight %>% 
+  group_by(Diet) %>% 
+  summarize(Center = median(weight), Spread = IQR(weight), n = n())
+CW
+```
+
+```{r, echo = FALSE, label = "SS"}
+knitr::kable(CW, caption = "Summary statistics of `weight` grouped by `Diet`")
+```
+
+
+# Simple Linear Regression
+
+Consider the data frame `VIT2005` from the `R` package `PASWR2` by @R-PASWR2.  The package `PASWR2` must be installed before it can be loaded.  To install `PASWR2` type `install.packages("PASWR2")` at the `R` prompt.  To load a package use the command `library(PackageName)`.  You only need to install a package once; but, the package must be loaded each `R` session to access functions and data sets in the package.  The data frame `VIT2005` has values for several variables including total price in euros (`totalprice`) and area in square meters (`area`) for apartments in Vittoria, Spain.  The code below creates the scatter plot of `totalprice` versus `area` and superimposes a least squares line over the points as shown in Figure \@ref(fig:SP1).
+
+```{r, label = "SP1", fig.cap = "Scatterplot of `totalprice` versus `area`"}
+library(PASWR2)
+ggplot(data = VIT2005, aes(x = area, y = totalprice)) + 
+  geom_point(alpha = 0.5, color = "darkgreen") + 
+  theme_bw() + 
+  geom_smooth(method = "lm") + 
+  labs(x = "Area (square meters)", y = "Total Price (euros)")
+```
+
+```{r, label = "SLR"}
+slr_mod <- lm(totalprice ~ area, data = VIT2005)
+summary(slr_mod)
+```
+
+```{r, echo = FALSE, label = "coef"}
+knitr::kable(summary(slr_mod)$coef, caption = "Coefficients from regressing `totalprice` on `area`")
+```
+
+
+The code below creates a scatterplot of `totalprice` versus `area` while mapping the variable `toilets` to the color aesthetic.  Figure \@ref(fig:johns) shows the resulting scatterplot along with three different least squares lines. 
+
+```{r,label = "johns", fig.cap = "Scatterplot of `totalprice` versus `area` with points colored according to the number of bathrooms --- the purple line is the least squares line fit to apartments with one toilet, the dark red line is the least squares line fit to apartments with two toilets, and the dashed blue line is the least squares line for all apartments"}
+ggplot(data = VIT2005, aes(x = area, y = totalprice, color = as.factor(toilets))) + 
+  geom_point(alpha = 0.5) + 
+  theme_bw() + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_smooth(method = "lm", aes(group = 1), se = FALSE, linetype = "dashed") +
+  labs(color = "Number of\n Toilets") + 
+  scale_color_manual(values = c("purple", "darkred")) +
+  labs(x = "Area (square meters)", y = "Total Price (euros)")
+  
+```
+
+
+
+
+# DataCamp
+
+[DataCamp](https://www.datacamp.com/) had 92 premium content courses as of the time this article was written.  While the premium content courses are not free for general public use, qualified faculty can request access to DataCamp premium content courses for their classes.  The author has used over fifteen of the premium content courses with his students in various classes.  To learn more about academic access to premium content courses see [DataCamp for the Classroom](https://www.datacamp.com/groups/education).  
+
+# RStudio
+
+If you are going to use `RStudio` with a class, many problems can be averted by providing the class access to some form of pre-installed/configured `RStudio`.  There are many ways one can deploy `RStudio`.  The author uses a virtual machine to host RStudio Server Pro where all students have access to `RStudio` via a web browser.  Using RStudio Server Pro places all students in the class on a level playing field assuming the students have internet access.  Faculty can request `RStudio` waive the $10,000/year license fee for the [RStudio Server Pro](https://www.rstudio.com/products/rstudio-server-pro/) when it is used for teaching.  Individuals can also set up there own cloud server for as little as $5/month by following Dean Attali's directions on [How to get your very own RStudio Server and Shiny Server with DigitalOcean](https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/).  
+
+
+## References
