@@ -23,8 +23,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -315,40 +317,41 @@ div.tocify {
 <div id="basic-r" class="section level3">
 <h3>Basic R</h3>
 <ul>
-<li><a href="./rmarkdown/IntroToR.html">Introduction to R</a></li>
-<li><a href="./rmarkdown/RelationalOperators.html">Relational Operators</a></li>
-<li><a href="./rmarkdown/WhileLoop.html">While Loop</a></li>
+<li><p><a href="./rmarkdown/IntroToR.html">Introduction to R</a></p></li>
+<li><p><a href="./rmarkdown/RelationalOperators.html">Relational Operators</a></p></li>
+<li><p><a href="./rmarkdown/WhileLoop.html">While Loop</a></p></li>
 </ul>
 </div>
 <div id="probability" class="section level3">
 <h3>Probability</h3>
 <ul>
-<li><a href="./rmarkdown/probability.html">Gerneral Probability</a></li>
-<li><a href="./rmarkdown/Monty.html">Monty Hall Problem</a></li>
+<li><p><a href="./rmarkdown/probability.html">Gerneral Probability</a></p></li>
+<li><p><a href="./rmarkdown/Monty.html">Monty Hall Problem</a></p></li>
 </ul>
 </div>
 <div id="graphics" class="section level3">
 <h3>Graphics</h3>
 <ul>
-<li><a href="./rmarkdown/NormalGGio.html">Shading Area Under Curve</a></li>
-<li><a href="./rmarkdown/MiscGGPLOT.html">Miscellaneous <code>ggplot</code> Tips</a></li>
+<li><p><a href="./rmarkdown/NormalGGio.html">Shading Area Under Curve</a></p></li>
+<li><p><a href="./rmarkdown/MiscGGPLOT.html">Miscellaneous <code>ggplot</code> Tips</a></p></li>
 </ul>
 </div>
 <div id="tables" class="section level3">
 <h3>Tables</h3>
 <ul>
-<li><a href="./rmarkdown/ContingencyTables.html">Contingency Tables</a></li>
-<li><a href="./rmarkdown/FormattingTables.html">Tables</a></li>
+<li><p><a href="./rmarkdown/ContingencyTables.html">Contingency Tables</a></p></li>
+<li><p><a href="./rmarkdown/FormattingTables.html">Tables</a></p></li>
 </ul>
 </div>
 <div id="misc" class="section level3">
 <h3>Misc</h3>
 <ul>
-<li><a href="https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html">Using Zotero</a></li>
-<li><a href="./rmarkdown/MiscRmarkdown.html">Miscellaneous RMarkdown Tips</a></li>
-<li><a href="./rmarkdown/WebPageHowTo.html">Creating and Publishing a Web Site on GitHub</a></li>
-<li><a href="./rmarkdown/ReactiveProgrammingWeb.html">Demonstrating Changes with Reactive Programming</a></li>
-<li><a href="./rmarkdown/UsingRStudioWeb.html">Using R Markdown with the RStudio Integrated Development Editor</a></li>
+<li><p><a href="https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html">Using Zotero</a></p></li>
+<li><p><a href="./rmarkdown/MiscRmarkdown.html">Miscellaneous RMarkdown Tips</a></p></li>
+<li><p><a href="./rmarkdown/WebPageHowTo.html">Creating and Publishing a Web Site on GitHub</a></p></li>
+<li><p><a href="./rmarkdown/ReactiveProgrammingWeb.html">Demonstrating Changes with Reactive Programming</a></p></li>
+<li><p><a href="./rmarkdown/UsingRStudioWeb.html">Using R Markdown with the RStudio Integrated Development Editor</a></p></li>
+<li><p><a href="./rmarkdown/IntroductionToUsingR.html">Using <code>R</code> with the <code>RStudio</code> Integrated Development Editor — Ideas, Pointers, and Teasers</a></p></li>
 </ul>
 <hr />
 </div>

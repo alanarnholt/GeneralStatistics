@@ -8,27 +8,39 @@ output:
 ---
 ### Basic R
 * [Introduction to R](./rmarkdown/IntroToR.html)
+
 * [Relational Operators](./rmarkdown/RelationalOperators.html)
+
 * [While Loop](./rmarkdown/WhileLoop.html)
 
 ### Probability
 * [Gerneral Probability](./rmarkdown/probability.html)
+
 * [Monty Hall Problem](./rmarkdown/Monty.html)
 
 ### Graphics
 * [Shading Area Under Curve](./rmarkdown/NormalGGio.html)
+
 * [Miscellaneous `ggplot` Tips](./rmarkdown/MiscGGPLOT.html)
 
 ### Tables
 * [Contingency Tables](./rmarkdown/ContingencyTables.html)
+
 * [Tables](./rmarkdown/FormattingTables.html)
 
 ### Misc
 * [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
+
 * [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
+
 * [Creating and Publishing a Web Site on GitHub](./rmarkdown/WebPageHowTo.html)
+
 * [Demonstrating Changes with Reactive Programming](./rmarkdown/ReactiveProgrammingWeb.html)
+
 * [Using R Markdown with the RStudio Integrated Development Editor](./rmarkdown/UsingRStudioWeb.html)
+
+* [Using `R` with the `RStudio` Integrated Development Editor --- Ideas, Pointers, and Teasers](./rmarkdown/IntroductionToUsingR.html)
+
 
 
 
