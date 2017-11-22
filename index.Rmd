@@ -6,8 +6,8 @@ output:
     toc_float:
       collapsed: false
 ---
-### Basic R
-* [Introduction to R](./rmarkdown/IntroToR.html)
+### Basic `R`
+* [Introduction to `R`](./rmarkdown/IntroToR.html)
 
 * [Relational Operators](./rmarkdown/RelationalOperators.html)
 
@@ -31,7 +31,7 @@ output:
 ### Misc
 * [Using Zotero](https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html)
 
-* [Miscellaneous RMarkdown Tips](./rmarkdown/MiscRmarkdown.html)
+* [Miscellaneous R Markdown Tips](./rmarkdown/MiscRmarkdown.html)
 
 * [Creating and Publishing a Web Site on GitHub](./rmarkdown/WebPageHowTo.html)
 
