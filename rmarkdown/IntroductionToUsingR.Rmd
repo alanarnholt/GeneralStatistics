@@ -46,7 +46,7 @@ Basic arithmetic may be performed at the `R` command prompt much like using a ca
 2 * pi        # 2 times Pi  
 ```
 
-There are thousands of mathematical and statistical functions available in `R`.  A few `R` functions which all work in a similar fashion by including arguments inside parentheses are shown below.
+There are thousands of mathematical and statistical functions available in `R`.  A few `R` functions that all work in a similar fashion by including arguments inside parentheses are shown below.
 
 ```{r, label = "Rfunctions"}
 sqrt(49)    # square root of 49
@@ -69,7 +69,7 @@ f(x) =
 (\#eq:exp)
 \end{equation}
 
-is used to numerically compute the expected value and the variance of $X$.  The expected value of a continuous random variable $X$ is defined as
+is used to compute numerically the expected value and the variance of $X$.  The expected value of a continuous random variable $X$ is defined as
 
 $$E(X) = \int_{-\infty}^{\infty}x\cdot f(x)\, dx,$$
 while the variance of a random variable $X$ is defined as
@@ -77,7 +77,7 @@ while the variance of a random variable $X$ is defined as
 $$\text{Var}(X) = \int_{-\infty}^{\infty}(x - \mu_X)^2 \cdot f(x)\, dx.$$
 
 
-The `integrate()` function is used to first verify the function `f` is a valid probability density function.  To create a function in `R`, provide a name (`f` in the example below) for the function, use the keyword `function(x)`  then define the function inside curly braces (`{}`).  To learn more about writing functions, consider the DataCamp course [Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r).
+The `integrate()` function is used first to verify the function `f` is a valid probability density function.  To create a function in `R`, provide a name (`f` in the example below) for the function, use the keyword `function(x)`,  then define the function inside curly braces (`{}`).  To learn more about writing functions, consider the DataCamp course [Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r).
 
 ```{r, label = "func"}
 f <- function(x){1/10*exp(-x/10)}
@@ -112,7 +112,7 @@ a2 <- pexp(2, 1/10) - pexp(1, 1/10)
 a2
 ```
 
-$$\int_1^2\tfrac{1}{10}e^{\tfrac{x}{10}} = `r a2`$$
+$$\int_1^2\tfrac{1}{10}e^{-\tfrac{x}{10}} = `r a2`$$
 
 
 ## Data
@@ -127,7 +127,7 @@ IQR(weight)                      # Interquartile range of weight
 fivenum(weight)                  # Tukey five number summary
 ```
 
-To reduce the chance of a typographical error, it is best to use data that has already been recorded.  `R` has a numerous data sets that may be accessed. To see a list of data sets available type `data()` at the `R` prompt.  Rectangular data where the variables are possibly different data types are stored in a structure known as a data frame.  Consider the data frame `ChickWeight`.
+To reduce the chance of a typographical error, it is best to use data that has already been recorded.  `R` has a numerous data sets that may be accessed. To see a list of data sets available type `data()` at the `R` prompt.  Rectangular data, where the variables are possibly different data types, is stored in a structure known as a data frame.  Consider the data frame `ChickWeight`.
 
 ```{r}
 head(ChickWeight)      # Show the first 6 rows of ChickWeight
@@ -135,7 +135,7 @@ str(ChickWeight)       # Show structure of ChickWeight
 summary(ChickWeight)   # Compute summary of ChickWeight
 ```
 
-To read data from an external file consider using `read.table()` or one of its wrappers.  In the next example, the function `read.csv()` a wrapper for `read.table()` when reading comma separated files is used to read a `*.csv` file from a URL.
+To read data from an external file, consider using `read.table()` or one of its wrappers.  In the next example, the function `read.csv()`, a wrapper for `read.table()` when reading comma separated files, is used to read a `*.csv` file from a URL.
 
 ```{r}
 BW <- read.csv("http://www1.appstate.edu/~arnholta/Data/Beerwings.csv")
@@ -146,7 +146,7 @@ To learn more about importing data into `R` with other file types, consider taki
 
 # Exploratory Data Analysis
 
-In this example, consider the data stored in the data frame `ChickWeight` which records the weight, time, chick, and diet from an experiment on early growth of chicks.  What does the distribution of `weight` look like?  Does diet play a role in weight gain?  The package `ggplot2` (@R-ggplot2) is used to create side by side boxplots of weight by diet (See Figure \@ref(fig:boxplot)).  To learn more about using `ggplot2`, consider the DataCamp course [Data Visualization with ggplot2](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1).  Note that the boxplot for Diet 1 is noticeably wider than the other boxplots because there are more chicks in Diet 1 than the other Diets (See Table \@ref(tab:SS)).
+In this example, consider the data stored in the data frame `ChickWeight` that records the weight, time, chick, and diet from an experiment on early growth of chicks.  What does the distribution of `weight` look like?  Does diet play a role in weight gain?  The package `ggplot2` (@R-ggplot2) is used to create side by side boxplots of weight by diet (See Figure \@ref(fig:boxplot)).  To learn more about using `ggplot2`, consider the DataCamp course [Data Visualization with ggplot2](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1).  Note that the boxplot for Diet 1 is noticeably wider than the other boxplots because there are more chicks in Diet 1 than the other Diets (See Table \@ref(tab:SS)).
 
 ```{r, label = "boxplot", fig.cap = "Boxplot of weight gain by diet"}
 library(tidyverse)  # load tidyverse collection of packages
@@ -184,7 +184,7 @@ knitr::kable(CW, caption = "Summary statistics of `weight` grouped by `Diet`")
 
 # Simple Linear Regression
 
-Consider the data frame `VIT2005` from the `R` package `PASWR2` by @R-PASWR2.  The package `PASWR2` must be installed before it can be loaded.  To install `PASWR2` type `install.packages("PASWR2")` at the `R` prompt.  To load a package use the command `library(PackageName)`.  You only need to install a package once; but, the package must be loaded each `R` session to access functions and data sets in the package.  The data frame `VIT2005` has values for several variables including total price in euros (`totalprice`) and area in square meters (`area`) for apartments in Vittoria, Spain.  The code below creates the scatter plot of `totalprice` versus `area` and superimposes a least squares line over the points as shown in Figure \@ref(fig:SP1).
+Consider the data frame `VIT2005` from the `R` package `PASWR2` by @R-PASWR2.  The package `PASWR2` must be installed before it can be loaded.  To install `PASWR2`, type `install.packages("PASWR2")` at the `R` prompt.  To load a package, use the command `library(PackageName)`.  You only need to install a package once; but, the package must be loaded each `R` session to access functions and data sets in the package.  The data frame `VIT2005` has values for several variables including total price in euros (`totalprice`) and area in square meters (`area`) for apartments in Vittoria, Spain.  The code below creates the scatter plot of `totalprice` versus `area` and superimposes a least squares line over the points as shown in Figure \@ref(fig:SP1).
 
 ```{r, label = "SP1", fig.cap = "Scatterplot of `totalprice` versus `area`"}
 library(PASWR2)
@@ -207,7 +207,7 @@ knitr::kable(summary(slr_mod)$coef, caption = "Coefficients from regressing `tot
 
 The code below creates a scatterplot of `totalprice` versus `area` while mapping the variable `toilets` to the color aesthetic.  Figure \@ref(fig:johns) shows the resulting scatterplot along with three different least squares lines. 
 
-```{r,label = "johns", fig.cap = "Scatterplot of `totalprice` versus `area` with points colored according to the number of bathrooms --- the purple line is the least squares line fit to apartments with one toilet, the dark red line is the least squares line fit to apartments with two toilets, and the dashed blue line is the least squares line for all apartments"}
+```{r,label = "johns", fig.cap = "Scatterplot of `totalprice` versus `area` with points colored according to the number of bathrooms --- the purple line is the least squares line fit to apartments with one toilet; the dark red line is the least squares line fit to apartments with two toilets; and the dashed blue line is the least squares line for all apartments"}
 ggplot(data = VIT2005, aes(x = area, y = totalprice, color = as.factor(toilets))) + 
   geom_point(alpha = 0.5) + 
   theme_bw() + 
@@ -228,7 +228,7 @@ ggplot(data = VIT2005, aes(x = area, y = totalprice, color = as.factor(toilets))
 
 # RStudio
 
-If you are going to use `RStudio` with a class, many problems can be averted by providing the class access to some form of pre-installed/configured `RStudio`.  There are many ways one can deploy `RStudio`.  The author uses a virtual machine to host RStudio Server Pro where all students have access to `RStudio` via a web browser.  Using RStudio Server Pro places all students in the class on a level playing field assuming the students have internet access.  Faculty can request `RStudio` waive the $10,000/year license fee for the [RStudio Server Pro](https://www.rstudio.com/products/rstudio-server-pro/) when it is used for teaching.  Individuals can also set up there own cloud server for as little as $5/month by following Dean Attali's directions on [How to get your very own RStudio Server and Shiny Server with DigitalOcean](https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/).  
+If you are going to use `RStudio` with a class, many problems can be averted by providing the class access to some form of pre-installed/configured `RStudio`.  There are many ways one can deploy `RStudio`.  The author uses a virtual machine to host RStudio Server Pro where all students have access to `RStudio` via a web browser.  Using RStudio Server Pro places all students in the class on a level playing field, assuming the students have internet access.  Faculty can request `RStudio` waive the $10,000/year license fee for the [RStudio Server Pro](https://www.rstudio.com/products/rstudio-server-pro/) when it is used for teaching.  Individuals can also set up their own cloud server for as little as $5/month by following Dean Attali's directions on [How to get your very own RStudio Server and Shiny Server with DigitalOcean](https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/).  
 
 
 ## References
