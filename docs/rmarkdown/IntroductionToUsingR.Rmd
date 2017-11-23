@@ -102,7 +102,7 @@ VX
 
 $$\text{Var}(X) = \int_{0}^{\infty}(x - 10)^2 \cdot \tfrac{1}{10}e^{-\tfrac{x}{10}} \, dx = `r integrate(vx, 0, Inf)$value`$$
 
-**Note:** `R` has already defined the exponential probability density function (`dexp`). The function `f` was used to show the reader how to define a function. If one is actually working with an Exponential probability density function, it is best to use the functions `R` has already defined.
+**Note:** `R` has already defined the exponential probability density function (`dexp`). The function `f` was used to show the reader how to define a function. If one is actually working with an exponential probability density function, it is best to use the functions `R` has already defined.
 
 ```{r}
 integrate(dexp, rate= 1/10, lower = 0, upper = Inf)  # show valid pdf
