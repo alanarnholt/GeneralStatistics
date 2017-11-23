@@ -189,7 +189,7 @@ f(x) =
 &gt; VX</code></pre>
 <pre><code>[1] 100</code></pre>
 <p><span class="math display">\[\text{Var}(X) = \int_{0}^{\infty}(x - 10)^2 \cdot \tfrac{1}{10}e^{-\tfrac{x}{10}} \, dx = 100\]</span></p>
-<p><strong>Note:</strong> <code>R</code> has already defined the exponential probability density function (<code>dexp</code>). The function <code>f</code> was used to show the reader how to define a function. If one is actually working with an Exponential probability density function, it is best to use the functions <code>R</code> has already defined.</p>
+<p><strong>Note:</strong> <code>R</code> has already defined the exponential probability density function (<code>dexp</code>). The function <code>f</code> was used to show the reader how to define a function. If one is actually working with an exponential probability density function, it is best to use the functions <code>R</code> has already defined.</p>
 <pre class="r"><code>&gt; integrate(dexp, rate= 1/10, lower = 0, upper = Inf)  # show valid pdf</code></pre>
 <pre><code>1 with absolute error &lt; 0.00011</code></pre>
 <pre class="r"><code>&gt; integrate(dexp, rate = 1/10, 1, 2)    # P(1 &lt; X &lt; 2)</code></pre>
