@@ -1,0 +1,103 @@
+---
+title: "Using R Markdown with the RStudio Integrated Development Editor"
+date: 'Last compiled: `r format(Sys.time(), "%b %d, %Y")`'
+author: 'Alan T. Arnholt'
+output: 
+  bookdown::html_document2
+bibliography: ["packages.bib", "rstudio.bib"]  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+
+# Introduction
+
+R Markdown is an extension of Markdown (https://daringfireball.net/) that is used inside of R by loading the **rmarkdown** package written by @R-rmarkdown.  R Markdown supports several static and dynamic (program code and narrative) output formats including:
+
+ * [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
+ * [PDF](http://rmarkdown.rstudio.com/pdf_document_format.html)
+ * [MS Word](http://rmarkdown.rstudio.com/word_document_format.html)
+ * [Beamer](http://rmarkdown.rstudio.com/beamer_presentation_format.html)
+ * [HTML5 slides](http://rmarkdown.rstudio.com/ioslides_presentation_format.html)
+ * [Tufte-style handouts](http://rmarkdown.rstudio.com/tufte_handout_format.html)
+ * [books](https://bookdown.org/)
+ * [dashboards](http://rmarkdown.rstudio.com/flexdashboard/)
+ * [shiny applications](http://rmarkdown.rstudio.com/authoring_shiny.html)
+ * [scientific articles](https://github.com/rstudio/rticles)
+ * [websites](http://rmarkdown.rstudio.com/rmarkdown_websites.html)
+
+For more information on R Markdown output formats please see http://rmarkdown.rstudio.com/.  This article will focus on the benefits a high school mathematics instructor will realize from using R Markdown and the creation of documents one might use in a high school mathematics course.  R [@R-base] and RStudio [@R-RStudio] and LaTeX are all open source software projects which means there is no cost to download and to install them on your personal machine.  
+
+# Benefits of using [R Markdown](http://rmarkdown.rstudio.com/)
+
+An immediate benefit of using R Markdown is the easy creation of professional documents from simple text files.  Since R Markdown uses text files, the user's workflow is recordable and can be easily maintained with a form of version control such as Git (https://git-scm.com/) on a platform such as GitHub (https://github.com/) or Bitbucket (https://bitbucket.org/product), both of which offer unlimited free public repositories.  The number of R Markdown commands (less than 20) one needs to control the appearance of a document and the ease of using the commands is a huge selling point.  RStudio  has a quick reference guide the user can view in the right pane of editor by clicking **Help > Markdown Quick Reference** (See Figure \@ref(fig:markdownqr)).  RStudio also maintains a two page **R Markdown Cheat Sheet** at https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf that discusses the YAML header, important code chunk options, and many other useful tidbits.  For a mathematics instructor, one of the greatest advantages of using R Markdown is that mathematical symbols and equations can be inserted using standard LaTeX without having to spend an inordinate amount of time specifying a front matter as is typical when using LaTeX alone.  R Markdown documents are dynamic, meaning program code and text narrative are in the same document so analysis/computing and writing stay together.  The user may choose whether to display or hide the computer code by using code chunks with appropriate options.
+
+```{r, label = "markdownqr", echo = FALSE, fig.cap = "Markdown Quick Reference help displayed in the right pane of the RStudio IDE", fig.align = "center"}
+knitr::include_graphics("./images/markdownqr.png", dpi = 150)
+```
+
+# A Minimal Example
+
+The following source code is used to create Figures \@ref(fig:HTMLME) and \@ref(fig:PDFME).  The source code illustrates a LaTeX environment (align), several R code chunk options, R code to draw and compute the roots of a polynomial, and inline R code that extracts answers from R code and weaves the result into the text.  The YAML written between lines of `---`, has only one **key:value** pair `title: "A Minimal Example"`.  Inline mathematics is written between single dollar signs (`$`) and display mathematics is written between double dollar signs (`$$`).  More complex LaTeX environments for HTML and PDF documents are specified in the same fashion as one would use when writing with LaTeX.  There are many free online references for using LaTeX such as https://en.wikibooks.org/wiki/LaTeX/Mathematics.  Equations, theorems, figures, and tables can all be cross-referenced using the **bookdown** package by @R-bookdown, which is built on top of R Markdown.  While the source code for **A Minimal Example** does not use numbered equations or figures, the interested reader can refer to the documentation at https://bookdown.org/yihui/bookdown/ for examples on how to number and cross-reference equations, theorems, figures, and tables.   
+
+````markdown
+---
+title: "A Minimal Example"
+---
+
+Solve $6x^2=3x$ by factoring.
+
+\begin{align*}
+6x^2 &= 3x\\
+6x^2 - 3x &= 0\\
+3x(2x - 1) &=0\\
+3x & =0 \Longrightarrow x = 0\\
+2x - 1&= 0 \Longrightarrow x = \tfrac{1}{2}\\
+\end{align*}
+
+`r ''````{r, fig.align = "center", fig.width = 4, fig.height = 4, comment = NA}
+f <- function(x){6*x^2 - 3*x}          # define function f
+curve(f, from = - 0.25, to = 0.75)     # graph function f
+abline(a = 0, b = 0, lty = "dashed")   # add dashed horizontal line
+polyroot(c(0, -3, 6))                  # finding the roots with polyroot()
+Re(polyroot(c(0, -3, 6)))              # Real roots
+```
+
+The real roots of $6x^2=3x$ are ``r ''`r Re(polyroot(c(0, -3, 6))[1])` and ``r ''`r Re(polyroot(c(0, -3, 6))[2])`. 
+````
+
+
+```{r, label = "HTMLME", echo = FALSE, fig.align = "center", fig.cap = "HTML output"}
+knitr::include_graphics("./images/HTMLME.png", dpi = 96)
+```
+
+```{r, label = "PDFME", echo = FALSE, fig.align = "center", fig.cap = "PDF output (LaTeX)"}
+knitr::include_graphics("./images/PDFME.png", dpi = 96)
+```
+
+Source code is written the top left pane of the RStudio IDE (See Figure \@ref(fig:ide)).  To start a new R Markdown file, click *File > New File > R Markdown...*.  To compile the document, click the Knit Button.
+
+```{r, label = "ide", echo = FALSE, fig.align = "center", fig.cap = "RStudio Integrated Development Environment"}
+knitr::include_graphics("./images/ide.png", dpi = 250)
+```
+
+# Downloading and Installing R, RStudio, and LaTeX
+
+R, RStudio, and LaTeX run on a wide variety of UNIX platforms, Windows, and MacOS.  To download R, point your browser to https://cloud.r-project.org/, and select one of the precompiled binary distributions that matches your computer's operating system. To download RStudio, point your browser to https://www.rstudio.com/products/rstudio/download/, and select the installer that matches your computer's operating system. Install both the downloaded files.  For the more adventurous user, it is possible to create your own RStudio server by following the directions Dean Attali has posted at http://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/.  TeX live (http://www.tug.org/texlive/) is a major TeX distribution for Linux, Windows, and MacOS; however, if you are using Windows, many users prefer MikTeX (https://miktex.org/) and if you are using MacOS most users install MacTeX (http://www.tug.org/mactex/).  Follow the directions provided on the operating system's specific web sites for installing LaTeX.  The author recommends performing a complete LaTeX installation.     
+
+# Additional Resources
+
+If one is new to R, DataCamp (https://www.datacamp.com/) offers both free and premium content courses on a wide variety of R topics.  One can find RStudio maintained Cheat Sheets for many topics as well as user contributed Cheat Sheets at https://www.rstudio.com/resources/cheatsheets/. The article [Using `R` with the `RStudio` Integrated Development Editor - Ideas, Pointers, and Teasers](https://alanarnholt.github.io/GeneralStatistics/rmarkdown/IntroductionToUsingR.html) (https://alanarnholt.github.io/GeneralStatistics/rmarkdown/IntroductionToUsingR.html) may provide the reader with additonal resources and ideas for using `R` with `RStudio`. 
+
+```{r, echo = FALSE, results = "hide"}
+PackagesUsed <- c("ggplot2", "bookdown", "rmarkdown", "base")
+# Write bib information
+knitr::write_bib(PackagesUsed, file = "./packages.bib")
+# Load packages
+lapply(PackagesUsed, library, character.only = TRUE)
+```
+
+## References
+
