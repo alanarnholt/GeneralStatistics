@@ -34,3 +34,7 @@ hist(junk, col = "lightblue", breaks = "scott", main = "", xlab = "")
 Look at Figure \@ref(fig:HIS) which has a mean of `r mean(junk)` and a standard deviation of `r sd(junk)`.^[The mean and standard deviation of `junk` are computed using inline `R` code.]
 
 To include literal backticks, use more backticks outside, e.g., you can use two backticks to preserve one backtick inside: ``` `` `code` `` ```.^[The inline `R` code to compute the mean and standard deviation of `junk` are written `` ``r ''`r mean(junk)` ``, and  `` ``r ''`r sd(junk)` ``.]
+
+* * *
+
+When in doubt, read [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)!
