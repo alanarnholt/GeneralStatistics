@@ -41,7 +41,7 @@ output:
 
 * [Using `R` with the `RStudio` Integrated Development Editor --- Ideas, Pointers, and Teasers](./rmarkdown/IntroductionToUsingR.html)
 
-
+* [Behind the Curtain](./rmarkdown/BehindTheCurtain.html)
 
 
 

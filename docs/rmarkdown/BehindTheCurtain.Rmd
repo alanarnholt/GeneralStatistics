@@ -1,0 +1,36 @@
+---
+title: "Behind the Curtain"
+author: "Alan T. Arnholt"
+date: 'Last knit on `r format(Sys.time(), "%B %d, %Y at %X")`'
+output: 
+  bookdown::html_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA, fig.align = 'center', fig.height = 5, fig.width = 5, 
+                      prompt = TRUE, highlight = TRUE, tidy = FALSE, warning = FALSE, 
+                      message = FALSE)
+```
+
+# Showing Code Chunks^[This is a footnote for Section \@ref(SCC)]{#SCC} 
+
+
+````markdown
+`r ''````{r, label = "SETUP", echo = FALSE, results= 'hide', message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(comment = NA, fig.align = 'center', fig.height = 5, fig.width = 5, 
+                      prompt = TRUE, highlight = TRUE, tidy = FALSE, warning = FALSE, 
+                      message = FALSE)
+```
+````
+
+## Subsection (Second level header)^[See the [RStudio Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)]{#SLH}
+
+```{r, label = "HIS", fig.cap = "Histogram of randomly generated data"}
+set.seed(123)
+junk <- rnorm(10000, 100, 10)
+hist(junk, col = "lightblue", breaks = "scott", main = "", xlab = "")
+```
+
+Look at Figure \@ref(fig:HIS) which has a mean of `r mean(junk)` and a standard deviation of `r sd(junk)`.^[The mean and standard deviation of `junk` are computed using inline `R` code.]
+
+To include literal backticks, use more backticks outside, e.g., you can use two backticks to preserve one backtick inside: ``` `` `code` `` ```.^[The inline `R` code to compute the mean and standard deviation of `junk` are written `` ``r ''`r mean(junk)` ``, and  `` ``r ''`r sd(junk)` ``.]
