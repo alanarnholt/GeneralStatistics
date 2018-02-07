@@ -38,3 +38,5 @@ To include literal backticks, use more backticks outside, e.g., you can use two 
 * * *
 
 When in doubt, read [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)!
+
+Click [here](https://raw.githubusercontent.com/alanarnholt/GeneralStatistics/master/rmarkdown/BehindTheCurtain.Rmd) for the source code for this document.
