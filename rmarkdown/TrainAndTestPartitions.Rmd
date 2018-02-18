@@ -181,8 +181,8 @@ summary(model)
 
 ## GLMNET
 
-* `alpha = 0` -> lasso
-* `alpha = 1` -> ridge
+* `alpha = 0` -> ridge
+* `alpha = 1` -> lasso
 
 ```{r}
 # Create custom trainControl: myControl
@@ -243,4 +243,56 @@ plot(model$finalModel)
 coef(model$finalModel, model$bestTune$lambda) 
 ```
 
+## Working with ISLR data
 
+### First Ridge
+
+```{r}
+library(ISLR)
+library(caret)
+Hitters <- na.omit(Hitters)
+summary(Hitters)
+dim(Hitters)
+#
+set.seed(1)
+myControl <- trainControl(
+  method = "cv", 
+  number = 5
+)
+hit.model <- train(
+  Salary ~ ., data = Hitters,
+  tuneGrid = expand.grid(alpha = 0, lambda = 10^seq(10, -2, length = 100)),
+  method = "glmnet",
+  trControl = myControl
+)
+hit.model
+plot(hit.model)
+coef(hit.model$finalModel, hit.model$bestTune$lambda) 
+hit.model$bestTune$lambda
+coef(hit.model$finalModel, s = 11498)
+coef(hit.model$finalModel, s = 0) 
+```
+
+### Next Lasso
+
+```{r}
+set.seed(14)
+library(ISLR)
+library(caret)
+Hitters <- na.omit(Hitters)
+summary(Hitters)
+#
+myControl <- trainControl(
+  method = "cv", 
+  number = 10
+)
+hit.model <- train(
+  Salary ~ ., data = Hitters,
+  tuneGrid = expand.grid(alpha = 1, lambda = 10^seq(10, -2, length = 100)),
+  method = "glmnet",
+  trControl = myControl
+)
+hit.model
+plot(hit.model)
+coef(hit.model$finalModel, hit.model$bestTune$lambda) 
+```
