@@ -11,62 +11,62 @@ knitr::opts_chunk$set(comment = NA, fig.align = 'center', fig.height = 5, fig.wi
                       prompt = TRUE, highlight = TRUE, tidy = FALSE, warning = FALSE, 
                       message = FALSE)
 library(mdsr)
-HELPrct <- na.omit(HELPrct)
+HELP <- na.omit(HELPrct)
 ```
 
 # Partitions
 
 When building a model used for prediction, one measure of the model's usefulness is how well it performs on unseen (future) data.  One method to evaluate a model on unseen data is to partition the data into a *`training set`* and a *`testing set`*.  The *`training set`* is the data set one uses to build the model.  The *`test set`* is the data one uses to evaluate the model's predictions.  Three approaches are used to create a *`training set`* and a *`test set`*.
 
-The data set `HELPrct` after removing rows with missing values from the `mdsr` package is used to illustrate the three approaches with a 70/30 split of values.  That is, roughly 70% of the values will be used for the *`training set`* and the remainder will be used for the *`test set`*.  Note that there are `r nrow(HELPrct)` rows of data in `HELPrct` with complete information (no missing values), so a 70/30 split should result in roughly $`r nrow(HELPrct)`\times 0.70 \approx `r round(nrow(HELPrct)*.7,0)`$ values in the *`training set`* and the remaining `r nrow(HELPrct) - round(nrow(HELPrct)*.7,0)` values in the *`test set`*. 
+The data set `HELPrct` after removing rows with missing values from the `mdsr` package is used to illustrate the three approaches with a 70/30 split of values.  That is, roughly 70% of the values will be used for the *`training set`* and the remainder will be used for the *`test set`*.  Note that there are `r nrow(HELP)` rows of data in `HELPrct` with complete information (no missing values), so a 70/30 split should result in roughly $`r nrow(HELP)`\times 0.70 \approx `r round(nrow(HELP)*.7,0)`$ values in the *`training set`* and the remaining `r nrow(HELP) - round(nrow(HELP)*.7,0)` values in the *`test set`*. 
 
 * Using the `sample()` function (method 1):
 
 ```{r}
 library(mdsr)
-HELPrct <- na.omit(HELPrct)
+HELP <- na.omit(HELPrct)
 set.seed(123)
-trainIndex1 <- sample(x = c(TRUE, FALSE), size = nrow(HELPrct), replace = TRUE, prob = c(0.7, 0.3))
+trainIndex1 <- sample(x = c(TRUE, FALSE), size = nrow(HELP), replace = TRUE, prob = c(0.7, 0.3))
 testIndex1 <- (!trainIndex1)
-trainData1 <- HELPrct[trainIndex1, ]
-testData1 <- HELPrct[testIndex1, ]
-dim(HELPrct)
+trainData1 <- HELP[trainIndex1, ]
+testData1 <- HELP[testIndex1, ]
+dim(HELP)
 dim(trainData1)
 dim(testData1)
 # Train Fraction
-dim(trainData1)[1]/dim(HELPrct)[1]
+dim(trainData1)[1]/dim(HELP)[1]
 # Test Fraction
-dim(testData1)[1]/dim(HELPrct)[1]
+dim(testData1)[1]/dim(HELP)[1]
 ```
 
 * Using the `sample()` function (method 2):
 
 ```{r}
 set.seed(123)
-trainIndex2 <- sample(x = 1:nrow(HELPrct), size = round(0.70*nrow(HELPrct), 0), replace = FALSE)
-trainData2 <- HELPrct[trainIndex2, ]
-testData2 <- HELPrct[-trainIndex2, ]
+trainIndex2 <- sample(x = 1:nrow(HELP), size = round(0.70*nrow(HELP), 0), replace = FALSE)
+trainData2 <- HELP[trainIndex2, ]
+testData2 <- HELP[-trainIndex2, ]
 dim(trainData2)
 dim(testData2)
 # Train Fraction
-dim(trainData2)[1]/dim(HELPrct)[1]
+dim(trainData2)[1]/dim(HELP)[1]
 # Test Fraction
-dim(testData2)[1]/dim(HELPrct)[1]
+dim(testData2)[1]/dim(HELP)[1]
 ```
 
 * Using `runif()`:
 
 ```{r}
 set.seed(123)
-HELPrct$Partition <- runif(dim(HELPrct)[1])
-trainData3 <- subset(HELPrct, HELPrct$Partition > 0.3)
-testData3 <- subset(HELPrct, HELPrct$Partition <= 0.3)
+HELP$Partition <- runif(dim(HELP)[1])
+trainData3 <- subset(HELP, HELP$Partition > 0.3)
+testData3 <- subset(HELP, HELP$Partition <= 0.3)
 dim(trainData3)
 dim(testData3)
 # Train Fraction
-dim(trainData3)[1]/dim(HELPrct)[1]
+dim(trainData3)[1]/dim(HELP)[1]
 # Test Fraction
-dim(testData3)[1]/dim(HELPrct)[1]
+dim(testData3)[1]/dim(HELP)[1]
 ```
 
 * Using the `createDataPartition` from the `caret` package:
@@ -77,14 +77,14 @@ set.seed(123)
 trainIndex4 <- createDataPartition(y = HELPrct$homeless, p = .7, 
                                   list = FALSE, 
                                   times = 1)
-trainData4 <- HELPrct[trainIndex4, ]
-testData4 <- HELPrct[-trainIndex4, ]
+trainData4 <- HELP[trainIndex4, ]
+testData4 <- HELP[-trainIndex4, ]
 dim(trainData4)
 dim(testData4)
 # Train Fraction
-dim(trainData4)[1]/dim(HELPrct)[1]
+dim(trainData4)[1]/dim(HELP)[1]
 # Test Fraction
-dim(testData4)[1]/dim(HELPrct)[1]
+dim(testData4)[1]/dim(HELP)[1]
 ```
 
 **Note:**  When the `y` argument to `createDataPartition` is a factor, the random sampling occurs within each class and should preserve the overall class distribution of the data. 
@@ -132,3 +132,115 @@ Accuracy
 confusionMatrix(data = pred, reference = testData4$homeless)
 ```
 See [Confusion Matrix](https://en.wikipedia.org/wiki/Confusion_matrix) on Wikipedia.
+
+## ROC 
+
+An ROC curve is a really useful shortcut for summarizing the performance of a classifier over all possible thresholds. This saves one a lot of tedious work computing class predictions for many different thresholds and examining the confusion matrix for each threshold.
+
+### AUC (Area Under the Curve)
+
+* Single-number summary of model accuracy
+* Summarizes performance accross all thresholds
+* Rank different models within the same dataset
+
+```{r}
+library(caTools)
+colAUC(PM, testData4$homeless, plotROC = TRUE)
+```
+
+An AUC of 0.5 is no better than random guessing, an AUC of 1.0 is a perfectly predictive model, and an AUC of 0.0 is perfectly anti-predictive (which rarely happens).  One can use the `trainControl()` function in `caret` to use AUC (instead of acccuracy), to tune the parameters of your models. The `twoClassSummary()` convenience function allows one to do this easily.
+
+When using `twoClassSummary()`, be sure to always include the argument `classProbs = TRUE` or your model will throw an error! (You cannot calculate AUC with just class predictions. You need to have class probabilities as well.)
+
+```{r}
+# Create trainControl object: myControl
+myControl <- trainControl(
+  method = "cv",
+  number = 10,
+  summaryFunction = twoClassSummary,
+  classProbs = TRUE, # IMPORTANT!
+  verboseIter = TRUE
+)
+#
+# Train glm with custom trainControl: model
+model <- train(homeless ~ i1 + sex + g1b + pss_fr + dayslink + sexrisk, data = HELP, method = "glm",
+               trControl = myControl)
+
+# Print model to console
+model
+summary(model)
+#####
+# Train glm with custom trainControl: model
+model <- train(homeless ~ ., data = HELP, method = "glm",
+               trControl = myControl)
+
+# Print model to console
+model
+summary(model)
+```
+
+## GLMNET
+
+* `alpha = 0` -> lasso
+* `alpha = 1` -> ridge
+
+```{r}
+# Create custom trainControl: myControl
+myControl <- trainControl(
+  method = "cv", number = 10,
+  summaryFunction = twoClassSummary,
+  classProbs = TRUE, # IMPORTANT!
+  verboseIter = TRUE
+)
+# Train glmnet with custom trainControl and tuning: model
+model <- train(
+  homeless ~ ., HELP,
+  tuneGrid = expand.grid(alpha  = 0:1, lambda = seq(0.0001, 4, length = 20)),
+  method = "glmnet",
+  trControl = myControl
+)
+
+# Print model to console
+model
+
+# Print maximum ROC statistic
+max(model[["results"]][["ROC"]])
+plot(model)
+```
+
+### Median Imputation
+
+
+```{r, label = "MedImp"}
+# Create custom trainControl: myControl
+myControl <- trainControl(
+  method = "cv", number = 10,
+  summaryFunction = twoClassSummary,
+  classProbs = TRUE, # IMPORTANT!
+  verboseIter = TRUE
+)
+
+# Train glmnet with custom trainControl and tuning: model
+
+model <- train(
+  homeless ~ ., data = HELPrct, 
+  tuneGrid = expand.grid(alpha  = 0:1, lambda = seq(0.0001, 10, length = 20)),
+  method = "glmnet",
+  metric = "ROC",
+  trControl = myControl,
+  preProcess = c("medianImpute", "center", "scale"),
+  na.action = na.omit
+)
+
+# Print model to console
+model
+
+# Print maximum ROC statistic
+max(model[["results"]][["ROC"]])
+plot(model)
+plot(model$finalModel)
+# getting coefficients
+coef(model$finalModel, model$bestTune$lambda) 
+```
+
+
