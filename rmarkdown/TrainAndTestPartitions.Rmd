@@ -74,7 +74,7 @@ dim(testData3)[1]/dim(HELP)[1]
 ```{r}
 library(caret)  # load the caret package
 set.seed(123)
-trainIndex4 <- createDataPartition(y = HELPrct$homeless, p = .7, 
+trainIndex4 <- createDataPartition(y = HELP$homeless, p = .7, 
                                   list = FALSE, 
                                   times = 1)
 trainData4 <- HELP[trainIndex4, ]
@@ -122,7 +122,8 @@ null.dev <- summary(testmod)$null.deviance
 null.dev
 PR2 <- 1 - (resid.dev / null.dev)
 PR2 # Pseudo R squared
-PM <- predict(testmod, type = "response")
+#
+PM <- predict(AICmod, newdata = testData4, type = "response")
 pred <- ifelse(PM > 0.5, "homeless", "housed")
 T1 <- table(pred, testData4$homeless)
 T1
@@ -159,25 +160,19 @@ myControl <- trainControl(
   number = 10,
   summaryFunction = twoClassSummary,
   classProbs = TRUE, # IMPORTANT!
-  verboseIter = TRUE
+  verboseIter = FALSE
 )
 #
 # Train glm with custom trainControl: model
-model <- train(homeless ~ i1 + sex + g1b + pss_fr + dayslink + sexrisk, data = HELP, method = "glm",
-               trControl = myControl)
-
-# Print model to console
-model
-summary(model)
-#####
-# Train glm with custom trainControl: model
-model <- train(homeless ~ ., data = HELP, method = "glm",
+model <- train(homeless ~ ., data = trainData4, method = "glmStepAIC",
                trControl = myControl)
 
 # Print model to console
 model
 summary(model)
 ```
+
+
 
 ## GLMNET
 
@@ -208,8 +203,11 @@ max(model[["results"]][["ROC"]])
 plot(model)
 ```
 
-### Median Imputation
+### Imputation
 
+* Median (`medianImpute`)
+* knn (`knnImpute`)
+* bagged tree model (`bagImpute`)
 
 ```{r, label = "MedImp"}
 # Create custom trainControl: myControl
@@ -224,11 +222,11 @@ myControl <- trainControl(
 
 model <- train(
   homeless ~ ., data = HELPrct, 
-  tuneGrid = expand.grid(alpha  = 0:1, lambda = seq(0.0001, 10, length = 20)),
+  tuneGrid = expand.grid(alpha  = 0:1, lambda = seq(0.0001, 100, length = 20)),
   method = "glmnet",
   metric = "ROC",
   trControl = myControl,
-  preProcess = c("medianImpute", "center", "scale"),
+  preProcess = c("knnImpute"),
   na.action = na.omit
 )
 
