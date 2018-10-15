@@ -365,7 +365,7 @@ chisq.test(ONL)$expected
 
 ## Test Statistic
 
-$$TS = \sum_{\text{all cells}}\frac{O - E}{E}$$
+$$TS = \sum_{\text{all cells}}\frac{(O - E)^2}{E}$$
 
 * Create a tidy data set.
 
