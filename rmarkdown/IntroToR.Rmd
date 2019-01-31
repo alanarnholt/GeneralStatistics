@@ -1,5 +1,5 @@
 ---
-title: "Intro to R/Git/R Markdown via RStudio"
+title: "Intro to R via RStudio"
 author: "Alan T. Arnholt"
 date: "1/30/2019"
 output: ioslides_presentation
@@ -59,21 +59,34 @@ Version control gives you a better way to track changes to things like data file
 * Everyone has the most recent version of everything
 
 
-## Slide with Bullets
+## Accessing the ASU RStudio Server
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- Point your browser to <https://mathr.math.appstate.edu>
+- Log in using your ASU username and ASU password
 
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
+```{r, fig.align = "center"}
+knitr::include_graphics("./GIFSPNGS/RStudioLogin.png", dpi = 150)
 ```
 
-## Slide with Plot
 
-```{r pressure}
-plot(pressure)
+## Recommended Global Options
+
+* Never Save workspace to .RData on exit
+
+* Weave Rnw files using **knitr**
+
+* See this [link](https://stat-ata-asu.github.io/STT5812CourseRepo/Rmarkdown/GlobalOptions.html) for more details.
+
+## Your First Project
+
+* Click on `File > New Project... > New Directory > New Project`
+
+```{r, fig.align = "center"}
+knitr::include_graphics("./GIFSPNGS/CreateNewProject.png", dpi = 150)
 ```
+
+* Note: `~/` is your home directory on Linux/Unix
+
+
+
 
