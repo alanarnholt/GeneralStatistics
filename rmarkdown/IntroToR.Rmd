@@ -85,7 +85,7 @@ knitr::include_graphics("./GIFSPNGS/RStudioLogin.png", dpi = 150)
 knitr::include_graphics("./GIFSPNGS/CreateNewProject.png", dpi = 150)
 ```
 
-* Note: `~/` is your home directory on Linux/Unix
+* Note: `~/` is your home directory on Linux/Unix.
 
 
 
