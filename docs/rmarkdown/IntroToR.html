@@ -62,6 +62,10 @@
       font-style: italic;
     }
 
+    summary {
+      display: list-item;
+    }
+
     slides > slide {
       -webkit-transition: all 0.4s ease-in-out;
       -moz-transition: all 0.4s ease-in-out;
@@ -93,11 +97,11 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">Aug 21, 2017</p>
+            <p style="margin-top: 6px; margin-left: -2px;">Jan 31, 2019</p>
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>R as a calculator</h2></hgroup><article  id="r-as-a-calculator">
+<slide class=""><hgroup><h2>R as a calculator</h2></hgroup><article  id="r-as-a-calculator">
 
 <pre class = 'prettyprint lang-r'>&gt; 3 + 3      # addition</pre>
 
@@ -115,7 +119,7 @@
 
 <pre >[1] 12</pre>
 
-</article></slide><slide class=''><hgroup><h2>Comments and variable assignment</h2></hgroup><article  id="comments-and-variable-assignment">
+</article></slide><slide class=""><hgroup><h2>Comments and variable assignment</h2></hgroup><article  id="comments-and-variable-assignment">
 
 <ul>
 <li>R uses <code>#</code> for comments</li>
@@ -133,7 +137,7 @@
 
 <pre >[1] 123</pre>
 
-</article></slide><slide class=''><hgroup><h2>More complex expressions</h2></hgroup><article  id="more-complex-expressions">
+</article></slide><slide class=""><hgroup><h2>More complex expressions</h2></hgroup><article  id="more-complex-expressions">
 
 <p>Find the volume of a cylinder with a radius of 1 foot and a height of 10 feet.</p>
 
@@ -150,7 +154,7 @@
 
 <pre >[1] 31.41593</pre>
 
-</article></slide><slide class=''><hgroup><h2>Basic data types</h2></hgroup><article  id="basic-data-types">
+</article></slide><slide class=""><hgroup><h2>Basic data types</h2></hgroup><article  id="basic-data-types">
 
 <ul>
 <li>Numeric</li>
@@ -160,7 +164,7 @@
 <li>Raw</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>What is the data type?</h2></hgroup><article  id="what-is-the-data-type">
+</article></slide><slide class=""><hgroup><h2>What is the data type?</h2></hgroup><article  id="what-is-the-data-type">
 
 <pre class = 'prettyprint lang-r'>&gt; my_numeric &lt;- 13
 &gt; my_logical &lt;- TRUE
@@ -177,7 +181,7 @@
 
 <pre >[1] &quot;character&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Creating vectors</h2></hgroup><article  id="creating-vectors">
+</article></slide><slide class=""><hgroup><h2>Creating vectors</h2></hgroup><article  id="creating-vectors">
 
 <p>To create a vector use the <code>c()</code> function</p>
 
@@ -196,7 +200,7 @@
 
 <pre >[1] &quot;Alan&quot;    &quot;Bob&quot;     &quot;Charlie&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Naming a vector</h2></hgroup><article  id="naming-a-vector">
+</article></slide><slide class=""><hgroup><h2>Naming a vector</h2></hgroup><article  id="naming-a-vector">
 
 <pre class = 'prettyprint lang-r'>&gt; # Predicted temperature in Boone 8/21/17 - 8/25/17
 &gt; predicted &lt;- c(65, 75, 74, 71, 70)
@@ -215,7 +219,7 @@
 <pre >   Monday   Tuesday Wednesday  Thursday    Friday 
        65        75        74        71        70 </pre>
 
-</article></slide><slide class=''><hgroup><h2>Vector selection</h2></hgroup><article  id="vector-selection">
+</article></slide><slide class=""><hgroup><h2>Vector selection</h2></hgroup><article  id="vector-selection">
 
 <p>Find the days it is predicted to be above 72.</p>
 
@@ -229,7 +233,7 @@
 <pre >  Tuesday Wednesday 
        75        74 </pre>
 
-</article></slide><slide class=''><hgroup><h2>Matrices</h2></hgroup><article  id="matrices">
+</article></slide><slide class=""><hgroup><h2>Matrices</h2></hgroup><article  id="matrices">
 
 <ul>
 <li>A matrix is a collection of the same data type (numeric, character, logical, or complex) arranged into a fixed number of rows and columns.<br/></li>
@@ -246,7 +250,7 @@
 [2,]    2    5    8
 [3,]    3    6    9</pre>
 
-</article></slide><slide class=''><hgroup><h2>Naming a matrix</h2></hgroup><article  id="naming-a-matrix">
+</article></slide><slide class=""><hgroup><h2>Naming a matrix</h2></hgroup><article  id="naming-a-matrix">
 
 <pre class = 'prettyprint lang-r'>&gt; row_names &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)
 &gt; col_names &lt;- c(&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;)
@@ -262,7 +266,7 @@ C 3 6 9</pre>
 
 <pre >[1] 5</pre>
 
-</article></slide><slide class=''><hgroup><h2>Factors</h2></hgroup><article  id="factors">
+</article></slide><slide class=""><hgroup><h2>Factors</h2></hgroup><article  id="factors">
 
 <ul>
 <li>A factor is a statistical data type used to store categorical variables.</li>
@@ -280,7 +284,7 @@ C 3 6 9</pre>
 <pre >[1] Freshmen Junior   Junior   Senior   Sophmore
 Levels: Freshmen Junior Senior Sophmore</pre>
 
-</article></slide><slide class=''><hgroup><h2>Factors (continued)</h2></hgroup><article  id="factors-continued">
+</article></slide><slide class=""><hgroup><h2>Factors (continued)</h2></hgroup><article  id="factors-continued">
 
 <pre class = 'prettyprint lang-r'>&gt; # Problem with the levels
 &gt; factor_year_group &lt;- factor(year_group, ordered = TRUE, 
@@ -297,11 +301,11 @@ Levels: Freshmen &lt; Sophmore &lt; Junior &lt; Senior</pre>
 
 <pre >[1] TRUE</pre>
 
-</article></slide><slide class=''><hgroup><h2>Data frame</h2></hgroup><article  id="data-frame">
+</article></slide><slide class=""><hgroup><h2>Data frame</h2></hgroup><article  id="data-frame">
 
 <p>A data frame is similar to a matrix in the sense that it is a rectangular structure used to store information. It is different in that all elements of a matrix must be of the same mode (numeric, character, etc.), but this restriction does not apply to data frames. That is, data frames have a two-dimensional structure with rows (experimental units) and columns (variables) where all columns have the same number of rows, which have unique names; yet the column (variables) in a data frame are not required to be of the same mode.</p>
 
-</article></slide><slide class=''><hgroup><h2>Data frame (2)</h2></hgroup><article  id="data-frame-2">
+</article></slide><slide class=""><hgroup><h2>Data frame (2)</h2></hgroup><article  id="data-frame-2">
 
 <p>Another way to think of a data frame is as a list with the restriction that all its components are equal length vectors.</p>
 
@@ -321,7 +325,7 @@ Levels: Freshmen &lt; Sophmore &lt; Junior &lt; Senior</pre>
 3  6  f FALSE
 4  8  p  TRUE</pre>
 
-</article></slide><slide class=''><hgroup><h2>Selecting data frame elements</h2></hgroup><article  id="selecting-data-frame-elements">
+</article></slide><slide class=""><hgroup><h2>Selecting data frame elements</h2></hgroup><article  id="selecting-data-frame-elements">
 
 <pre class = 'prettyprint lang-r'>&gt; DF1$nv</pre>
 
@@ -336,7 +340,7 @@ Levels: a f p v</pre>
 
 <pre >[1] FALSE</pre>
 
-</article></slide><slide class=''><hgroup><h2>Selecting data frame elements (2)</h2></hgroup><article  id="selecting-data-frame-elements-2">
+</article></slide><slide class=""><hgroup><h2>Selecting data frame elements (2)</h2></hgroup><article  id="selecting-data-frame-elements-2">
 
 <pre class = 'prettyprint lang-r'>&gt; DF1[1:2, &quot;nv&quot;]     # rows 1 and 2 of column &quot;nv&quot;</pre>
 
@@ -352,7 +356,7 @@ Levels: a f p v</pre>
 <pre >[1] a v f p
 Levels: a f p v</pre>
 
-</article></slide><slide class=''><hgroup><h2>Using <code>subset()</code></h2></hgroup><article  id="using-subset">
+</article></slide><slide class=""><hgroup><h2>Using <code>subset()</code></h2></hgroup><article  id="using-subset">
 
 <pre class = 'prettyprint lang-r'>&gt; subset(DF1, subset = lv == TRUE)</pre>
 
@@ -367,7 +371,7 @@ Levels: a f p v</pre>
 1  1  a TRUE
 4  8  p TRUE</pre>
 
-</article></slide><slide class=''><hgroup><h2>Using <code>subset()</code> (2)</h2></hgroup><article  id="using-subset-2">
+</article></slide><slide class=""><hgroup><h2>Using <code>subset()</code> (2)</h2></hgroup><article  id="using-subset-2">
 
 <pre class = 'prettyprint lang-r'>&gt; subset(DF1, subset = nv &lt; 5)</pre>
 
@@ -382,7 +386,7 @@ Levels: a f p v</pre>
 1  1  a  TRUE
 2  3  v FALSE</pre>
 
-</article></slide><slide class=''><hgroup><h2>Using <code>order()</code></h2></hgroup><article  id="using-order">
+</article></slide><slide class=""><hgroup><h2>Using <code>order()</code></h2></hgroup><article  id="using-order">
 
 <p><code>order()</code> is a function that gives you the ranked position of each element when it is applied on a variable.</p>
 
@@ -395,7 +399,7 @@ Levels: a f p v</pre>
 
 <pre >[1]  1 13 17 31 45</pre>
 
-</article></slide><slide class=''><hgroup><h2>Using <code>order()</code> to sort a data frame</h2></hgroup><article  id="using-order-to-sort-a-data-frame">
+</article></slide><slide class=""><hgroup><h2>Using <code>order()</code> to sort a data frame</h2></hgroup><article  id="using-order-to-sort-a-data-frame">
 
 <pre class = 'prettyprint lang-r'>&gt; head(ChickWeight, n = 3)</pre>
 
@@ -414,7 +418,7 @@ Levels: a f p v</pre>
 317     39    0    29    2
 365     39    0    33    3</pre>
 
-</article></slide><slide class=''><hgroup><h2>Lists</h2></hgroup><article  id="lists">
+</article></slide><slide class=""><hgroup><h2>Lists</h2></hgroup><article  id="lists">
 
 <p>A list is an object whose elements can be of different modes (character, numeric, logical, etc.). Lists are used to unite related data that have different modes. The objects in a list can be matrices, vectors, data frames, and even other lists.</p>
 
@@ -427,7 +431,7 @@ Levels: a f p v</pre>
 &gt; my_df &lt;- DF1
 &gt; my_list &lt;- list(my_vector, my_matrix, my_df)</pre>
 
-</article></slide><slide class=''><hgroup><h2>Lists (2)</h2></hgroup><article  id="lists-2">
+</article></slide><slide class=""><hgroup><h2>Lists (2)</h2></hgroup><article  id="lists-2">
 
 <pre class = 'prettyprint lang-r'>&gt; my_list</pre>
 
@@ -447,7 +451,7 @@ Levels: a f p v</pre>
 3  6  f FALSE
 4  8  p  TRUE</pre>
 
-</article></slide><slide class=''><hgroup><h2>Creating a named list</h2></hgroup><article  id="creating-a-named-list">
+</article></slide><slide class=""><hgroup><h2>Creating a named list</h2></hgroup><article  id="creating-a-named-list">
 
 <pre class = 'prettyprint lang-r'>&gt; my_list2 &lt;- list(Vector = my_vector, Matrix = my_matrix)
 &gt; my_list2</pre>
@@ -461,7 +465,7 @@ $Matrix
 [2,]    4    5    6
 [3,]    7    8    9</pre>
 
-</article></slide><slide class=''><hgroup><h2>Selecting elements from a list</h2></hgroup><article  id="selecting-elements-from-a-list">
+</article></slide><slide class=""><hgroup><h2>Selecting elements from a list</h2></hgroup><article  id="selecting-elements-from-a-list">
 
 <p>One way to select a component is using a numbered position of that component. For example, to &quot;extract&quot; the second component of <code>my_list2</code>, enter <code>my_list2[[2]]</code>.</p>
 
@@ -472,7 +476,7 @@ $Matrix
 [2,]    4    5    6
 [3,]    7    8    9</pre>
 
-</article></slide><slide class=''><hgroup><h2>Selecting elements from a list (2)</h2></hgroup><article  id="selecting-elements-from-a-list-2">
+</article></slide><slide class=""><hgroup><h2>Selecting elements from a list (2)</h2></hgroup><article  id="selecting-elements-from-a-list-2">
 
 <pre class = 'prettyprint lang-r'>&gt; my_list2[[&quot;Matrix&quot;]]</pre>
 

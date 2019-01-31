@@ -1,0 +1,92 @@
+---
+title: "Intro to R via RStudio"
+author: "Alan T. Arnholt"
+date: "1/30/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Credit
+
+Ideas taken from:
+
+* <https://datacarpentry.org/>
+
+* Many other places
+
+##
+
+* Who has a directory on their computer with a bunch of filenames that look like these?
+
+```{r, fig.align = "center"}
+knitr::include_graphics("./GIFSPNGS/fileSTR.png", dpi  = 100)
+```
+
+## 
+
+* Have you ever been in this situation?
+
+```{r, fig.align = "center"}
+knitr::include_graphics("./GIFSPNGS/finalDOC.png", dpi = 150)
+```
+
+
+## Version control
+
+Version control gives you a better way to track changes to things like data files and code in a more manageable way. That’s important because when the reviews come back on your paper and ask you to perform some additional analyses and you open up this directory, it can be pretty difficult to figure out which file you should actually use. At the very least you’ll spend a bunch of extra time figuring it out before you get to work, but I’ve also certainly picked the wrong file and had to redo all of my work after I finally realized I wasn’t getting the same results as in the submitted version of the manuscript.
+
+## Benefits of version control
+
+* Tracks every change ever made in groups called commits
+
+* Every commit stores the full state of all of your files at that time
+
+* Never lose anything
+
+* Easily unbreak your code/data/manuscript
+
+* No more file name changes
+
+## More benefits of version control
+
+* Work on things simultaneously
+
+* See what changes others have made
+
+* Everyone has the most recent version of everything
+
+
+## Accessing the ASU RStudio Server
+
+- Point your browser to <https://mathr.math.appstate.edu>
+- Log in using your ASU username and ASU password
+
+```{r, fig.align = "center"}
+knitr::include_graphics("./GIFSPNGS/RStudioLogin.png", dpi = 150)
+```
+
+
+## Recommended Global Options
+
+* Never Save workspace to .RData on exit
+
+* Weave Rnw files using **knitr**
+
+* See this [link](https://stat-ata-asu.github.io/STT5812CourseRepo/Rmarkdown/GlobalOptions.html) for more details.
+
+## Your First Project
+
+* Click on `File > New Project... > New Directory > New Project`
+
+```{r, fig.align = "center"}
+knitr::include_graphics("./GIFSPNGS/CreateNewProject.png", dpi = 150)
+```
+
+* Note: `~/` is your home directory on Linux/Unix.
+
+
+
+
