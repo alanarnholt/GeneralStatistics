@@ -92,6 +92,8 @@ ggplot(data = ndf, aes(x = abs, y = hwfat)) +
   geom_segment(aes(x = abs, xend = abs, y = hwfat, yend = .fitted), size = 0.25, linetype = "dotted") + 
   geom_point(color = "lightblue") 
 ```
+The graph above is created with a Figure Caption and hidden code in Figure \@ref(fig:BG).
+
 
 ### Tweakers 
 
@@ -129,4 +131,25 @@ mod_null %>%
 mod_slr %>%
   summarize(MSE = var(.resid))
 ```
+
+## Graph with caption
+
+```{r, label = "BG", echo = FALSE, fig.cap = "What you want your caption to say goes here", fig.width = 8}
+mod_null <- lm(hwfat ~ 1, data = HSWRESTLER)
+mod_slr <- lm(hwfat ~ abs, data = HSWRESTLER)
+ndf1 <- augment(mod_slr)
+ndf2 <- augment(mod_null)
+ndf2$abs <- HSWRESTLER$abs  # Note that abs is not in ndf2....so must add
+ndf <- bind_rows(ndf1, ndf2) %>% 
+  mutate(model = rep(c("slr", "null"), each = 78)) 
+mod_null <- mod_null %>% augment()
+mod_slr <- mod_slr %>% augment()
+ggplot(data = ndf, aes(x = abs, y = hwfat)) +
+  facet_grid(.~ model) + 
+  geom_line(aes(x = abs, y = .fitted), color = "gray") + 
+  theme_bw() + 
+  geom_segment(aes(x = abs, xend = abs, y = hwfat, yend = .fitted), size = 0.25, linetype = "dotted") + 
+  geom_point(color = "blue") 
+```
+
 
