@@ -22,49 +22,63 @@ The $i^{th}$ residual is defined as $\hat{\epsilon}_i = y_i - \hat{y}_i$.
 library(dplyr)
 library(PASWR2)
 head(HSWRESTLER)
-null <- lm(hwfat ~ 1, data = HSWRESTLER)
-summary(null)
+mod_null <- lm(hwfat ~ 1, data = HSWRESTLER)
+summary(mod_null)
+anova(mod_null)
 HSWRESTLER %>% 
   summarize(Intercept = mean(hwfat))
-slr <- lm(hwfat ~ abs, data = HSWRESTLER)
-summary(slr)
+mod_slr <- lm(hwfat ~ abs, data = HSWRESTLER)
+summary(mod_slr)
+anova(mod_slr)
 ```
 
 * Use the function `augment` from the `broom` package
 
 ```{r}
 library(broom)
-slr %>% 
+mod_slr %>% 
   augment() %>% 
   head() %>% 
   round(3)
-NDF <- slr %>% 
+NDF1 <- mod_slr %>% 
   augment()
+NDF2 <- mod_null %>% 
+  augment()
+NDF2$abs <- HSWRESTLER$abs
 ```
 
 ## Graphing
 
-```{r}
-ggplot(data = NDF, aes(x = abs, y = hwfat)) + 
-  geom_point(color = "purple") + 
-  theme_bw() + 
-  geom_smooth(method = "lm", se = FALSE, color = "gray") + 
-  geom_segment(aes(x = abs, xend = abs, y = hwfat, yend = .fitted), size = 0.25)
-```
+### Residuals for SLR model
 
 ```{r}
-ggplot(data = NDF, aes(x = abs, y = hwfat)) + 
+ggplot(data = NDF1, aes(x = abs, y = hwfat)) + 
   geom_point(color = "purple") + 
   theme_bw() + 
   geom_line(aes(x = abs, y = .fitted), color = "gray") + 
   geom_segment(aes(x = abs, xend = abs, y = hwfat, yend = .fitted), size = 0.25)
 ```
 
+### Residuals for Null model
 
 ```{r}
-ndf1 <- augment(slr)
-ndf2 <- augment(null)
-ndf2$abs <- HSWRESTLER$abs
+ggplot(data = NDF2, aes(x = abs, y = hwfat)) + 
+  geom_point(color = "purple") + 
+  theme_bw() + 
+  geom_line(aes(x = abs, y = .fitted), color = "gray") + 
+  geom_segment(aes(x = abs, xend = abs, y = hwfat, yend = .fitted), size = 0.25)
+```
+
+### Creating one dataframe with new column
+
+The code below creates one dataframe (`ndf`) with the information from the `null` model appended to the bottom of the information from the `slr` model.
+
+```{r}
+ndf1 <- augment(mod_slr)
+ndf2 <- augment(mod_null)
+DT::datatable(head(ndf1))
+DT::datatable(head(ndf2))
+ndf2$abs <- HSWRESTLER$abs  # Note that abs is not in ndf2....so must add
 ndf <- bind_rows(ndf1, ndf2) %>% 
   mutate(model = rep(c("slr", "null"), each = 78)) 
 DT::datatable(ndf)
@@ -79,5 +93,40 @@ ggplot(data = ndf, aes(x = abs, y = hwfat)) +
   geom_point(color = "lightblue") 
 ```
 
-### Something Else 
+### Tweakers 
+
+Note that `mod_null` and `mod_slr` are  lists with the results from the `lm` call.
+
+```{r}
+str(mod_null)
+str(mod_slr)
+```
+
+Consider the following:
+
+```{r}
+mod_null <- mod_null %>% augment()
+mod_null$abs <- HSWRESTLER$abs
+mod_slr <- mod_slr %>% augment()
+```
+
+```{r}
+DT::datatable(mod_null)
+```
+
+* Compute the mean squared error ($MSE$) for the null model `mod_null`.
+
+```{r}
+# Compute SSE for null model
+mod_null %>%
+  summarize(MSE = var(hwfat))
+```
+
+* Compute the mean squared error ($MSE$) for the regression model `mod_slr`.
+
+```{r}
+# Compute SSE for regression model
+mod_slr %>%
+  summarize(MSE = var(.resid))
+```
 
